@@ -46,7 +46,7 @@ p {
 
 .navbar-title {
   color: white;
-  font-size: 1.2rem;
+  font-size:rem;
   letter-spacing: 0.1rem;
 }
 
@@ -54,7 +54,7 @@ p {
   cursor: default;
   font-size: 5vw;
   font-weight: bold;
-  letter-spacing: 1rem;
+  letter-spacing: .7rem;
   color: white;
 }
 
