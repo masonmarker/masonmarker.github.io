@@ -4,9 +4,25 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import {
+    BrowserRouter, 
+    Routes,
+    Route,
+  } from "react-router-dom";
+
+
+import Resume from './resume';
+import GitHub from './github';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <App /> 
+    <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<App/>}/>
+            <Route path="/resume" element={<Resume/>} />
+            <Route path="/github" element={<GitHub/>} />
+        </Routes>
+    </BrowserRouter>
 );
  
 // If you want to start measuring performance in your app, pass a function
