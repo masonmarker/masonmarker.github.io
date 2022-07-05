@@ -7,6 +7,10 @@
   --gray: #605e6a;
 }
 
+/* * {
+  outline: 3px solid green;
+} */
+
 ::selection {
   background-color: var(--gray);
   color: white;
@@ -36,6 +40,7 @@ p {
   font-weight: lighter;
   font-size: 1.2rem;
   text-align: center;
+  width: 100%;
 }
 
 /* entire navbar */ 
@@ -435,6 +440,33 @@ section {
 
   .about-div {
     width: 85%;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .education-img {
+    width: 75vw;
+    margin: 0 auto;
+  }
+
+  .lang-img {
+    width: 60vw;
+  }
+
+  .languages {
+    width: 90vw;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  li {
+    font-size: 15px;
+  }
+
+  .github {
+    width: 90vw;
   }
 
 }

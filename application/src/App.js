@@ -332,7 +332,7 @@ const Languages = () => {
 
       <FadeInSection>
       <div className="lang-desc">
-      <img alt="Ruby" className="lang-img" src="https://miro.medium.com/max/540/1*7e9D-oPWPIKBe2AQv862aA.png" Style="width: 23rem"></img>
+      <img alt="Ruby" className="lang-img" src="https://miro.medium.com/max/540/1*7e9D-oPWPIKBe2AQv862aA.png" ></img>
         <Proficiency level="37%" color="red" completion="beginner - intermediate"/>
         <div>
           <p>Ruby was a required language to learn in my programming languages class at JMU.</p>
