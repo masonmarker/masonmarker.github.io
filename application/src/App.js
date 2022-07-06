@@ -58,9 +58,6 @@ function App() {
       <ContactMe/>
       </FadeInSection>
     
-
-
-      <Footer />
       <Outlet />
     </div>
   );
@@ -69,8 +66,8 @@ function App() {
 const NavBar = () => {
   return (
     <div className="navbar">
-      <h4 className="navbar-title"><i>Hi! Most people call me</i></h4>
-      <h1 className="name-title">— Mason Marker —</h1>
+      <h4 className="navbar-title" Style="margin-bottom: 0"><i>Hi! Most people call me</i></h4>
+      <h1 className="name-title" Style="margin-top: 0">— Mason Marker —</h1>
 
     </div>
   );
@@ -98,7 +95,7 @@ const MyEducation = () => {
 const Education = () => {
   return (
     <div className="education">
-      <div Style="margin-right: 1rem">
+      <div className="education2-div">
         <img alt="JMU" onClick={jmuClicked}className="education-img" src="https://gray-wvir-prod.cdn.arcpublishing.com/resizer/LP2hwjsI6I17ybSZV5UAqVKd2ic=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/AL5AMJZCXBBPNOZQ7DRYAGGAYI.png"></img>
       </div>
       <div className="education-desc">
@@ -106,15 +103,15 @@ const Education = () => {
         <h3 className="no-margin">Student - Senior</h3>
         <h5 className="no-margin" Style="color: var(--gray)">Computer Science Major</h5> 
         <h5 className="no-margin" Style="color: var(--gray)">2019 - Present</h5> 
-        <p Style="margin-left: 0">In high school, I was positive I wanted to attend university with hopes for success in the medical field.</p>
-        <p Style="margin-left: 0">My first semester in the biology curriculum was an experience, however did not satisfy me academically nor mentally.</p>
-        <p Style="margin-left: 0">While my thirst for knowledge was high, I needed to find a major that would prove beneficial to my future, 
+        <p className="education-p">In high school, I was positive I wanted to attend university with hopes for success in the medical field.</p>
+        <p className="education-p">My first semester in the biology curriculum was an experience, however did not satisfy me academically nor mentally.</p>
+        <p className="education-p">While my thirst for knowledge was high, I needed to find a major that would prove beneficial to my future, 
         serving as not just work, but enjoyable work, and offering potential for vast expansion within the field.</p>
-        <p Style="margin-left: 0">Nearly everyone in my dorm was majoring in computer science, I was the only one focused on the medical field.
+        <p className="education-p">Nearly everyone in my dorm was majoring in computer science, I was the only one focused on the medical field.
         This most definitely swayed my decision to major in computer science, as they explained to me the seemingly endless benefits of studying computer
         science.
         </p>
-        <p Style="margin-left: 0">I thought it wouldn't hurt to take a few entry level classes, and in doing so, I fell in love with the art of programming.
+        <p className="education-p">I thought it wouldn't hurt to take a few entry level classes, and in doing so, I fell in love with the art of programming.
         As a kid, I would always assist my brothers, parents, and grandparents with issues they were having with any devices they owned. This made me 
         question why I hadn't dug deeper into the intricacies of computer science earlier!
          </p>
@@ -184,7 +181,6 @@ const Ventures = () => {
         </div>
         </FadeInSection>
 
-
         <FadeInSection>
         <div className="job-div">
           <img onClick={cfaClicked} alt="chick-fil-a" className="ventures-img" src="https://live.staticflickr.com/5328/8928862580_4cd0791484.jpg"></img>
@@ -192,13 +188,10 @@ const Ventures = () => {
             <h2 Style="margin-bottom: 0">Chick-Fil-A</h2>
             <h3 className="job-title">Cashier</h3> 
             <h4 className="job-duration">July 2017 - August 2018</h4>
-          <h5 className="job-desc">Requirements of the jon included operation of a cash register and receive payment from customers in cash or credit card, accurately count and provide change to customers as required, then use the RX system to locate customer medical profiles and distribute prescribed medications accordingly while following HIPAA guidelines and maintaining constant social interaction. </h5>
+          <h5 className="job-desc">Operated a cash register and receive payment from customers in cash or credit card, accurately count and provide change to customers as required, and follow all cash handling policies and procedures while working quickly and maintaining constant social interaction.</h5>
           </div>
         </div>
         </FadeInSection>
-
-
-
       </div>
   )
 }
@@ -241,10 +234,8 @@ const GitHub = () => {
           <li>And much more!</li>
         </ul>
       </h5>
-          <div onClick={gitClicked}   className="regular-button">
-            <h3 Style="margin: .7rem" >Visit</h3>
-          </div>
-        <Link to="/github" className="regular-button" Style="padding: .7rem; color: var(--darkpurple); font-weight: bold;">I don't want to read anymore, just show me!</Link>
+        <h3 className="download-button" Style="color: white; width: 5rem" onClick={gitClicked}>Visit</h3>
+        <Link to="/github" className="download-button" Style="color: white; font-weight: bold; width: 23rem; padding: .3rem">I don't want to read anymore, just show me!</Link>
       </div>
     </div>
   )
@@ -405,41 +396,40 @@ const Proficiency = (props) => {
 
 const ContactMe = () => {
   return (
-    <div className="my-services" Style="margin-bottom: 5rem;">
-      <h1>Contact me!</h1> 
-      <h4 Style="margin-left: 1rem; margin-right: 1rem"><i>I love talking to new people, feel free to send me a message!</i></h4>
-      <div className="contact-img-div">
-        <img alt="LinkedIn" onClick={linkedInClicked} className="contact-me"  src="https://cdn3.iconfinder.com/data/icons/inficons/512/linkedin.png" Style="border-radius: 35px"></img>
-        <img alt="Instagram" onClick={instaClicked} className="contact-me" src="https://seeklogo.com/images/I/instagram-logo-041EABACE1-seeklogo.com.png"></img>
+    <div className="footer"> 
+      <div className="footer-container">
+      <h1>Mason Marker</h1>
+        <h1>2022</h1>
+        <Button name="LinkedIn" loc="https://www.linkedin.com/in/masonmarker/"/>
+        <Button name="GitHub" loc="https://github.com/masonmarker/TheMsnProject"/>
+        <Button name="Instagram" loc="https://www.instagram.com/mxs.n/"/>
+
       </div>
     </div>
   )
 }
 
-const MyResume = () => {
-  let navigate = useNavigate();
-
+const Button = (props) => {
   return (
-    <div className="my-ventures" Style="margin-bottom: 5rem;">
-      <h1 className="increased-margin">Want to know more about me?</h1>
-      <h4 className="increased-margin"><i>Take a peek at my skillsets, hobbies, interests, and more on my résumé!</i></h4>
-      <Link to="/resume" className="resume-button">View my résumé</Link>
+    <div onClick={() => goTo(props.loc)} className="download-button">
+      <h3 Style="color: white; letter-spacing: .05rem">{props.name}</h3>
     </div>
   )
 }
 
-
-const Footer = () => {
+const MyResume = () => {
   return (
-    <div className="footer">
-      <p>2022</p>
-      <p>Mason Marker</p>
-      <img alt="linkedin" onClick={linkedInClicked} className="footer-img" src="https://cdn3.iconfinder.com/data/icons/inficons/512/linkedin.png"></img>
-      <img alt="github" className="footer-img" src="https://avatars.githubusercontent.com/u/9919?s=280&v=4" onClick={gitClicked}></img>
-      <img alt="instagram" onClick={instaClicked} className="footer-img" src="https://seeklogo.com/images/I/instagram-logo-041EABACE1-seeklogo.com.png"></img>
+    <div className="my-ventures" Style="margin-bottom: 5rem;">
+      <h1 className="increased-margin">Want to know more about me?</h1>
+      <h4 className="increased-margin"><i>Take a peek at my skillsets, hobbies, interests, and more on my résumé!</i></h4>
+      <Link className="download-button" to="/resume" Style="margin: 0 auto; margin-bottom: 1rem; color: white; text-decoration: none">View my Résumé</Link>
     </div>
   )
-  }
+}
+
+function goTo(location) {
+  window.location.href = location;
+}
 
 function instaClicked() {
   window.location.href='https://www.instagram.com/mxs.n/'
