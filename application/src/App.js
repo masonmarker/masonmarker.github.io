@@ -235,7 +235,7 @@ const GitHub = () => {
         </ul>
       </h5>
         <h3 className="download-button" Style="color: white; width: 5rem" onClick={gitClicked}>Visit</h3>
-        <Link to="/github" className="download-button" Style="color: white; font-weight: bold; width: 23rem; padding: .3rem">I don't want to read anymore, just show me!</Link>
+        <Link to="/github" className="download-button" Style="color: white; font-weight: bold; width: 15rem; padding: 1rem">I don't want to read anymore, just show me!</Link>
       </div>
     </div>
   )
