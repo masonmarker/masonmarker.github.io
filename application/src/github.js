@@ -1,8 +1,10 @@
 
+import './App.css';
+
 const GitHub = () => {
     return (
         <div>
-            <p>this is the github page</p>
+            <div className="github-nav"></div>
         </div>
     )
 }
