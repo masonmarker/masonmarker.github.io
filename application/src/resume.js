@@ -1,5 +1,5 @@
 import './App.css'
-import ResumeImage from './resumepicture07052022.png'
+// import ResumeImage from './resumepicture07052022.png'
 import {Link} from 'react-router-dom';
 
 const Resume = () => {
@@ -24,25 +24,25 @@ const NavBar = () => {
 
             <div Style="display: flex">
                 <Link to="/" className="download-button"  Style="color: white; width: 6rem; margin-right: 1rem; font-size: 1.2rem">Back</Link>
-                <div className="download-button" onClick={downloadResume}>
+                {/* <div className="download-button" onClick={downloadResume}>
                   <h3 Style="color: white">Download</h3>
-                </div>
+                </div> */}
             </div>
 
 
-            <div className="img-container">
+            {/* <div className="img-container">
                 <img  className="resume-img" src={ResumeImage}></img>
-            </div>
+            </div> */}
         </div>
     )
 }
 
 // downloads the resume
-function downloadResume() {
-    var link = document.createElement('a');
-    link.download = "resumepicture07052022.png";
-    link.href = ResumeImage;
-    link.click();
-}
+// function downloadResume() {
+//     var link = document.createElement('a');
+//     link.download = "resumepicture07052022.png";
+//     link.href = ResumeImage;
+//     link.click();
+// }
 
 export default Resume;

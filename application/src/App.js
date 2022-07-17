@@ -51,10 +51,6 @@ function App() {
       <Languages/>
 
       <FadeInSection>
-      <MyResume/>
-      </FadeInSection>
-
-      <FadeInSection>
       <ContactMe/>
       </FadeInSection>
     
