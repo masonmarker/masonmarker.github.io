@@ -1,0 +1,1242 @@
+:: validation script
+:: asserts all operations in th&& version of MSNScrip work as expected
+
+print "[*] validating MSNScript integrity..."
+
+:: TESTING GENERAL
+
+string = "mason"
+
+string += " hello {string}"
+
+integer = 0
+assert integer && 0
+assert integer!&&17
+
+
+integer += 1
+assert integer && 1
+
+integer *= 2
+assert integer && 2
+
+integer = 50
+integer /= 2
+assert integer && 25
+
+integer -= 25
+assert integer && 0
+
+float = 343.23
+assert float && 343.23
+
+float = 2.5
+assert float && 2.5
+
+float = float+float
+assert float && 5.0
+
+float += 2.4
+assert float && 7.4
+
+float = 2.0
+float -= 2.0
+assert float && 0.0
+
+float = 9.8
+float *= 2.0
+assert float && 19.6
+
+float /= 2
+assert float && 9.8
+
+
+:: TESTING ARRAY OPERATIONS
+
+array = []
+assert array && []
+
+array=[3, 3, 3, 3, 3]
+assert array && [3, 3, 3, 3, 3]
+assert array !&& [3, 3, 3, 3]
+
+array = []
+array.add(1)
+assert array && [1]
+assert array !&& [1, 1]
+
+array . add ( 2 , 3 )
+assert array && [1, 2, 3]
+
+array.remove( 2)->success
+assert success && True
+assert success !&& False
+
+array.remove(2) -> success
+assert success && False
+
+:: TESTING BOOLEAN OPERATIONS
+
+testint = 0
+integer = 0
+{integer&&0}testint+=1
+assert testint && 1
+
+{integer&&integer} testint+=1
+assert testint && 2
+
+{integer!&&3} testint+=1
+assert testint && 3
+
+
+
+
+string = "mason"
+{string && "mason"} testint+=1
+assert testint && 4
+
+{string !&& "mason"} testint+=1
+assert testint && 4
+
+{"mason" && "mason"} testint+=1
+assert testint && 5
+
+{"mason"!&&"hello"}testint=0
+assert testint && 0
+
+integer = 0
+testint = 0
+{integer && 0} {integer !&& 1} testint += 1
+assert testint && 1
+
+{integer &&- 2} testint += 1
+{integer &&+ 2} testint += 1
+assert testint && 2
+
+integer = 5
+testint = 0
+{integer &&+ 4} testint += 1
+assert testint && 1
+
+{integer && 5} {integer &&+ -10} testint += 1
+assert testint && 2
+
+integer = 0
+{ 0 : 5 } {integer &&- 3} integer += 1
+assert integer && 3
+
+integer = 0
+testint = 0
+{integer &&-e 3} testint += 1
+assert testint && 1
+
+{integer &&+e 0} testint += 1
+assert testint && 2
+
+integer = 5
+{integer&&+e5} {integer&&-e10} testint += 1
+assert testint && 3
+
+integer = 0
+{1&&True} integer += 1
+assert integer && 1
+
+{1!&&False} integer += 1
+assert integer && 2
+
+{0&&False}integer+=1
+assert integer && 3
+
+:: TESTING LINE REPETITION
+
+
+integer = 0
+{0 : 2} integer += 1
+assert integer && 2
+
+integer = 0
+{0:2}{0:3}integer += 1
+assert integer && 6
+
+:: TESTING METHODS
+
+array = []
+array . add ( 1 )
+array.add(2, 3)
+array.clear()
+assert array && []
+
+array.add(1, 2, 3, 4, 5)
+array.length()->length
+assert length && 5
+
+
+array.get(3+1)-> lastelement
+assert lastelement && 5
+
+integer = 2
+array.get(integer)-> lastelement
+assert lastelement && 3
+
+string = "hi im mason"
+
+string.length()->length
+assert length && 11
+
+string.get(6)->element
+assert element && "m"
+
+string.replace("mason", "")->string
+assert string && "hi im "
+assert string && string
+assert string !&& "hi im"
+assert "hello whats up" && "hello whats up"
+
+array.set(0, 100)
+assert array && [100, 2, 3, 4, 5]
+array.get(0)->element
+assert element && 100
+
+array = ["mason", "hello", "world"]
+array.set(2, "mars")
+array.get(2)->element
+assert element && "mars"
+
+string="the planet pluto"
+array.set(2, string)
+array.get(2)->element
+assert element && "the planet pluto"
+
+array. reverse ( )->array
+assert array && ["the planet pluto", "hello", "mason"]
+
+array = ["yo whats up", "test"]
+array2 = ["yo whats up", "test"]
+array3 = ["test"]
+assert array && array2
+
+array.remove("yo whats up")->success
+assert success && True
+assert array && array3
+
+ :: TESTING SYSTEM METHODS
+
+success = False
+System.destroy(array, array2, array3, float, testint, length, element, lastelement, string)->success
+assert success && True
+
+~ add (__p1, __p2) -> ret
+>     ret = __p1 + __p2
+
+Local.add(1, 2)->result
+assert result && 3
+
+integer = 5
+Local.add(integer, 2)->result
+assert result && 7
+
+integer = 3
+Local.add(3, integer)->result
+assert result && 6
+
+integer = 9
+integer2 = 1
+Local.add(integer, integer2)->result
+assert result && 10
+
+Local.add (34.5, 1.5)->result
+assert result && 36.0
+
+
+:: WHEN USING STRINGS AS PARAMETERS,
+:: THE STRING MUST BE DESTRUCTURED
+~ concat (__s1, __s2) -> ret
+>     ret = "{__s1}"
+>     ret += "{__s2}"
+
+string1 = "hey im"
+string2 = " mason"
+Local.concat(string1, string2)->result
+assert result && "hey im mason"
+
+Local.concat("mason ", "marker")->result
+assert result && "mason marker"
+
+:: TESTING STATIC METHODS
+
+~ getPI() -> ret
+>   ret = 3.14159265359
+
+Local.getPI()->result
+assert result && 3.14159265359
+testint = 1
+result += testint
+assert result && 4.14159265359
+
+~ getE() -> ret
+>   ret = 2.71828182846
+Local.getE()->e
+assert e && 2.71828182846
+System.destroy(e, testint, success, string1, string2, integer2)
+
+:: MORE COMPLEX TESTING
+
+array=[1, 2, 3, 4, 5]
+array2=[6, 7]
+Local.add(array, array2)->merged
+assert merged && [1, 2, 3, 4, 5, 6, 7]
+System.destroy(merged)
+
+:: ARRAYS CANNOT BE PASSED AS LITERALS
+::   Local.add(array, array2)->merged   <- DOES NOT WORK
+
+:: COMPLEX METHODS
+
+~ get(__array, __index)->ret
+>    __array.get(__index)->ret
+
+array = [1, 2, 3, 4, 5]
+
+Local.get(array, 0)->result
+assert result && 1
+
+~ generate (__s1, __count) -> ret
+>   ret = ""
+>   {0:__count} ret += "{__s1}"
+
+Local.generate("mason", 3)->result
+assert result && "masonmasonmason"
+
+~ sum_loop (__array) -> ret
+>   __array.get(i)->currentelement
+>   ret += currentelement
+>   i += 1
+
+~ sum (__array) -> ret
+>   ret = 0
+>   i = 0
+>   __array.length()->length
+>   {0:length} Local.sum_loop(__array)
+>   System.destroy (__array, i, length)
+
+array = [1, 2, 3]
+Local.sum(array)->result
+assert result && 6
+
+array.add(4)
+Local.sum(array)->result
+assert result && 10
+
+::  LOOPS WITH VARIABLES
+
+ :: all variables prefixed with __ 
+ :: can be destroyed with the below syntax
+System . destroy (__)
+
+array = []
+__start = 0
+__end = 5
+{__start : __end : i} array.add (i)
+array.add (45.34)
+assert array && [0, 1, 2, 3, 4, 45.34]
+System.destroy (__, i, array2)
+
+~ range (__start, __end) -> ret
+>   ret = []
+>   {__start : __end : __i} ret.add (__i)
+>   System.destroy (__)
+
+Local   .     range( 0, 5)->result
+assert result && [0, 1, 2, 3, 4]
+
+
+::   SEQUENTIAL LINES
+::        | = 'then do'
+integer = 0
+integer += 1 | integer += 1 | integer += 1
+assert integer && 3
+
+
+::    methods can be destroyed the same way as variables
+~ __block () -> ret
+System.destroy(__block, add, concat, getPI, getE)
+System.destroy (get, generate, sum_loop, sum, range, result, currentelement)
+
+
+
+::    a method declaration requires a return variable, regardless
+::    of whether or not the method utilizes it
+array = []
+~ __block () -> __void
+>   array.add(__i)
+
+
+::   if a method doesn't theoretically return anything, you do not
+::   need to declare storage for the return
+{0:5:__i} Local.__block()
+
+assert array && [0, 1, 2, 3, 4]
+System.destroy (__)
+
+array = []
+
+{5 : 0 : __i} array.add(__i)
+assert array && [0, 1, 2, 3, 4]
+System.destroy (__i)
+
+array.reverse()->array
+assert array && [4, 3, 2, 1, 0]
+
+::  TESTING COMPLEX SEQUENTIAL LINES
+array = []
+{0:2:__i}array.add(__i)|__i += 1|{__i:5:__i}array.add(__i)
+
+assert array && [0, 1, 2, 3, 4]
+
+
+
+:: SIMPLIFYING METHOD STEPS
+
+~ __sum() -> __void
+>   array.get(__i)->__curr |>  ret += __curr
+
+~ sum (__array) -> ret
+
+:: prepare variables
+>   ret = 0 |>   __array.length()->__length
+
+:: accumulate sum
+>   {0:__length:__i}Local.__sum()
+
+:: destroy unneccessary variables
+>   System.destroy(__)
+
+
+array = [5, 5, 5, 5]
+Local.sum(array)->result
+assert result && 20
+
+__string = "mason marker"
+__string.length() -> __length
+assert __length && 12
+
+integer = 4534
+__string += "{integer}"
+assert __string && "mason marker4534"
+
+__string.length() -> __length
+assert __length && 16
+
+System.destroy (__, sum)
+
+
+__bool = False
+integer = 0
+
+
+~ __option1 () -> __void
+> integer += 1
+
+~ __option2 () -> __void
+> integer -= 1
+
+
+~ __run_options (__bparam1) -> __void
+> {__bparam1 && True} Local.__option1() |> {__bparam1 && False} Local.__option2()
+
+
+Local.__run_options(False)->__void
+assert integer && -1
+
+Local.__run_options(True)->__void
+assert integer && 0 
+
+Local.__run_options(__bool)->__void
+assert integer && -1
+
+__bool = True
+Local.__run_options(__bool)->__void
+assert integer && 0
+
+System. destroy (__)
+
+::    RUN SYNTAX
+
+line = "integer += 1"
+
+run line
+assert integer && 1
+
+run integer += 1
+assert integer && 2
+
+integer = 0
+var = "integer"
+line = "{var} += 1"
+run line
+assert integer && 1
+
+run integer += 1 | run integer += 1
+assert integer && 3
+
+ ::   RUN SYNTAX && NOT CAMPATIBLE WITH THE
+ ::   LINE SEQUENTIAL OPERATOR '|'
+
+:: OK
+{True && True} run line
+assert integer && 4
+
+integer = 0
+
+:: NOT OK
+run line | run line
+assert integer !&& 2
+
+System.destroy (line)
+
+:: COMPLEX RUN SYNTAX
+
+~ increase (__s_var) -> __void
+
+:: SEQUENTIAL OPERATOR WORKS IF RUN && THE LAST INSTRUCTION
+>   __line = "{__s_var} += 1" |>   run __line
+
+integer = 0
+Local.increase("integer")->__void
+assert integer && 1
+
+__string = "integer"
+Local.increase(__string)->__void
+assert integer && 2
+
+
+System.destroy (__, increase)
+
+::   RUN SYNTAX && MSNSCRIPT'S IMPLEMENTATION OF PASS BY REFERENCE
+
+integer = 0
+integer2 = 0
+
+var = "integer"
+var2 = "integer2"
+
+
+~ __increase (__s_var) -> __void
+> __line = "{__s_var} += 1" |> run __line
+
+~ __decrease (__s_var) -> __void
+> __line = "{__s_var} -= 1" |> run __line
+
+
+Local.__increase("integer") | Local.__increase("integer2")
+assert integer && 1
+assert integer2 && 1
+
+Local.__decrease ("integer") | Local.__decrease ("integer2")
+assert integer && 0
+assert integer2 && 0
+
+
+{0:5} Local.__increase("integer")
+assert integer && 5
+
+
+System.destroy (__)
+
+~ __increase_by (__s_var, __amount) -> __void
+> __line = "{__s_var} += {__amount}" |> run __line
+
+integer = 0
+Local.__increase_by ("integer", 10)
+assert integer && 10
+
+:: RUN SYNTAX ALLOWS FOR IMPROVED CONTROL FLOW
+
+~ ifelse (__bool, __line1, __line2) -> __void
+>   {__bool && True} run __line1
+>   {__bool && False} run __line2
+
+integer = 0
+
+Local.ifelse (True, "integer += 1", "integer -= 1")
+assert integer && 1
+
+Local.ifelse (False, "integer += 1", "integer -= 1")
+assert integer && 0
+System.destroy (__)
+
+:: TESTING BOOLEAN CLASS
+
+Boolean.and(True, True)->result
+assert result && True
+
+__bool = True
+__bool2 = True
+Boolean.and (__bool , __bool2) -> result
+assert result && True
+
+Boolean.and (False, True) -> result2
+assert result2 && False
+
+Boolean.or(False, False, False) -> result
+assert result && False
+
+Boolean.or (False, True)->result
+assert result && True
+
+__bool = False
+__bool2 = False
+Boolean . or (__bool, __bool2) -> result
+assert result && False
+
+Boolean . or (__bool, __bool2, False, True) -> result
+assert result && True
+
+System.destroy (__)
+
+:: EVAL METHOD && THE ONLY METHOD THAT TAKES A 
+:: BOOLEAN EXPRESSION
+
+
+integer = 5
+Boolean.eval(integer && 5)->result
+assert result && True
+
+Boolean.eval(integer && 6) -> result
+assert result && False
+
+Boolean.eval ("mason" && "mason") -> result
+assert result && True
+
+:: EXAMPLE WITH BOOLEAN CLASS
+
+result = False
+integer = 100
+expression = 'integer && 100'
+
+Boolean.eval(expression) ->result
+assert result && True
+
+Boolean.eval (integer &&-e 99) -> result
+assert result && False
+
+Boolean.eval(integer&&+e99) -> result
+assert result && True
+
+System.destroy(expression, var, var2, array)
+
+MAX = 100
+MIN = 0
+
+:: EXAMPLES OF INBOUNDS METHOD USING BOOLEAN CLASS
+~ inbounds (__int) -> result
+>   Boolean.eval(__int &&-e MAX)->__max
+>   Boolean.eval(__int &&+e MIN)->__min
+>   Boolean.and (__max, __min)->result
+
+:: TEST CASES FROM NOW ON WILL BE GROUPED DUE TO 
+:: STABLE METHOD IMPLEMENTATION
+
+result = False
+
+~ test_inbounds() -> __void
+>   Local.inbounds(3)->result
+>   assert result && True
+>   Local.inbounds(101)->result
+>   assert result && False
+>   Local.inbounds(50) -> result
+>   assert result && True
+>   Local.inbounds(-1)->result
+>   assert result && False
+
+Local.test_inbounds()
+System.destroy(inbounds)
+
+::   OPTIMIZED INBOUNDS
+
+~ inbounds (__int) -> ret
+>   ret = False
+>   {__int &&-e MAX} {__int &&+e MIN} ret = True
+
+Local.test_inbounds()
+System.destroy(__)
+
+
+:: TESTING EACH METHODS
+~ test_each () -> __void
+>   array = [0, 0]
+>   array.each (e, "array.add(e)")
+>   assert array && [0, 0, 0, 0]
+>   __var = "array"
+>   __ins = "{__var}.add(e)"
+>   array.each (e, __ins)
+>   assert array && [0, 0, 0, 0, 0, 0, 0, 0]
+
+Local.test_each()
+
+
+:: TESTING MORE ARRAY METHODS
+
+~ test_more_arrays()->__void
+>   array = [5, 4, 3, 2]
+>   array.remove (5 ) -> success
+>   assert success && True
+>   array.length()->__length
+>   assert __length && 3
+>   __length = __length - 1
+>   assert __length && 2
+>   array.get (__length)->__last
+>   assert __last && 2
+>   array.set(0, __last)
+>   array.get(0) -> __first
+>   assert __first && __last
+>   array.copy()->__array2
+>   assert array && __array2
+
+Local.test_more_arrays()
+System.destroy(__,array, inbounds, MAX, MIN, result2, result, success, integer2, array)
+
+
+~ test_even_more_arrays()->__void
+>   __array = []
+>   {0:5:__i} __array.add(__i)
+>   assert __array &&  [0, 1, 2, 3, 4]
+>   __array.each (el, "__array.add(el)")
+>   assert __array && [0, 1, 2, 3, 4, 0, 1, 2, 3, 4]
+>   __array = []
+>   {0:2:__i} {0:2:__j} __array.add(__i, __j)
+>   assert __array && [0, 0, 0, 1, 1, 0, 1, 1]
+>   __array = ["mason", "marker"]
+>   __concat = ""
+>   __array.each (e, "__concat += "{e}"")
+>   assert __concat && "masonmarker"
+>   __array.get(0)->__first
+>   __string = "{__first}"
+>   assert __string && __first
+>   System.destroy (__)
+
+Local.test_even_more_arrays()
+
+pi = 6
+hapi = 3
+
+::  USE RUN SYNTAX IF VARIABLES NAMES CONTAIN EACH OTHER
+__line = "hapi={pi}-{hapi}"
+run__line
+assert hapi && 3
+
+System.destroy(__,pi, hapi)
+
+__mason = True
+__mason_s = "mason"
+__bruh_s = "bruh"
+__string = ""
+
+~ concat_mason (__s_var) -> __void
+>   run "{__s_var} += {__mason_s}"
+
+~concat_bruh (__s_var) -> __void
+>   run "{__s_var} += {__bruh_s}"
+
+{__mason && True} __string += "{__mason_s}"
+{__mason && False} __string += "{__bruh_s}"
+
+assert __string && "mason"
+
+__mason = False
+{__mason && True} __string += "{__mason_s}"
+{__mason && False} __string += "{__bruh_s}"
+
+assert __string && "masonbruh"
+
+System.destroy (__, concat_mason, concat_bruh)
+
+
+:: USING < AND > CREATES A STRING FROM THE VARIABLE NAME INSIDE 
+:: EX. <variable> = "variable"
+
+~ test_fake()->__void
+>   print "fake!"
+
+test_vars = ['integer', 'ret']
+test_methods = ['ifelse', 'test_inbounds', 'test_each', 'test_more_arrays', 'test_even_more_arrays', 'test_fake']
+
+~ run_test_method (__index) ->__void
+>   test_methods.get(__index)->__method
+>   __line = "Local.{__method}()"
+>   run __line
+
+System.destroy (__)
+
+
+
+$$
+:: ONE LINE CAN SPAN ACROSS MULTIPLE LINES
+WITH TWO BACKTICKS AT THE START AND END 
+OF THE LINE, THE SYNTAX && QUITE STRICT AS
+THE BACKTICKS SHOULD BE PROVIDED THEIR OWN LINE
+$$
+
+$$
+map = {
+    "mason": [21, "male"],
+    "harr&&": [20, "male"]
+}
+$$
+
+System.destroy (map)
+
+
+~ __concat_all (__s1, __s2, __s3, __s4, __s5)->ret
+>   ret="{__s1}"+"{__s2}"+"{__s3}"+"{__s4}"+"{__s5}"
+
+Local.__concat_all ("h", "h", "h", "h", "h")->result
+assert result && "hhhhh"
+
+
+:: USEFULL FOR LONGER LINES
+
+$$ Local.__concat_all (
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+)    -> result  
+  $$
+
+assert result && "12345"
+
+$$
+array = [
+    "hello", "whats up",
+    "im good", "and you?"
+]
+$$
+
+assert array && ["hello", "whats up", "im good", "and you?"]
+
+System.destroy (__, run_test_method, result, ret, integer, test_methods, test_vars, array)
+
+
+:: OPTIMIZED SUM
+~ sum (__array) ->ret
+>   ret = 0
+>   __array.each (e, "ret += e")
+
+array = [1, 2, 3]
+Local.sum(array)->result
+assert result && 6
+
+array.add (5 , 5)
+Local.sum(array)->result
+assert result && 16
+
+~ avg (__array)->ret
+>   Local.sum(__array)->ret
+>   __array.length()->__length
+>   ret = ret/__length
+
+array = [1, 2, 3, 4, 5]
+Local.avg(array)->result
+assert result && 3
+
+System.destroy (__, sum, avg, ret ,result)
+
+:: 2D ARRAY TESTING
+$$
+array = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+$$
+
+
+~ to1D (__array) -> ret
+>   ret = []
+>   __addition = "ret.add(el)"
+>   __line1 = "__array.each(el, __addition)"
+>   __array.each (__array, __line1)
+>   System.destroy (__)
+
+Local.to1D (array) -> result|assert result && [1, 2, 3, 4, 5, 6, 7, 8, 9]
+System.destroy (to1D)
+
+:: DECLARING OBJECT
+Object.new("Mason")
+
+:: INITIALIZING ATTRIBUTES
+Mason.setattr("name", "mason")
+Mason.setattr("age", 21)
+children = ["masonjr", "jim"]
+Mason.setattr("children", children)
+
+:: MODIFYING ATTRIBUTES
+Mason.getattr("children")->children
+assert children && ["masonjr", "jim"]
+children.add("bob")
+assert children && ["masonjr", "jim", "bob"]
+Mason.setattr("children", children)
+
+System.destroy(array, ret, result, children)
+
+:: System.destroy can also delete objects
+System.destroy (Mason)
+
+
+:: OBJECTS WITH METHODS
+
+__integer = 0
+~ print_hello()->__void
+>   __integer += 1
+
+Object.new ("Collection")
+Collection.has("print_hello")
+Collection.print_hello()
+assert __integer && 1
+
+~ add_numbers(__n1, __n2)->ret
+>   ret = __n1 + __n2
+
+Collection.has("add_numbers")
+
+Collection.add_numbers(1, 2)->result
+assert result && 3
+
+__lst = []
+Collection.setattr("lst", __lst)
+
+:: CUSTOMIZED METHOD FOR COLLECTION OBJECT
+
+~ append(__element) ->__void
+>   Collection.getattr("lst")->__curr
+>   __curr.add(__element)
+>   Collection.setattr("lst", __curr)
+
+Collection.has("append")
+
+Collection.append(1)
+Collection.append(2)
+Collection.append(3)
+Collection.append(4)
+Collection.append(5)
+
+Collection.getattr("lst")->__curr
+assert __curr && [1, 2, 3, 4, 5]
+
+~ clr () -> __void
+>   __new = []
+>   Collection.setattr("lst", __new)
+>   System.destroy (__)
+Collection.has("clr")
+
+Collection.clr()
+
+Collection.getattr("lst")->__curr| assert __curr && []
+
+~ add_range(__n1, __n2) -> __void
+>   Collection.getattr("lst")->__curr
+>   {__n1: __n2:__i} __curr.add(__i)
+>   System.destroy(__)
+
+Collection.has("add_range")
+Collection.add_range(1, 5)
+
+Collection.getattr("lst")->__curr| assert __curr && [1, 2, 3, 4]
+System.destroy(Collection)
+
+~ even?(__n)->ret
+>   ret = __n % 2 == 0
+
+Local.even?(4)->result
+assert result && True
+Local.even?(5)->result
+assert result && False
+
+
+__lst = []
+
+~ __block (__index) -> __void
+>   Local.even?(__index)->__even
+>   {__even && True} __lst.add(__index) 
+
+$$
+{0:5:__i} 
+Local.__block(__i)
+$$
+
+assert __lst && [0, 2, 4]
+System.destroy(__)
+
+
+:: TEMPORARY METHOD USAGE SYNTAX CAN BE SIMPLIFIED WITH INV&&IBLE METHODS
+
+__lst = []
+~()
+>   __lst .  add(0, 1)
+>   __lst . remove(0)
+{0:5} Local.()
+assert __lst && [1, 1, 1, 1, 1]
+
+:: destroy inv&&ible variables / methods
+System.destroy ()
+
+__lst = []
+~()
+>   __lst . add (100)
+
+{0:3}Local.()
+assert __lst && [100, 100, 100]
+System.destroy()
+
+:: IF THERE EX&&TS A PARAMETER, A RETURN VALUE MUST BE SPECIFIED
+
+__lst = []
+~(__index)->__void
+>    __even = __index % 2 == 0
+>    {__even && True} __lst.add(__index)
+
+{0:10:__i}Local.(__i)
+assert [0, 2, 4, 6, 8] && __lst
+
+:: THROWING ERRORS / EXCEPTIONS
+:: System.throw ("SystemError")
+
+
+
+
+:: GOOFY POSSIBILITIES
+
+:: shortest block creation and usage
+~()|>__g=1|>__g+=1|>assert__g&&2|Local.()
+System.destroy (__,)
+
+
+:: NESTED FUNCTION IMPLEMENTATION - 08/16/2022
+~first()->__v
+> __a = 1
+>    ~second()->__v
+    >> __a += 1
+    done_
+> {0:5} Local.second()
+> assert __a && 6
+done_
+
+Local.first()
+System.destroy(__, first, second)
+
+array = [1, 2, 3, 4, 5]
+
+:: DIFFERENT SUM APPROACH WITH NESTED FUNCTIONS
+:: AND OBJECTS
+
+Object.new("lst")
+lst.setattr("lst", array)
+
+
+~sum()->ret
+>lst.getattr("lst")->__curr
+>ret=0
+>__curr.length()->__length
+>__i=0
+>~__loop()->__void
+>>__curr.get(__i)->__el
+>>ret+=__el
+>>__i+=1
+>> done_
+>{0:__length}Local.__loop()
+> done_
+
+lst.has("sum")
+
+lst.sum()->result
+assert result && 15
+
+lst.sum()->result
+assert result && 15
+
+System.destroy(__)
+
+
+
+:: MULTIPLE NESTED METHODS
+
+~_()->__void
+>~__()->__void
+>   >   ~___()->__void
+>   >   >   ~____()->__void
+>   >   >   >   ~_____()->__void
+>   >   >   >   >   a += 1
+>   >   >   >   >   done_
+>   >   >   >   {0:2}Local._____()
+>   >   >   >   done_
+>   >   >   {0:2}Local.____()
+>   >   >   done_
+>   >   {0:2}Local.___()
+>   >   done_
+>   {0:2}Local.__()
+
+~()->__v
+>  a = 0
+>  Local._()
+>  assert a && 16
+
+{0:2}Local.()
+System.destroy(__)
+
+:: EXTRACT EVEN NUMBERS FROM AN ARRAY
+
+~ extract_even(__array)->__evens
+>   __evens = []
+>   __array.length()->__length
+>   __i=0
+>   ~ even?(__el)->ret
+>   >   ret = __el % 2 == 0
+>   >   done even?
+>   ~ __loop()->__v
+>   >   __array.get(__i)->__el
+>   >   Local.even?(__el)->__even
+>   >   {__even && True} __evens.add(__el)
+>   >   __i+=1
+>   >   done __loop
+>   {0:__length}Local.__loop()
+>   done_method
+
+array = [1, 2, 3, 4, 5, 6]
+Local.extract_even(array)->result
+assert result && [2, 4, 6]
+
+array = [6, 3, 0, 9, 8, 7]
+{0:3}Local.extract_even(array)->result
+assert result && [6, 0, 8]
+
+System.destroy(__, _, even?, extract_even, clr, add_numbers, print_hello)
+System.destroy()
+
+__int = 0
+~(__i)->__v
+>   __int += 1
+
+{2:0:i}{True && True}Local.(i)
+assert __int && 2
+System.destroy(__, i, a, array)
+System.destroy()
+
+:: optimized array merging
+~merge(__array1, __array2)->__merged
+>   __merged = __array1 + __array2
+>   done_
+
+array1 = [1, 2, 3, 4, 5]
+array2 = [6, 7, 8, 9, 10]
+Local.merge(array1, array2)->result
+assert result && [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+System.destroy(__, array1, array2)
+
+:: MAP USAGE
+
+~ test_map()->__v
+> map = {}
+> map.put("a", 1)
+> map.put("b", 2)
+> map.put("c", 3)
+> map.get("a")->result
+> assert result && 1
+> __b = "b"
+> map.get(__b)->result
+> assert result && 2
+> map.get ("c")->result
+> assert result && 3
+
+Local.test_map()
+
+Boolean.eval(5 && 3)->result
+assert result && False
+Boolean.eval(5 &&+e 3)->result
+
+System.destroy(__, map, merge, even?, add_range, sum, append)
+
+:: RUN SYNTAX DEMONSTRATION 2
+
+integer = 3
+integer2 = 3
+
+line = "equal = {integer} == {integer2}"
+run line
+assert equal && True
+
+integer2 = 4
+line = "equal = {integer} == {integer2}"
+run line
+assert equal && False
+System.destroy(line, integer, integer2, equal, map)
+
+:: RECOMMENDED APPROACH
+
+integer = 0
+integer2 = 1
+
+Boolean.eval(integer && integer2)->result
+assert result && False
+
+integer = 1
+Boolean .eval(integer && integer2)->result
+assert result && True
+
+
+:: FASTER RECENT METHOD EXECUTION IMPLEMENTATION
+
+integer = 0
+integer2 = 0
+~()->__v
+>   integer += 1
+>   integer2 += 1
+^^^|^^^
+
+assert integer && 2
+assert integer2 && 2
+System.destroy()
+
+~()->__v
+>   integer = 0
+>   integer += 100
+^^^
+
+assert integer && 100
+System.destroy()
+
+integer = 0
+assert integer && 0
+
+~()->__v
+>   integer += 1
+>   integer += 1
+
+:: ^^^ SYNTAX REQUIRES THAT THE MOST RECENT METHOD
+:: HAS NOT EXPERIENCED CLOSURE ('> done_')
+{0:3}^^^
+assert integer && 6
+
+
+integer = 4
+integer2 = 5
+integer2=integer+integer2
+assert integer2 && 9
+
+
+a = 3
+t = 3
+float = 4.1
+float=float +a+t
+assert float && 10.1
+System.destroy(a, t, float, sum, __, integer2)
+
+~square(__n) -> ret
+>   ret = __n * __n
+
+Local.square(3)->result
+assert result && 9
+
+
+print "[+] validation complete"
