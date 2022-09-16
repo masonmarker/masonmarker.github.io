@@ -6,8 +6,9 @@ import preloads from './preload';
 
 var pyodide;
 
-window.onload = prepare()
 window.addEventListener('load', prepare, false);
+
+window.onload = prepare() 
 
 async function prepare() {
     var out = document.getElementById('out')
@@ -37,6 +38,10 @@ const Msnscript = () => {
                 <Link className="download-button" to='/' Style="color: white">Home</Link>
             </div>
             <div className="msnscript1-yourself">
+            <h4 Style="color: gray">Before running code, be sure to start MSNScript's backend handler</h4>
+                <div id="execute"className="download-button" Style="color: white; background-color: var(--darkpurple); width: 14rem; height: 3rem; margin: 0; margin-bottom: 3rem" onClick={prepare}>
+                    Start MSNScript Handler
+                </div> 
                 <div className="msnscript1-textarea">
                 <h4 Style="color: gray">Your MSNScript</h4>
                     <div className="msnscript1-coding">
@@ -46,38 +51,38 @@ const Msnscript = () => {
                                 Execute
                             </div>
                             <h4 Style="color: gray; margin-top: 2rem">Pre-written code: </h4>
-                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 9rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Integers")}>
+                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 6rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Integers")}>
                                 Integers
                             </div>
-                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 9rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Strings")}>
+                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 6rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Strings")}>
                                 Strings
                             </div>
-                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 9rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Conditions")}>
+                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 6rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Conditions")}>
                                 Conditions
                             </div>
-                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 9rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Loops")}>
+                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 6rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Loops")}>
                                 Loops
                             </div>
-                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 9rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Methods")}>
+                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 6rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Methods")}>
                                 Functions
                             </div>
-                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 9rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Arrays")}>
+                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 6rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Arrays")}>
                                 Arrays
                             </div>
-                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 9rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Nests")}>
+                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 6rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Nests")}>
                                 Nests
                             </div>
-                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 9rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Objects")}>
+                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 6rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("Objects")}>
                                 Objects
                             </div>
-                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 9rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("FizzBuzz")}>
+                            <div id="execute"className="download-button" Style="color: white; background-color: var(--lightpurple); width: 6rem; height: 2rem; margin: 0; margin-bottom: .5rem" onClick={() => load("FizzBuzz")}>
                                 FizzBuzz
                             </div>
                         </div>
                     </div>
                 </div>
                 <h4 Style="color: gray">Out</h4>
-                <textarea id="out" className="msnscript1-out" readOnly></textarea> 
+                <textarea id="out" className="msnscript1-out" readOnly></textarea>
             </div>
         </div>
     )

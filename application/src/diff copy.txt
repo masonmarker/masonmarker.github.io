@@ -1,0 +1,41 @@
+differences from MSNC 1.0 (JAVA):
+
+pros:
+    no semicolons
+    no need for spaces anymore, code read char by char
+    multiple loops / conditions on the same LINE
+    multiple lines of code on the same LINE with |
+    strings have their own syntax inside ""
+    no need to declare types
+    method syntax is cleaner with ~ and >
+    loops CAN incorporate a variable with {START:END:VAR} syntax
+    allows for classes with methods, ex. Local , System
+    improved variable and method destruction capabilities
+    faster instruction interpretation (closer to a linear approach)
+    better flexibility with boolean expressions
+    one instruction can span across multiple lines with ``
+    array's 'each' method allows for faster looping through arrays
+    faster recent method execution with ^^^
+    
+
+cons:
+    no object recreation (NOT YET IMPLEMENTED)
+
+
+
+boolean operators:
+    &&    :       ==
+    &&-   :       <
+    &&+   :       >
+    &&-e  :       <=
+    &&+e  :       >=
+    !&&   :       !=
+
+Main classes:
+
+    System
+    Local
+    Boolean
+    Object
+    (Custom Object name)
+
