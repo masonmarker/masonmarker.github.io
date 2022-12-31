@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom'
 import CodeMirror, { useCodeMirror } from '@uiw/react-codemirror';
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import SourceCode from './msnscriptraw';
-import preloads from './preload';
+import preloads from './../preload';
 
 var pyodide;
 
@@ -11,6 +11,7 @@ window.addEventListener('load', prepare, false);
 window.onload = prepare() 
 
 async function prepare() {
+
     var out = document.getElementById('out')
     out.value = "Preparing Python handler\n\nDo not execute..."
     pyodide = await window.loadPyodide({

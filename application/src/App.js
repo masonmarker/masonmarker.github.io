@@ -225,7 +225,7 @@ const GitHub = () => {
           <ul>
           <li>Wide variety of self-created data structures, unoriginal and original</li>
           <li>10,000 - 15,000 lines of methods dedicated to supporting current or future projects</li>
-          <li>Original full-stack, String-based programming language utilizing Java as back end.</li>
+          <li>Several original, fully capable programming languages designed for ease of programming.</li>
           <li>Various levels of artificial intelligence management and application utilities involving multi-layer perceptron network construction and implementation to real world scenarios.</li>
           <li>And much more!</li>
         </ul>

@@ -2,7 +2,7 @@
 import './App.css';
 import {Link} from 'react-router-dom';
 import React from 'react';
-
+import Msn2 from './msn2/msn2.js';
 
   
 
@@ -140,6 +140,7 @@ const GitHub = () => {
                     </div>
 
                 </div>
+                <Msn2/>
             
 
         </div>
@@ -150,7 +151,7 @@ function gitClicked() {
     window.location.href = "https://github.com/masonmarker/TheMsnProject";
 }
 
-const FadeInSection = ({children}) => { 
+export const FadeInSection = ({children}) => { 
 
     const domRef = React.useRef();
   

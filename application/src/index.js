@@ -15,7 +15,15 @@ import {
 
 import Resume from './resume';
 import GitHub from './github';
-import Msnscript from './Msnscript';
+import Msnscript from './msnscript/Msnscript';
+
+import Msn2docs from './msn2/msn2docs';
+import Basics from './msn2/docs/basics';
+import Systemcalls from './msn2/docs/systemcalls';
+import Threads from './msn2/docs/threads';
+import Apis from './msn2/docs/apis';
+import Redirection from './msn2/docs/redirection';
+import Macros from './msn2/docs/macros';
 
 const Wrapper = ({children}) => {
     const location = useLocation();
@@ -34,6 +42,8 @@ root.render(
               <Route path="/resume" element={<Resume/>} />
               <Route path="/github" element={<GitHub/>} />
               <Route path="/msnscript1" element={<Msnscript/>} />
+              <Route path="/msn2docs" element={<Msn2docs/>} />
+              <Route path="/msn2basics" element={<Basics/>} />
           </Routes>
         </Wrapper>
     </BrowserRouter>
