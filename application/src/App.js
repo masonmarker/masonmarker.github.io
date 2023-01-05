@@ -8,10 +8,10 @@ function App() {
   document.body.style = 'background: white;';
   return (
     <div className="App">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@500;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@200;500;700;800&display=swap');
-</style>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@500;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@200;500;700;800&display=swap');
+      </style>
 
 
 
@@ -95,7 +95,7 @@ const Education = () => {
         <img alt="JMU" onClick={jmuClicked}className="education-img" src="https://gray-wvir-prod.cdn.arcpublishing.com/resizer/LP2hwjsI6I17ybSZV5UAqVKd2ic=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/AL5AMJZCXBBPNOZQ7DRYAGGAYI.png"></img>
       </div>
       <div className="education-desc">
-        <h2 className="no-margin">James Madison University</h2>
+        <h2 className="no-margin" Style="color: var(--darkpurple)">James Madison University</h2>
         <h3 className="no-margin">Student - Senior</h3>
         <h5 className="no-margin" Style="color: var(--gray)">Computer Science Major</h5> 
         <h5 className="no-margin" Style="color: var(--gray)">2019 - Present</h5> 
@@ -135,7 +135,7 @@ const Ventures = () => {
         <div className="job-div">
           <img onClick={genworthClicked}  alt="genworth" className="ventures-img" src="https://content.fortune.com/wp-content/uploads/2020/05/F500-2020-364-Genworth-Financial.jpg"></img>
           <div className="desc-div">
-            <h2 Style="margin-bottom: 0">Genworth</h2>
+            <h2 Style="margin-bottom: 0; color: var(--darkpurple)">Genworth</h2>
             <h3 className="job-title">IT Development Program Intern</h3>
             <h4 className="job-duration">May 2022 - Present</h4>
             <h5 className="job-desc">I worked as a Robotics Process Automation (RPA) engineer. I would be given briefings of business processes that needed to 
@@ -153,7 +153,7 @@ const Ventures = () => {
         <div className="job-div">
           <img onClick={wmcClicked} alt="winchester medical center" className="ventures-img" src="https://www.dreamweaverteam.com/wordpress/wp-content/uploads/2017/08/Winchester-Medical-Center.jpg"></img>
           <div className="desc-div">
-            <h2 Style="margin-bottom: 0">Winchester Medical Center</h2>
+            <h2 Style="margin-bottom: 0; color: var(--darkpurple)">Winchester Medical Center</h2>
             <h3 className="job-title">Volunteer</h3>
             <h4 className="job-duration">May 2018 - August 2018</h4>
             <h5 className="job-desc">I volunteered at the Winchester Medical Center to both gain experience in the
@@ -169,7 +169,7 @@ const Ventures = () => {
         <div className="job-div">
           <img alt="walgreens" className="ventures-img" src="https://gray-kait-prod.cdn.arcpublishing.com/resizer/2MX1aIfwKyIEzosEF_uS8gkNuJM=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/65FAKKQDN5HR5GVLZI4KUHWIVM.jpg"></img>
           <div className="desc-div">
-            <h2 Style="margin-bottom: 0">Walgreens Pharmacy</h2>
+            <h2 Style="margin-bottom: 0; color: var(--darkpurple)">Walgreens Pharmacy</h2>
             <h3 className="job-title">Pharmacy Cashier / Customer Service Associate</h3>
             <h4 className="job-duration">May 2020 - Present</h4>
             <h5 className="job-desc">My duties involved operation of a cash register and receive payment from customers in cash or credit card, accurately count and provide change to customers as required,then use the RX system to locate customer medical profiles and distribute prescribed medications accordingly while following HIPAA guidelines and maintaining constant social interaction. </h5>
@@ -181,7 +181,7 @@ const Ventures = () => {
         <div className="job-div">
           <img onClick={cfaClicked} alt="chick-fil-a" className="ventures-img" src="https://live.staticflickr.com/5328/8928862580_4cd0791484.jpg"></img>
           <div className="desc-div">
-            <h2 Style="margin-bottom: 0">Chick-Fil-A</h2>
+            <h2 Style="margin-bottom: 0; color: var(--darkpurple)">Chick-Fil-A</h2>
             <h3 className="job-title">Cashier</h3> 
             <h4 className="job-duration">July 2017 - August 2018</h4>
           <h5 className="job-desc">Operated a cash register and receive payment from customers in cash or credit card, accurately count and provide change to customers as required, and follow all cash handling policies and procedures while working quickly and maintaining constant social interaction.</h5>
@@ -209,7 +209,7 @@ const GitHub = () => {
         <img alt="github" className="ventures-img" src="https://avatars.githubusercontent.com/u/9919?s=280&v=4" Style="height: 10rem; width: 10rem" onClick={gitClicked}></img>
       </div>
       <div className="desc-div">
-        <h2 Style="margin-bottom: 0">The Msn Project</h2>
+        <h2 Style="margin-bottom: 0; color: var(--darkpurple)">The Msn Project</h2>
         <h3 className="job-title">Github Repository</h3>
         <h5 className="job-desc">You can find nearly every side project I've ever developed on my Github. While these projects are limited to Java, 
         each folder that can be found in my repository proves useful to nearly any project one might consider developing. With tens of thousands 

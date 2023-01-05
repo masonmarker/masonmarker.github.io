@@ -44,6 +44,7 @@ root.render(
               <Route path="/msnscript1" element={<Msnscript/>} />
               <Route path="/msn2docs" element={<Msn2docs/>} />
               <Route path="/msn2basics" element={<Basics/>} />
+              <Route path="/msn2systemcalls" element={<Systemcalls/>} />
           </Routes>
         </Wrapper>
     </BrowserRouter>

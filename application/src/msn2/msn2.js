@@ -105,6 +105,9 @@ function Info() {
                     <li>Current documentation explains how the language works under the hood, as well as provide information regarding
                         system calls, classes, types, threads, processes, API's, AI, and more
                     </li>
+                    <li>
+                        <i>MSN2</i> documentation includes tutorials with interactive programming environments to help you get started with the language
+                    </li>
                 </ul>
                 <Link to="/msn2docs" className='msn2-big-title' style={{color: 'white', margin:0, marginTop: '4.5vh', marginBottom: '10vh', fontSize: '2rem', textDecoration: 'none'}}>Go to the docs</Link>
             </Card>

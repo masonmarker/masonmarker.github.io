@@ -3,11 +3,11 @@
 import './../msn2.css'
 
 // import msn2docs
-import Msn2docs, { Title, Section } from './../msn2docs';
+import { Title, Section } from './../msn2docs';
 
 
 import msn2raw from './../raw/msn2raw'
-import {Link} from 'react-router-dom';
+import {Link, matchRoutes} from 'react-router-dom';
 //import react typing   
 import ReactTypingEffect from 'react-typing-effect';
 import React from 'react';
@@ -46,6 +46,11 @@ function Basics() {
                 " Example: ", <br/>,
                 <ExecutionDisplay executionid='ex:aggregate' code={["print('Saying ', end='')\n\n!{print(\n'hello ', end=''\n)}\n\nprint(\n\t'to the','world!')"]} codeheight='11rem'/>
             ]}/>
+
+            <Section title="Imports" subtitle={[
+                "Imports are a way to import code from other files, and are used to import code from other files.", <br/>,
+                "Imports are declared with the import() system call, see the ", <a href='/msn2systemcalls/'>system call documentation</a>, " for more information.", <br/>, <br/>
+            ]} />
 
             <Section title="Assertions" subtitle={[
                 "Assertions are a key component in verifying the correctness of your code.", <br/>,
@@ -89,12 +94,28 @@ function Basics() {
                 <ExecutionDisplay executionid='ex:variable' code={['var("integer", 5)\nenv(True)']} codeheight='6.3rem'/>,
             ]}/>
 
+            <Section title="Variable Comparison" subtitle={[
+                "Variables can be compared with the inline number replacement syntax '??': ", <br/>,
+
+                <ExecutionDisplay executionid='ex:variablecomparison' code={['var("integer", 5)\n\nassert(?integer? == 5)\nassert(?integer? != 4)\nassert(?integer? > 4)\nassert(?integer? < 6)\nassert(?integer? >= 5)\nassert(?integer? <= 5)\n\nprint("[+] tests passed")']} codeheight='14rem'/>,
+                "The same syntax can be used with boolean expressions: ", <br/>,
+
+                <ExecutionDisplay executionid='ex:variablecomparison2' code={['var("integer", 5)\n\nassert(?integer? == 5 and ?integer? != 4 and ?integer? > 4 and ?integer? < 6 and ?integer? >= 5 and ?integer? <= 5)\n\nprint("[+] tests passed")']} codeheight='13rem'/>,
+                , <br/>,
+                "Variables can also be compared methodically, see the ", <a href='/msn2systemcalls/'>system call documentation</a>, " for more method definitions.", <br/>,
+                <ExecutionDisplay executionid='ex:variablecomparison3' code={['var("integer", 10)\nassert(integer.greater(9), integer.less(51))\nprint("[+] test passed")']} codeheight='10rem'/>
+            ]}/>
+
             <Section title="Variable manipulation" subtitle={[
                 "Variables can be manipulated in various ways.", <br/>,
                 "Variables can be accessed with the val(name) system call, taking a single string argument being the name of the variable.", <br/>,
                 "Variables can also be accessed with the common variable method .val()", <br/>, <br/>,
                 "Example: ", <br/>,
                 <ExecutionDisplay executionid='ex:variablemanipulation' code={['var("integer", 5)\n\nprint(val("integer"))\nprint(integer.val())']} codeheight='8.5rem'/>,
+                "Variables can be altered many different ways, the below code showcases some of these ways.", <br/>,
+                <ExecutionDisplay executionid='ex:variablemanipulation2' code={['var("integer", 0)\ninteger.add(1)\nassert(equals(integer.val(), 1))' + 
+                "\n\nassert(equals(add('integer', 2), 3))\n\n#using the op class\nassert(equals(var('integer', op.add(integer.val(), 3)), 6))\n" + 
+                "\n# using the number replacement syntax '??'\nassert(equals(var('integer', ?integer? + 3), 9))"]} codeheight='20rem'/>
             ]}  />
 
             <Section title="Variable types" subtitle={[
@@ -132,10 +153,326 @@ function Basics() {
                     "\nprint('[+] tests passed')"
                 ]} codeheight='30rem'/>
             ]} />
+
+            <Section title="Built in macro: '@'" subtitle={[
+                "The @ symbol is a built in macro that can be used to create or adjust a variable.", <br/>,
+                "More about the '@' macro can be found in the ", <a href='/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
+
+                "the '@' utilizes the succeeding instruction to effectively fall back to Python's variable declaration and alteration syntax, ", <br/>,
+                ExecutionDisplay({executionid: 'ex:atmacro', code: ['@integer = assert(1)\nprint(assert(integer.val()))'], codeheight: '6.5rem'}),
+                "The '@' macro can also be used to alter a variable.", <br/>,
+                ExecutionDisplay({executionid: 'ex:atmacrofunction', code: ['@integer=4\n@integer += 3 + 2\nprint(integer.val())'], codeheight: '6.5rem'}),
+            ]}/>
+
+            <Section title="Built in enclosing syntax: '<<>>'" subtitle={[
+                "<<>> enclosing syntax, or the Python fallback syntax, allows for msn2 code insertion to a Python statement for evaluation.", <br/>,
+                "More about the '<<>>' syntax can be found in the ", <a href='/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
+                
+                "In short, any ", <i>MSN2</i>, " code surrounded by a pair of '|' will be evaluated and the result will be inserted into the Python statement.", <br/>,
+
+                "Simple usage: ", <br/>,
+                ExecutionDisplay({executionid: 'ex:enclosing', code: ['assert(<< 0 + 1 >>)\nassert(equals(<< (|assert(1)| + 2) * "m" >>, "mmm"))\nprint("[+] tests passed")'], codeheight: '5rem'}), <br/>,
+                "Demonstrating using both '@' and '<<>>' syntax: ", <br/>,
+                ExecutionDisplay({executionid: 'ex:enclosing2', code: ['@list = << [int(i) for i in "|cat(1, " ", 2, " ", 3)|".split()] >>\nassert(equals(list.val(), [1, 2, 3]))\nprint("[+] test passed")'], codeheight: '8rem'}), <br/>,
+            ]}/>
+
+            <Section title="Built in macro pair: '~' and '--'" subtitle={[
+                "The '~' and '--' macros are a pair of macros that can be used to create a function.", <br/>,
+                "More about the '~' and '--' macros can be found in the ", <a href='/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
+
+                "In short, the '~' macro is used to declare a function, and the '--' macro is used to add body to the most recently declared function.", <br/>, <br/>,
+                "Example: ", <br/>,
+                <ExecutionDisplay executionid='ex:macros' code={[
+                    "# function that generates a list" + '\n' +
+                    "~ generate_list(length) -> return" + '\n' +
+                    "\t-- @return = << [i for i in range(|length.val()|)] >>\n\n" +
+                    "# we use private() to isolate the function from its parent context" + '\n' +
+                    "assert(equals(private(generate_list(5)), [0, 1, 2, 3, 4]))\n" +
+                    "assert(equals(private(generate_list(10)), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]))\n" +
+                    "print('[+] tests passed')" + '\n' + '\n' + 
+                    "# viewing environment, note the lack of function variables" + '\n' +
+                    "print(env())"
+    
+                    
+                ]} codeheight='20rem'/>,
+                "There is an alternative syntax for declaring a function, which is the system call function().", <br/>,
+                "The function() system call creates a function with a different syntax than the '~' and '--' macros.", <br/>,
+                "More about the function() and ret() system calls can be found in the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                "Example: ", <br/>,
+                <ExecutionDisplay executionid='ex:macros2' code={[
+                    "# function that generates a list" + '\n' +
+                    "function('generate_list', ret('generate_list', << [i for i in range(|length.val()|)] >>), 'length')\n" + 
+                    "assert(equals(private(generate_list(5)), [0, 1, 2, 3, 4]))\n" +
+                    "assert(equals(private(generate_list(10)), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]))\n" +
+                    "print('[+] tests passed')"
+                ]} codeheight='10rem'/>
+            ]}/>
+
+            <Section title="Built in enclosing syntax: <2><2>" subtitle={[
+                "<2><2> enclosing syntax is an " ,<i>MSN2</i>, " insertion to an ",<i>MSN2</i>," instruction for evaluation.", <br/>,
+                "More about the <2><2> syntax can be found in the ", <a href='/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
+                
+                "Similarly to <<>> enclosing syntax, any ",<i>MSN2</i>," code surrounded by a pair of '%' will be evaluated and the result will be inserted into the ", <i>MSN2</i> ," instruction surrounded by the <2><2> tags.", <br/>,
+                , <br/>,
+                "Example: ", <br/>,
+                ExecutionDisplay({executionid: 'ex:enclosing3', code: [
+                    "print(<2> %1% and %assert(not False)% <2>)"
+                ], codeheight: '5rem'}), <br/>,
+                "Use cases may seem unclear, however the importance is more noticeable as code complexity increases.", <br/>,
+            ]} />
+
+            <Section title="Built in macro: '*'" subtitle={[
+                "The '*' macro is used to unpack a variable or amount of variables for evaluation.", <br/>,
+                "More about the '*' macro can be found in the ", <a href='/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
+                "This macro can be unsafe, as it simply replaces any instance of a variable name with the value of the variable regardless as to whether it may be in a string or not.", <br/>,
+                "However the macro is fine when there is nostring within the argument cannot have a variable name within.", <br/>, <br/>,
+                "Example: ", <br/>,
+                ExecutionDisplay({executionid: 'ex:macros3', code: [
+                    "@integer = 5\n" +
+                    "print(*integer)"
+                ], codeheight: '5rem'}), <br/>,
+            ]} />
+
+            <Section title="Conditionals" subtitle={[
+                "Conditionals are a way to control the flow of a program.", <br/>,
+                "Conditionals in ", <i>MSN2</i>, " are relatively simple.", <br/>, <br/>,
+                "The if(cond, do, else) system call is used to alter the flow of a program.", <br/>,
+                "The if() system call takes three arguments: a condition, a block of code to execute if the condition is true, and a block of code to execute if the condition is false.", <br/>,
+                "The condition can be any expression that evaluates to a boolean value.", <br/>,
+                "The else argument is optional.", <br/>, <br/>,
+                "More about the if() system call can be found in the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                "Example: ", <br/>,
+                <ExecutionDisplay executionid='ex:if' code={[
+                    "@integer = 5\n" +
+                    "@ result = if (?integer? == 5, 'correct')\n" +
+                    "assert(equals(result.val(), 'correct'))\n" +
+                    "print('[+] test passed')"
+
+                ]} codeheight='10rem'/>,
+                <ExecutionDisplay executionid='ex:if2' code={[
+                    "@integer = 5\n" +
+                    "if (?integer? == 6, assert(False), print('correct!'))\n" +
+                    "print('[+] test passed')"
+                ]} codeheight='10rem'/>,
+                "Also, see the ?() system call for a more concise way to write conditionals.", <br/>,
+                "The ?() system call can be found in the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+            ]} />
+
+            <Section title="Error Handling" subtitle={[
+                <i>MSN2</i>, " utilizes a try-catch system for error handling.", <br/>,
+                "For more information about the try-catch system, see the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                "Example: ", <br/>,
+                <ExecutionDisplay executionid='ex:trycatch' code={[
+                    "try([0, 1, 2, 3][9], print('[*] error caught!'))\nprint('hello')"
+
+                ]} codeheight='5rem'/>,
+            ]} />
+
+            <Section title="Loops" subtitle={[
+                "Loops provide a way to repeat a block of code.", <br/>,
+                "Loops in ", <i>MSN2</i>, " are relatively simple.", <br/>, <br/>,
+                "The while(cond, do) system call is used to repeat a block of code.", <br/>,
+                "The for(start, end, var, do) system call is used to repeat a block of code a certain number of times.", <br/>,
+                "See more about the while() and for() system calls in the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                "Example: ", <br/>,
+                <ExecutionDisplay executionid='ex:while' code={[
+                    "@i = 0\n" +
+                    "# starting a while loop" + '\n' +
+                    "while (?i? < 5, @i = ?i? + 1)\n" +
+                    "assert(equals(i.val(), 5))\n" +
+                    "print('[+] test passed')"
+                ]} codeheight='10rem'/>,
+                <ExecutionDisplay executionid='ex:for' code={[
+                    "# starting a for loop" + '\n' +
+                    "for (0, 5, 'i', print(i.val(), 'hello!'))"
+                ]} codeheight='10rem'/>,
+            ]} />
+
+            <Section title="Classes" subtitle={[
+                "Classes are a way to create objects in ", <i>MSN2</i>, ".", <br/>,
+                "In short, classes are created by asking a new context for variables created within it's context.", <br/>,
+                "The class(name, environment) system call is used to create a class.", <br/>,
+                "The class() system call takes two arguments: a name for the class, and a block of code to execute in the context of the class.", <br/>,
+                "See more about the class() system call in the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                "Example: ", <br/>,
+                <ExecutionDisplay executionid='ex:class' code={[
+                    "# declaring a class, " + '\n' +
+                    "# we use =>() to include multiple instructions within the new context" + '\n' +
+                    "class('Person', =>(@name='',@age=-1))\n\n" +
+                    "# creating a new instance of the Person class" + '\n' +
+                    "@ john = Person('john', 40)\n" +
+                    "assert(equals(john.name(), 'john'))\n" +
+                    "assert(equals(john.age(), 40))\n" +
+                    "print('[+] test passed')"
+                ]}/>,
+                "Altering an instance of a class:", <br/>,
+                <ExecutionDisplay executionid='ex:class2' code={[
+                    "# declaring a class, " + '\n' +
+                    "# we use =>() to include multiple instructions within the new context" + '\n' +
+                    "class('Person', =>(@name='',@age=-1))\n\n" +
+                    "# creating a new instance of the Person class" + '\n' +
+                    "@ john = Person('john', 40)\n" +
+                    "# altering the instance of the class" + '\n' +
+                    "john.name('johnny')\n" +
+                    "john.age(41)\n" +
+                    "assert(equals(john.name(), 'johnny'))\n" +
+                    "assert(equals(john.age(), 41))\n" +
+                    "print('[+] test passed')"
+                ]} />,
+                "A class is simply a dictionary indexing a specific key." + '\n' +
+                "To illustrate this, we can print the class:", <br/>,
+                <ExecutionDisplay executionid='ex:class3' code={[
+                    "# declaring a class, " + '\n' +
+                    "class('Person', =>(@name='',@age=-1))\n\n" +
+                    "# creating a new instance of the Person class" + '\n' +
+                    "@ john = Person('john', 40)\n" +
+                    "print(john.val())"
+                ]} />,
+                "The same task can be achieved with the below syntax:", <br/>,
+                <ExecutionDisplay executionid='ex:class4' code={[
+                    "# creating an instance of a class" + '\n' +
+                    "@ john = {'name': 'john', 'age': 40}\n\n" +
+                    "print('name:', john.name())\n" +
+                    "print('age:', john.age())"
+                ]} />,
+            ]} />
+
+            <Section title="Macros" subtitle={[
+                "Macros serve as a mechanism to add or adjust syntax in ", <i>MSN2</i>, ".",  <br/>,
+                "There are several different types of macros, each with their own use cases.", <br/>,
+                "See more about macros in the macros documentation: ", <a href='/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
+                
+                "A regular, pre-instruction macro can be created with the macro(token, instruction_var_name, do) system call.", <br/>,
+                "When a macro is defined, its token will be searched for in each following instruction." + '\n' +
+                "If the token is found, the instruction will be replaced with evaluation of the do argument.", <br/>, <br/>,
+
+                "The -(instruction) system call takes a string as an instruction of ", <i>MSN2</i>, " and returns the result of the instruction.", <br/>,
+                "To see more about the -(instruction) system call, see the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+
+                "Example: ", <br/>,
+                <ExecutionDisplay executionid='ex:macroasdf' code={[
+                    "# defining a macro" + '\n' +
+                    "macro('!', 'line', print(-(line.val())))" + '\n\n' +
+                    "# invoking the macro" + '\n' +
+                    "! 'hello,'" + '\n' +
+                    "! 'world!'" + '\n'
+                    
+
+                 ]} />,
+                 "With this, we can simplify the amount of code needed to be written to execute an instruction.", <br/>,
+                 "Example: ", <br/>,
+                <ExecutionDisplay executionid='ex:macroasdf2' code={[
+                    "# simplifying an assertion" + '\n' +
+                    "macro('test', 'line', if(not(-(line.val())), print('[-] assertion error : ', line.val())))" + '\n\n' +
+                    "# invoking the macro with a correct assertion" + '\n' +
+                    "test 1 == 1" + '\n' +
+                    "# invoking the macro with an incorrect assertion" + '\n' +
+                    "test 1 == 2" + '\n' + '\n' +
+                    "# more tests" + '\n' +
+                    "test 5 in [1, 2, 3, 4, 5]" + '\n' +
+                    "test 6 in [1, 2, 3, 4, 5]"
+
+
+                ]} />,
+                
+            ]} />
+
+            <Section title="Redirection" subtitle={[
+                "Interpreter redirection allows for a line of code to be redirected to a custom interpreter for a specific amount of lines.", <br/>,
+                "A few system calls are used for Interpreter redirection, and you can see more about them in both the ", <a href='/msn2systemcalls/'>system calls documentation</a>, " and the ", <a href='/msn2redirect/'>redirection documentation</a>, ".", <br/>, <br/>,
+                "In short, the interpreter redirection system calls are:", <br/>,
+                <ul>
+                    <li>redirect(line_var_name, function)</li>
+                    <li>stopredirect()</li>
+                    <li>startredirect()</li>
+                </ul>,
+                "All code found between redirect() and stopredirect() will be redirected to the function specified in the function argument.", <br/>, <br/>,
+                "Example: ", <br/>,
+                <ExecutionDisplay executionid='ex:redirect' code={[
+                    "# example of a redirection" + '\n' +
+                    "redirect('line', =>(print('redirected: ', line.val())))" + '\n'  + '\n' +
+                    "Hello, World!" + '\n' +
+                    "This line is being redirected." + '\n' +
+                    "This is also being redirected." + '\n' + '\n' +
+                    "stopredirect()" + '\n' +
+                    "startredirect()"
+                ]} />,
+                "Simplifying with macros make redirection appear much more friendly.", <br/>,
+                "Macros cannot be used inside of a redirection, see more about this in the ", <a href='/msn2redirect/'>redirection documentation</a>, ".", <br/>, <br/>,
+                "Example: ", <br/>,
+                <ExecutionDisplay executionid='ex:redirect2' code={[
+                    "# setting up macros" + '\n' +
+                    "macro('print:', '__unused', redirect('rline', print(rline.val())))" + '\n' +
+                    "macro('end', '__unused', =>(stopredirect(), startredirect()))" + '\n\n' +
+                    "# invoking the macros" + '\n' +
+                    "print: " + '\n' +
+                    "\tHello, World!" + '\n' +
+                    "\tThis line is being redirected." + '\n' +
+                    "\tThis is also being redirected." + '\n' +
+                    "end"
+                ]} />
+                
+
             
-            <Section title="You've learned the basics! Onto the next topic?" subtitle={[
+            ]} />
+
+
+                
+            <Section title={['The purpose of MSN2']} subtitle={[
+                "The below code shows a more complex example of how the SHOWN ", <i>MSN2</i>, " features can be combined to create new syntax.", <br/>,
+                "The code demonstrates the Collatz Conjecture, showing that for an arbitrary positive integer, if the integer is even, divide it by 2, and if the integer is odd, multiply it by 3 and add 1, the sequence will always reach 1.", <br/>,
+                "See more about the random() system call in the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                <ExecutionDisplay executionid='ex:complex' code={[
+                    "# base language code" + '\n' +
+                    "@num = 100" + '\n' +
+                    "while (?num? != 1, if (?num? % 2 == 0, @num/=2,=>(@num*=3,@num+=1)))" + '\n' +
+                    "print('[-] num:', num)"
+                ]} />,
+                <ExecutionDisplay executionid='ex:complex2' code={[
+                    "# simplifying with functions" + '\n' + '\n' +
+                    "# even function" + '\n' +
+                    "~ iseven(number) -> result" + '\n' +
+                    "\t-- var('result', number % 2 == 0)" + '\n' + '\n' +
+
+                    "~ collatz (number) -> result" + '\n' +
+                    "\t-- while (?number? != 1, if (private(iseven(number.val())), @number/=2,=>(@number*=3,@number+=1)))" + '\n' +
+                    "\t-- var('result', number.val())" + '\n' + '\n' +
+                    "# testing the Collatz Conjecture" + '\n' +
+                    "print(private(collatz(random(1, 100,)))))"
+                ]} />,
+                "The below code shows the same Collatz Conjecture example, but provides the Collatz algorithm as a function to a macro.", <br/>,
+                "See information about system calls used in the below code in the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                <ExecutionDisplay executionid='ex:complex3' code={[
+                    "# simplifying with macros" + '\n' + '\n' +
+                    "# defining a macro" + '\n' +
+                    "macro('collatz', 'number', =>(\n\t@number=-(number.val()),\n\twhile (?number? != 1,\n\t\tif (?number? % 2 == 0, @number/=2,=>(\n\t\t\t@number*=3,@number+=1))),\n\tnumber.val()\n\t\n))" + '\n' + '\n' +
+                    "# adding another macro to simplify printing" + '\n' +
+                    "macro('p ', 'line', print(-(line.val())))" + '\n' + '\n' +
+                    "# testing the Collatz Conjecture" + '\n' +
+                    "p cat('testing Collatz Conjecture with ', 1000, ': ', collatz 1000)" + '\n' +
+                    "p cat('testing Collatz Conjecture with ', @rint1=random(0,1000,), ': ', collatz ?rint1?)" + '\n' +
+                    "p cat('testing Collatz Conjecture with ', @rint2=random(0,1000,), ': ', collatz ?rint2?)" + '\n' +  '\n' +
+                    "# the final simplification" + '\n' + 
+                    "macro('testcollatz ', 'cnumber', =>(@cnumber=-(cnumber.val()), p cat('testing Collatz Conjecture with ', ?cnumber?, ': ', collatz ?cnumber?)))" + '\n' +
+                    "testcollatz 1000" + '\n' +
+                    "testcollatz random(0,1000,)" + '\n' +
+                    "testcollatz random(0,1000,)" + '\n' + '\n' +
+                    "print()\n" + '\n' +
+                    "# environment variables" + '\n' +
+                    "env(True)"
+
+
+                ]} />
+
+
+            ]} />
+                
+
+            <Section title="Those were the basics! Onto the next topic?" subtitle={[
                     <Link to="/msn2systemcalls" className='msn2-big-title' style={{color: 'white', margin:0, marginTop: '4.5vh', fontSize: '2rem', textDecoration: 'none'}}>Next Topic</Link>
             ]} />
+
+            
 
 
 
@@ -163,19 +500,22 @@ function Out(props) {
 
 // on click, function run should run with parameter executionid
 function ExecuteButton(props) {
-    return <div className='msn2-execute-button-div' id={props.executionid + 'button'} onClick={()=>run(props.executionid)}>execute</div>
+    return <div className='msn2-execute-button-div' id={props.executionid + 'button'} onClick={()=>run(props.executionid)}><p Style="margin: 0.4rem; padding: 1rem;">execute</p></div>
 }
 
 function CodeDisplay(props) {
     return (
-        <div className='msn2-code-div' style={{height: props.codeheight}}>
+        <div className='msn2-code-div' style={{height: 'fit-content'}}>
             <p style={{margin: 0,padding: 0, fontSize: ".7rem", marginLeft: '90%', userSelect: 'none'}}>Edit Me!</p>
             <textarea  id={props.codeid + 'code'} contentEditable="true" className="msn2-code-area">{props.code}</textarea>
         </div>
     )
 }
 
+var doneLoading = false
+
 function run(executionid) {
+
 
     outsprinting ++
 
@@ -183,10 +523,14 @@ function run(executionid) {
     var out = document.getElementById(executionid + 'out')
     var button = document.getElementById(executionid + 'button')
 
+    if (out.innerHTML.includes('Traceback')) {
+        out.innerHTML = ''
+    }
+
     // run code
     pyodide.runPython('inter = Interpreter()')
     pyodide.runPython('sc = ' + JSON.stringify(code))
-   
+   try {
     pyodide.runPython('thisout = inter.execute(sc)')
     var stdout = pyodide.runPython("sys.stdout.getvalue()")
 
@@ -228,7 +572,51 @@ function run(executionid) {
     // clear stdout
     pyodide.runPython("sys.stdout.truncate(0)")
     pyodide.runPython("sys.stdout.seek(0)")
+} catch (e) {
+    printOut(out, e.message)
+    outsprinting --
+    
+    // continuously add '.' to the out until the code is done loading
+    doneLoading = false
+    load(out)
+    prepare().then(() => {
+        doneLoading = true
 
+        // remove the last line before a break tag
+        // this is to remove the entire last line
+
+        var lastLine = out.innerHTML.split('<br>').pop()    
+        
+        out.innerHTML = out.innerHTML.replace(lastLine, '')
+
+
+
+    })
+
+
+
+}
+
+}
+
+// prints a string to out
+function printOut(out, message) {
+    // replace all newlines with <br/> tags
+    message = message.replace(/\n/g, '<br/>')
+    out.innerHTML += message
+}
+
+async function load(element) {
+    element.innerHTML += "<br/>Please wait, reloading Python..."
+    // add a '.' to the element for as long as the element's innerHTML contains 'PythonError'
+    // this is to indicate that the code is still loading
+    var interval = setInterval(function() {
+        if (element.innerHTML.includes('Traceback') && !doneLoading) {
+            element.innerHTML += '.'
+        } else if (doneLoading) {
+            clearInterval(interval)
+        }
+    }, 25) 
 }
 
 

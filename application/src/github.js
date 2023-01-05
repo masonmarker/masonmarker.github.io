@@ -82,7 +82,7 @@ const GitHub = () => {
                         </p>
                         <br/>
                         <br/>
-                        <h2 Style="font-size: 3rem; font-family: 'Silkscreen', cursive; color:var(--lightpurple)">Improvements</h2> 
+                        <h2 Style="font-size: 3rem; font-family: 'Silkscreen', cursive; color:var(--lightpurple)">Changes</h2> 
                         <div className="msnscript-imp">
                             <h3 Style="color:var(--lightpurple) ;text-align:left; margin-left: 1rem">Differences from MSNC 1.0 (JAVA):</h3>
                             <ul Style="text-align: left">
