@@ -40,6 +40,7 @@ function Title(props) {
                 <FadeInSection>
                     <Link to={props.next} className='msn2-big-title' style={{color: 'white', margin:0, marginTop: '4.5vh', fontSize: '2rem', textDecoration: 'none'}}>Next</Link>
                 </FadeInSection>
+
             </div>
         </div>
     )
@@ -67,7 +68,9 @@ function Directory() {
                 <Link to="/msn2threads" className='msn2-big-title' style={{color: 'white', margin:'0 auto', marginTop: '4.5vh', fontSize: '2rem', textDecoration: 'none'}}>Threads</Link>
                 <Link to="/msn2apis" className='msn2-big-title' style={{color: 'white', margin:'0 auto', marginTop: '4.5vh' , fontSize: '2rem', textDecoration: 'none'}}>APIs</Link>
                 <Link to="/msn2redirection" className='msn2-big-title' style={{color: 'white', margin:'0 auto', marginTop: '4.5vh' , fontSize: '2rem', textDecoration: 'none'}}>Redirection</Link>
-                <Link to="/msn2macros" className='msn2-big-title' style={{color: 'white', margin:'0 auto', marginTop: '4.5vh' , marginBottom:'10vh', fontSize: '2rem', textDecoration: 'none'}}>Macros</Link>
+                <Link to="/msn2macros" className='msn2-big-title' style={{color: 'white', margin:'0 auto', marginTop: '4.5vh' , fontSize: '2rem', textDecoration: 'none'}}>Macros</Link>
+                
+                <Link to="/msn2examples" className='msn2-big-title' style={{color: 'white', margin:'0 auto', marginTop: '4.5vh', marginBottom:'10vh' , fontSize: '2rem', textDecoration: 'none'}}>Examples</Link>
             </div>
 
         </div>

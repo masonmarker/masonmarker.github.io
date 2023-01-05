@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { useLayoutEffect } from 'react'
 import {  useLocation } from 'react-router-dom'
 import {
-    BrowserRouter, 
+    HashRouter, 
     Routes,
     Route,
   } from "react-router-dom";
@@ -24,6 +24,7 @@ import Threads from './msn2/docs/threads';
 import Apis from './msn2/docs/apis';
 import Redirection from './msn2/docs/redirection';
 import Macros from './msn2/docs/macros';
+import Examples from './msn2/docs/examples';
 
 const Wrapper = ({children}) => {
     const location = useLocation();
@@ -35,7 +36,7 @@ const Wrapper = ({children}) => {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <BrowserRouter>
+    <HashRouter>
         <Wrapper>
           <Routes>
               <Route path="/" element={<App/>}/>
@@ -45,9 +46,14 @@ root.render(
               <Route path="/msn2docs" element={<Msn2docs/>} />
               <Route path="/msn2basics" element={<Basics/>} />
               <Route path="/msn2systemcalls" element={<Systemcalls/>} />
+
+
+
+
+              <Route path="/msn2examples" element={<Examples/>} />
           </Routes>
         </Wrapper>
-    </BrowserRouter>
+    </HashRouter>
 );
 
  
