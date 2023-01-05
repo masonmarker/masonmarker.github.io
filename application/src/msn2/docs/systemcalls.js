@@ -37,7 +37,13 @@ function Systemcalls() {
 
 
     return (
-        <div className='msn2docs-div'>
+        <div className='msn2docs-div' style={{
+            margin:'0 auto',
+            position:'relative',
+            overflow: 'hidden'
+        }}>
+
+
             <Title title='System Calls' subtitle='Tools for you!' subtitle2='Difficulty: Medium' back='/msn2docs' next='/msn2threads'/>
             <div id='scrolltotop'/>
             <Section title='Introduction' subtitle={[
@@ -185,8 +191,10 @@ function SystemCall(props) {
 // gets all React system call components
 function SystemCalls() {
     return (
-        <div>
-            <SystemCall style={{width: '85vw'}} type="System Call" name='print' args={["any", "..."]} return="str" description={["Prints any amount of strings to the console.", <br />,
+        <div style={{
+            width: '100%'
+        }}>
+            <SystemCall style={{}} type="System Call" name='print' args={["any", "..."]} return="str" description={["Prints any amount of strings to the console.", <br />,
             "Returns the last string printed.", <br />, <br />,
             "It is important to note that there is a different between ", <i>MSN2</i>, "'s print() and Python's print().", <br />,
             "as both are able to be utilized.", <br />, <br />,
