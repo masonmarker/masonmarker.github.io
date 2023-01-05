@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/masonmarker/masonmarker.github.io/static/css/main.e5190d0c.css",
-    "main.js": "/masonmarker/masonmarker.github.io/static/js/main.fff1cac1.js",
-    "static/js/787.98651143.chunk.js": "/masonmarker/masonmarker.github.io/static/js/787.98651143.chunk.js",
-    "static/media/cali.jpg": "/masonmarker/masonmarker.github.io/static/media/cali.ae129a1bb6a08d7015ea.jpg",
-    "static/media/msnc.png": "/masonmarker/masonmarker.github.io/static/media/msnc.aec4fb7f014f0bde45eb.png",
-    "index.html": "/masonmarker/masonmarker.github.io/index.html",
-    "main.e5190d0c.css.map": "/masonmarker/masonmarker.github.io/static/css/main.e5190d0c.css.map",
-    "main.fff1cac1.js.map": "/masonmarker/masonmarker.github.io/static/js/main.fff1cac1.js.map",
-    "787.98651143.chunk.js.map": "/masonmarker/masonmarker.github.io/static/js/787.98651143.chunk.js.map"
+    "main.css": "/static/css/main.725e145f.css",
+    "main.js": "/static/js/main.d3efd212.js",
+    "static/js/787.98651143.chunk.js": "/static/js/787.98651143.chunk.js",
+    "static/media/cali.jpg": "/static/media/cali.ae129a1bb6a08d7015ea.jpg",
+    "static/media/msnc.png": "/static/media/msnc.aec4fb7f014f0bde45eb.png",
+    "index.html": "/index.html",
+    "main.725e145f.css.map": "/static/css/main.725e145f.css.map",
+    "main.d3efd212.js.map": "/static/js/main.d3efd212.js.map",
+    "787.98651143.chunk.js.map": "/static/js/787.98651143.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e5190d0c.css",
-    "static/js/main.fff1cac1.js"
+    "static/css/main.725e145f.css",
+    "static/js/main.d3efd212.js"
   ]
 }
