@@ -49,14 +49,14 @@ function Basics() {
 
             <Section title="Imports" subtitle={[
                 "Imports are a way to import code from other files, and are used to import code from other files.", <br/>,
-                "Imports are declared with the import() system call, see the ", <a href='/msn2systemcalls/'>system call documentation</a>, " for more information.", <br/>, <br/>
+                "Imports are declared with the import() system call, see the ", <a href='/#/msn2systemcalls/'>system call documentation</a>, " for more information.", <br/>, <br/>
             ]} />
 
             <Section title="Assertions" subtitle={[
                 "Assertions are a key component in verifying the correctness of your code.", <br/>,
                 "Assertions are used to verify that a condition is true, and if it is not, an assertion error will be printed, providing details of the error.", <br/>,
                 "assert() takes any amount of arguments separated by a ','. assert() verifies that every argument evaluates to 1.", <br/>, <br/>,
-                "Find more about assert() in the ", <a href='/msn2systemcalls/'>system call documentation</a>, ".", <br/>, <br/>,
+                "Find more about assert() in the ", <a href='/#/msn2systemcalls/'>system call documentation</a>, ".", <br/>, <br/>,
                 <i>Note that the working assertion prints nothing, and the failing assertion prints an error message.</i>, <br/>,
                 "Example: ", <br/>,
                 <ExecutionDisplay executionid='ex:assert' code={["assert(True, 1, not 0, not(0), not False)"]} codeheight='3.2rem'/>, <br/>,
@@ -80,7 +80,7 @@ function Basics() {
 
             <Section title="Environment" subtitle={[
                 "You can access a string representation of the environment of your code with the env() system call.", <br/>,
-                "env() can also be found in the ", <a href='/msn2systemcalls/'>system call documentation</a>, ".", <br/>, <br/>,
+                "env() can also be found in the ", <a href='/#/msn2systemcalls/'>system call documentation</a>, ".", <br/>, <br/>,
 
                 "env() takes 0 or 1 argument, the argument being a boolean as to whether the environment should be printed or not.", <br/>, <br/>,
 
@@ -102,7 +102,7 @@ function Basics() {
 
                 <ExecutionDisplay executionid='ex:variablecomparison2' code={['var("integer", 5)\n\nassert(?integer? == 5 and ?integer? != 4 and ?integer? > 4 and ?integer? < 6 and ?integer? >= 5 and ?integer? <= 5)\n\nprint("[+] tests passed")']} codeheight='13rem'/>,
                 , <br/>,
-                "Variables can also be compared methodically, see the ", <a href='/msn2systemcalls/'>system call documentation</a>, " for more method definitions.", <br/>,
+                "Variables can also be compared methodically, see the ", <a href='/#/msn2systemcalls/'>system call documentation</a>, " for more method definitions.", <br/>,
                 <ExecutionDisplay executionid='ex:variablecomparison3' code={['var("integer", 10)\nassert(integer.greater(9), integer.less(51))\nprint("[+] test passed")']} codeheight='10rem'/>
             ]}/>
 
@@ -121,7 +121,7 @@ function Basics() {
             <Section title="Variable types" subtitle={[
                 "Variables can be of any type, and can be changed at any time.", <br/>,
                 "Variables are of types and behave the same way as those in Python.", <br/>, <br/>,
-                "You can find type specific methods in the ", <a href='/msn2systemcalls/'>system call documentation</a>, ".", <br/>, <br/>,
+                "You can find type specific methods in the ", <a href='/#/msn2systemcalls/'>system call documentation</a>, ".", <br/>, <br/>,
 
                 "Example: ", <br/>,
                 <ExecutionDisplay executionid='ex:variabletypes' code={['var("integer", 5)\nvar("float", 5.0)\nvar("string", "hello")\nvar("boolean", True)\nvar("list", [1, 2, 3])\nvar("dictionary", {"key": "value"})\nvar("function", lambda x: x + 1)\n\nprint(integer.val(), float.val(), string.val(), boolean.val(), list.val(), dictionary.val(), function.val(5))']} codeheight='17rem'/>
@@ -131,7 +131,7 @@ function Basics() {
                 "Inline functions are a way to create a function in a single line of code.", <br/>,
                 "The inline function system call (=>()), similar to the rest of instructions in the base language, can be used as arguments to any function or syntax adjustment.", <br/>, 
                 "The inline function takes any amount of arguments returns the evaluation of its last argument.", <br/>, <br/>,
-                "Again, you can find methodological documentation of any unknown system call or variable method in the ", <a href='/msn2systemcalls/'>system call documentation</a>, ".", <br/>, <br/>,
+                "Again, you can find methodological documentation of any unknown system call or variable method in the ", <a href='/#/msn2systemcalls/'>system call documentation</a>, ".", <br/>, <br/>,
 
                 "Example: ", <br/>,
                 <ExecutionDisplay executionid='ex:inlinefunction' code={[
@@ -141,7 +141,7 @@ function Basics() {
             
             <Section title="Contexts" subtitle={[
                 "MSN2 is split into contexts, you can view the context of a certain line of code with the env(should_print) system call.", <br/>, <br/>,
-                "You can isolate a block of code with the new() or private() system calls, which can be found in the ", <a href='/msn2systemcalls/'>system call documentation</a>, ".", <br/>, <br/>,
+                "You can isolate a block of code with the new() or private() system calls, which can be found in the ", <a href='/#/msn2systemcalls/'>system call documentation</a>, ".", <br/>, <br/>,
 
                 "In brief, a new context begins with no variables or methods, ", <br/>,
                 "and a private context inherits copies of the variables and methods from the parent context. A private context cannot modify the variables owned by the parent context.", <br/>, <br/>,
@@ -156,7 +156,7 @@ function Basics() {
 
             <Section title="Built in macro: '@'" subtitle={[
                 "The @ symbol is a built in macro that can be used to create or adjust a variable.", <br/>,
-                "More about the '@' macro can be found in the ", <a href='/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
+                "More about the '@' macro can be found in the ", <a href='/#/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
 
                 "the '@' utilizes the succeeding instruction to effectively fall back to Python's variable declaration and alteration syntax, ", <br/>,
                 ExecutionDisplay({executionid: 'ex:atmacro', code: ['@integer = assert(1)\nprint(assert(integer.val()))'], codeheight: '6.5rem'}),
@@ -166,7 +166,7 @@ function Basics() {
 
             <Section title="Built in enclosing syntax: '<<>>'" subtitle={[
                 "<<>> enclosing syntax, or the Python fallback syntax, allows for msn2 code insertion to a Python statement for evaluation.", <br/>,
-                "More about the '<<>>' syntax can be found in the ", <a href='/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
+                "More about the '<<>>' syntax can be found in the ", <a href='/#/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
                 
                 "In short, any ", <i>MSN2</i>, " code surrounded by a pair of '|' will be evaluated and the result will be inserted into the Python statement.", <br/>,
 
@@ -178,7 +178,7 @@ function Basics() {
 
             <Section title="Built in macro pair: '~' and '--'" subtitle={[
                 "The '~' and '--' macros are a pair of macros that can be used to create a function.", <br/>,
-                "More about the '~' and '--' macros can be found in the ", <a href='/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
+                "More about the '~' and '--' macros can be found in the ", <a href='/#/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
 
                 "In short, the '~' macro is used to declare a function, and the '--' macro is used to add body to the most recently declared function.", <br/>, <br/>,
                 "Example: ", <br/>,
@@ -197,7 +197,7 @@ function Basics() {
                 ]} codeheight='20rem'/>,
                 "There is an alternative syntax for declaring a function, which is the system call function().", <br/>,
                 "The function() system call creates a function with a different syntax than the '~' and '--' macros.", <br/>,
-                "More about the function() and ret() system calls can be found in the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                "More about the function() and ret() system calls can be found in the ", <a href='/#/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
                 "Example: ", <br/>,
                 <ExecutionDisplay executionid='ex:macros2' code={[
                     "# function that generates a list" + '\n' +
@@ -210,7 +210,7 @@ function Basics() {
 
             <Section title="Built in enclosing syntax: <2><2>" subtitle={[
                 "<2><2> enclosing syntax is an " ,<i>MSN2</i>, " insertion to an ",<i>MSN2</i>," instruction for evaluation.", <br/>,
-                "More about the <2><2> syntax can be found in the ", <a href='/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
+                "More about the <2><2> syntax can be found in the ", <a href='/#/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
                 
                 "Similarly to <<>> enclosing syntax, any ",<i>MSN2</i>," code surrounded by a pair of '%' will be evaluated and the result will be inserted into the ", <i>MSN2</i> ," instruction surrounded by the <2><2> tags.", <br/>,
                 , <br/>,
@@ -223,7 +223,7 @@ function Basics() {
 
             <Section title="Built in macro: '*'" subtitle={[
                 "The '*' macro is used to unpack a variable or amount of variables for evaluation.", <br/>,
-                "More about the '*' macro can be found in the ", <a href='/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
+                "More about the '*' macro can be found in the ", <a href='/#/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
                 "This macro can be unsafe, as it simply replaces any instance of a variable name with the value of the variable regardless as to whether it may be in a string or not.", <br/>,
                 "However the macro is fine when there is nostring within the argument cannot have a variable name within.", <br/>, <br/>,
                 "Example: ", <br/>,
@@ -240,7 +240,7 @@ function Basics() {
                 "The if() system call takes three arguments: a condition, a block of code to execute if the condition is true, and a block of code to execute if the condition is false.", <br/>,
                 "The condition can be any expression that evaluates to a boolean value.", <br/>,
                 "The else argument is optional.", <br/>, <br/>,
-                "More about the if() system call can be found in the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                "More about the if() system call can be found in the ", <a href='/#/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
                 "Example: ", <br/>,
                 <ExecutionDisplay executionid='ex:if' code={[
                     "@integer = 5\n" +
@@ -255,12 +255,12 @@ function Basics() {
                     "print('[+] test passed')"
                 ]} codeheight='10rem'/>,
                 "Also, see the ?() system call for a more concise way to write conditionals.", <br/>,
-                "The ?() system call can be found in the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                "The ?() system call can be found in the ", <a href='/#/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
             ]} />
 
             <Section title="Error Handling" subtitle={[
                 <i>MSN2</i>, " utilizes a try-catch system for error handling.", <br/>,
-                "For more information about the try-catch system, see the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                "For more information about the try-catch system, see the ", <a href='/#/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
                 "Example: ", <br/>,
                 <ExecutionDisplay executionid='ex:trycatch' code={[
                     "try([0, 1, 2, 3][9], print('[*] error caught!'))\nprint('hello')"
@@ -273,7 +273,7 @@ function Basics() {
                 "Loops in ", <i>MSN2</i>, " are relatively simple.", <br/>, <br/>,
                 "The while(cond, do) system call is used to repeat a block of code.", <br/>,
                 "The for(start, end, var, do) system call is used to repeat a block of code a certain number of times.", <br/>,
-                "See more about the while() and for() system calls in the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                "See more about the while() and for() system calls in the ", <a href='/#/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
                 "Example: ", <br/>,
                 <ExecutionDisplay executionid='ex:while' code={[
                     "@i = 0\n" +
@@ -293,7 +293,7 @@ function Basics() {
                 "In short, classes are created by asking a new context for variables created within it's context.", <br/>,
                 "The class(name, environment) system call is used to create a class.", <br/>,
                 "The class() system call takes two arguments: a name for the class, and a block of code to execute in the context of the class.", <br/>,
-                "See more about the class() system call in the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                "See more about the class() system call in the ", <a href='/#/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
                 "Example: ", <br/>,
                 <ExecutionDisplay executionid='ex:class' code={[
                     "# declaring a class, " + '\n' +
@@ -340,14 +340,14 @@ function Basics() {
             <Section title="Macros" subtitle={[
                 "Macros serve as a mechanism to add or adjust syntax in ", <i>MSN2</i>, ".",  <br/>,
                 "There are several different types of macros, each with their own use cases.", <br/>,
-                "See more about macros in the macros documentation: ", <a href='/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
+                "See more about macros in the macros documentation: ", <a href='/#/msn2macros/'>macros documentation</a>, ".", <br/>, <br/>,
                 
                 "A regular, pre-instruction macro can be created with the macro(token, instruction_var_name, do) system call.", <br/>,
                 "When a macro is defined, its token will be searched for in each following instruction." + '\n' +
                 "If the token is found, the instruction will be replaced with evaluation of the do argument.", <br/>, <br/>,
 
                 "The -(instruction) system call takes a string as an instruction of ", <i>MSN2</i>, " and returns the result of the instruction.", <br/>,
-                "To see more about the -(instruction) system call, see the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                "To see more about the -(instruction) system call, see the ", <a href='/#/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
 
                 "Example: ", <br/>,
                 <ExecutionDisplay executionid='ex:macroasdf' code={[
@@ -379,7 +379,7 @@ function Basics() {
 
             <Section title="Redirection" subtitle={[
                 "Interpreter redirection allows for a line of code to be redirected to a custom interpreter for a specific amount of lines.", <br/>,
-                "A few system calls are used for Interpreter redirection, and you can see more about them in both the ", <a href='/msn2systemcalls/'>system calls documentation</a>, " and the ", <a href='/msn2redirect/'>redirection documentation</a>, ".", <br/>, <br/>,
+                "A few system calls are used for Interpreter redirection, and you can see more about them in both the ", <a href='/#/msn2systemcalls/'>system calls documentation</a>, " and the ", <a href='/msn2redirect/'>redirection documentation</a>, ".", <br/>, <br/>,
                 "In short, the interpreter redirection system calls are:", <br/>,
                 <ul>
                     <li>redirect(line_var_name, function)</li>
@@ -398,7 +398,7 @@ function Basics() {
                     "startredirect()"
                 ]} />,
                 "Simplifying with macros make redirection appear much more friendly.", <br/>,
-                "Macros cannot be used inside of a redirection, see more about this in the ", <a href='/msn2redirect/'>redirection documentation</a>, ".", <br/>, <br/>,
+                "Macros cannot be used inside of a redirection, see more about this in the ", <a href='/#/msn2redirect/'>redirection documentation</a>, ".", <br/>, <br/>,
                 "Example: ", <br/>,
                 <ExecutionDisplay executionid='ex:redirect2' code={[
                     "# setting up macros" + '\n' +
@@ -421,7 +421,7 @@ function Basics() {
             <Section title={['The purpose of MSN2']} subtitle={[
                 "The below code shows a more complex example of how the SHOWN ", <i>MSN2</i>, " features can be combined to create new syntax.", <br/>,
                 "The code demonstrates the Collatz Conjecture, showing that for an arbitrary positive integer, if the integer is even, divide it by 2, and if the integer is odd, multiply it by 3 and add 1, the sequence will always reach 1.", <br/>,
-                "See more about the random() system call in the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                "See more about the random() system call in the ", <a href='/#/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
                 <ExecutionDisplay executionid='ex:complex' code={[
                     "# base language code" + '\n' +
                     "@num = 100" + '\n' +
@@ -441,7 +441,7 @@ function Basics() {
                     "print(private(collatz(random(1, 100,)))))"
                 ]} />,
                 "The below code shows the same Collatz Conjecture example, but provides the Collatz algorithm as a function to a macro.", <br/>,
-                "See information about system calls used in the below code in the ", <a href='/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
+                "See information about system calls used in the below code in the ", <a href='/#/msn2systemcalls/'>system calls documentation</a>, ".", <br/>, <br/>,
                 <ExecutionDisplay executionid='ex:complex3' code={[
                     "# simplifying with macros" + '\n' + '\n' +
                     "# defining a macro" + '\n' +
@@ -514,9 +514,9 @@ function CodeDisplay(props) {
 
 var doneLoading = false
 
+// executes the code within the code display specified by executionid
+// prints the out of the code to the out display specified by executionid
 function run(executionid) {
-
-
     outsprinting ++
 
     var code = document.getElementById(executionid + 'code').value
@@ -533,14 +533,6 @@ function run(executionid) {
    try {
     pyodide.runPython('thisout = inter.execute(sc)')
     var stdout = pyodide.runPython("sys.stdout.getvalue()")
-
-    // for each line in stdout, add a <p> then break tag to out
-    var lines = stdout.split('\n')
-    
-    
-    
-
-
 
     // animate out to print stdout
     // can only print if this is the only out printing
@@ -588,13 +580,7 @@ function run(executionid) {
         var lastLine = out.innerHTML.split('<br>').pop()    
         
         out.innerHTML = out.innerHTML.replace(lastLine, '')
-
-
-
     })
-
-
-
 }
 
 }

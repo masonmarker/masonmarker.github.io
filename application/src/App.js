@@ -62,7 +62,7 @@ function App() {
 const NavBar = () => {
   return (
     <div className="navbar">
-      <h4 className="navbar-title" Style="margin-bottom: 0"><i>Hi! Most people call me</i></h4>
+      <h4 className="navbar-title" Style="margin-bottom: 0; "><i>Hi! Most people call me</i></h4>
       <h1 className="name-title" Style="margin-top: 0">— Mason Marker —</h1>
 
     </div>
@@ -211,9 +211,9 @@ const GitHub = () => {
       <div className="desc-div">
         <h2 Style="margin-bottom: 0; color: var(--darkpurple)">The Msn Project</h2>
         <h3 className="job-title">Github Repository</h3>
-        <h5 className="job-desc">You can find nearly every side project I've ever developed on my Github. While these projects are limited to Java, 
+        <h5 className="job-desc">You can find nearly every side project I've ever developed on my Github. These projects currently consist of Python and Java, 
         each folder that can be found in my repository proves useful to nearly any project one might consider developing. With tens of thousands 
-        of lines of code, these collections can be utilized by anyone seeking their usage in their own projects.
+        of lines of code, these collections can be utilized by anyone seeikng their usage in their own projects.
         </h5>
         <h5 className="job-desc">
           From general methods to complex neural network computation and application, my repository holds powerful tools that can be used by anyone.
@@ -225,7 +225,7 @@ const GitHub = () => {
           <ul>
           <li>Wide variety of self-created data structures, unoriginal and original</li>
           <li>10,000 - 15,000 lines of methods dedicated to supporting current or future projects</li>
-          <li>Several original, fully capable programming languages designed for ease of programming.</li>
+          <li>Several original, fully capable programming languages designed for the programmer.</li>
           <li>Various levels of artificial intelligence management and application utilities involving multi-layer perceptron network construction and implementation to real world scenarios.</li>
           <li>And much more!</li>
         </ul>
@@ -253,9 +253,9 @@ const Languages = () => {
       <FadeInSection>
       <div className="lang-desc">
         <img alt="Java" className="lang-img" src="https://www.oracle.com/oce/press/assets/CONT6C95347B9ECC40CF8E7272A74FD80BDE/native/rc24-java-logo.gif"></img>
-        <Proficiency level="90%" color="darkorange" completion="fluent"/>
+        <Proficiency level="86%" color="darkorange" completion="fluent"/>
         <div>
-          <p>Java was my first programming language, and was heavily used throughout my first 2 years at JMU</p>
+          <p>Java was my first programming language, and was heavily used throughout my first 2 years at JMU.</p>
           <p>I've accumulated an estimated 2,000 - 3,000 hours in Java development inside and outside of school, and doing so provided me 
           with a firm grasp on programming concepts including:
           </p>
@@ -268,7 +268,37 @@ const Languages = () => {
               <li>Unit and integration testing</li>
               <li>And many other concepts</li>
             </ul>
-          <p>Java continues to serve as the primary language in my main GitHub project, 
+          <p>Java continues to serve as one of the the primary languages in my main GitHub project, 
+         <br/>
+          <a href="https://github.com/masonmarker/TheMsnProject">TheMsnProject</a></p>
+        </div>
+      </div>
+      </FadeInSection>
+
+      <FadeInSection>
+      <div className="lang-desc">
+        <img alt="Python" className="lang-img" src="https://logicoretech.com/wp-content/uploads/2022/05/Python-Symbol.png" Style="margin-top: 0.3rem"></img>
+        <Proficiency level="80%" color="lightblue" completion="advanced"/>
+        <div>
+          <p>Python was one of the most recent languages I've learned.</p>
+          <p>Today being 1/8/23, over the last couple semesters I've gained a much higher level of proficiency in Python given the implementation
+            of my newest language project,
+          </p>
+          <Link to="/msn2docs">MSNScript2</Link>
+          
+          <p>The complexity involved in developing a</p>
+          <ul Style="text-align:left; font-weight: bold">
+            <li>Turing complete,</li>
+            <li>Recursively interpreting,</li>
+            <li>Build your own syntax themed,</li>
+            <li>Object-oriented,</li>
+            <li>Multiprogramming friendly,</li>
+            <li>API endpoint and request simlifying</li>
+          </ul>
+          <p>language has been a challenge, but one that I've enjoyed immensely, given I was completely new to Python when I started.</p>
+
+
+          <p>Python continues to serve as one of the the primary languages in my main GitHub project, 
          <br/>
           <a href="https://github.com/masonmarker/TheMsnProject">TheMsnProject</a></p>
         </div>
@@ -300,8 +330,30 @@ const Languages = () => {
 
       <FadeInSection>
       <div className="lang-desc">
+      <img alt="ReactJS" className="lang-img" src="https://www.datocms-assets.com/45470/1631110818-logo-react-js.png"></img>
+        <Proficiency level="40%" color="#08dcfc" completion="intermediate, currently studying"/>
+        <div>
+          <p>I would often ask myself,</p>
+          <p><b>"Why does web development require several different languages?</b></p>
+          <p><b>"Why didn't early developers create a medium between all aspects of web development instead 
+            of a language for each?"</b></p>
+          <p>These questions were quickly answered as it became known to me that ReactJS
+            was in development. As a meeting point between HTML, CSS, and JavaScript, ReactJS
+            proved more efficient to me than utilizing the 3 independently while creating this website you're 
+            currently browsing in.
+          </p>
+          <p>React is now known as "the future of web creation," and in realizing the 
+            sheer benefits of component reusability, I cannot see myself bringing my studies
+            of React to a halt any time soon.
+          </p>
+        </div>
+      </div>
+      </FadeInSection>
+
+      <FadeInSection>
+      <div className="lang-desc">
       <img alt="C Language" className="lang-img" Style="width: 10rem; padding-top: 1rem;"src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/695px-C_Programming_Language.svg.png"></img>
-        <Proficiency level="45%" color="lightblue" completion="beginner - intermediate"/>
+        <Proficiency level="35%" color="lightblue" completion="beginner - intermediate"/>
         <div>
           <p>C has been used widely throughout my past 2 years of schooling in the 
             computer science curriculum.</p>
@@ -320,7 +372,7 @@ const Languages = () => {
       <FadeInSection>
       <div className="lang-desc">
       <img alt="Ruby" className="lang-img" src="https://miro.medium.com/max/540/1*7e9D-oPWPIKBe2AQv862aA.png" ></img>
-        <Proficiency level="37%" color="red" completion="beginner - intermediate"/>
+        <Proficiency level="30%" color="red" completion="beginner - intermediate"/>
         <div>
           <p>Ruby was a required language to learn in my programming languages class at JMU.</p>
           <p>As an incredibly high-level language, I instantly fell in love with its simplicity
@@ -330,28 +382,6 @@ const Languages = () => {
           </p>
           <p>This understanding brought to me the proper reasoning as to why languages such as C, C++,
             and Rust execute their programs fundamentally faster than languages such as Ruby and Python.
-          </p>
-        </div>
-      </div>
-      </FadeInSection>
-
-      <FadeInSection>
-      <div className="lang-desc">
-      <img alt="ReactJS" className="lang-img" src="https://www.datocms-assets.com/45470/1631110818-logo-react-js.png"></img>
-        <Proficiency level="25%" color="#08dcfc" completion="beginner, currently studying"/>
-        <div>
-          <p>I would often ask myself,</p>
-          <p><b>"Why does web development require several different languages?</b></p>
-          <p><b>"Why didn't early developers create a medium between all aspects of web development instead 
-            of a language for each?"</b></p>
-          <p>These questions were quickly answered as it became known to me that ReactJS
-            was in development. As a meeting point between HTML, CSS, and JavaScript, ReactJS
-            proved more efficient to me than utilizing the 3 independently while creating this website you're 
-            currently browsing in.
-          </p>
-          <p>React is now known as "the future of web creation," and in realizing the 
-            sheer benefits of component reusability, I cannot see myself bringing my studies
-            of React to a halt any time soon.
           </p>
         </div>
       </div>

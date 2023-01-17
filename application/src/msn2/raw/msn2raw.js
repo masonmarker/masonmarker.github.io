@@ -222,7 +222,9 @@ class Interpreter:
         global total_ints
         global lock
         global auxlock
-        
+        global lines_ran
+
+
         # accounting
         total_ints += 1
         lines_ran.append(line)
@@ -835,7 +837,7 @@ class Interpreter:
                 if func == 'redirect':
                     line_vname = self.parse(0, line, f, sp, args)[2]
                     _block = args[1][0]
-                    
+                    self.redirect_inside = []
                     # creates redirect for this interpreter
                     self.redirect = [line_vname, _block]
                     self.redirecting = True
@@ -1064,7 +1066,12 @@ class Interpreter:
                     if objfunc == 'this':
                         return lines_ran[-1] 
                     if objfunc == 'len':
-                        return total_ints
+                        return len(lines_ran)
+                    if objfunc == 'clear':
+                        lines_ran = []
+                        return True
+                    if objfunc == 'all':
+                        return lines_ran
                     return '<msnint2 class>'
 
 
@@ -1225,7 +1232,7 @@ class Interpreter:
                     # adds a line of code to a function / method's body
                     if objfunc == 'addbody':
                         _body = self.parse(1, line, f, sp, args)[2]
- 
+
                         self.methods[fname].add_body(_body)
                         return fname
 
@@ -1243,6 +1250,38 @@ class Interpreter:
 
                         self.methods[fname].add_return(retvar)
                         return fname
+
+                    if objfunc == 'getbody':
+                        return self.methods[fname].body
+                    
+                    if objfunc == 'getargs':
+                        return self.methods[fname].args
+                    
+                    if objfunc == 'getreturn':
+                        return self.methods[fname].returns[0]
+
+                    # removes a function from the working context
+                    if objfunc == 'destroy':
+                        self.methods.pop(fname)
+                        return fname
+                    
+                    # simulates an execution of a function
+                    if objfunc == 'run':
+                        
+                        # form a string that is msn2 of the user defined function
+                        
+                        args_str = ''
+                        for i in range(1, len(args)):
+                            arg = self.parse(i, line, f, sp, args)[2]
+                            if i != len(args) - 1:
+                                args_str += str(arg) + ', '
+                            else:
+                                args_str += str(arg)
+                        
+                        inst = fname + '(' + args_str + ')'
+                        return self.interpret(inst)
+                        
+                        
 
                     return '<msnint2 class>'
 
@@ -1378,60 +1417,8 @@ class Interpreter:
                         # generates an ai response with the basic model
                         return ai_response(models['basic']['model'], self.parse(0, line, f, sp, args)[2], models['basic']['creativity'])
                     return '<msnint2 class>'
-                        
-                                            
-
-                        
                 
-                
-                # performs math functions
-                elif obj == 'math':
 
-                    # extract argument
-                    line, as_s, arg = self.parse(0, line, f, sp, args)
-
-                    # perform function
-                    if objfunc == 'abs':
-                        return abs(arg)
-                    elif objfunc == 'ceil':
-                        return math.ceil(arg)
-                    elif objfunc == 'floor':
-                        return math.floor(arg)
-                    elif objfunc == 'round':
-                        return round(arg)
-                    elif objfunc == 'sqrt':
-                        return math.sqrt(arg)
-                    elif objfunc == 'sin':
-                        return math.sin(arg)
-                    elif objfunc == 'cos':
-                        return math.cos(arg)
-                    elif objfunc == 'tan':
-                        return math.tan(arg)
-                    elif objfunc == 'asin':
-                        return math.asin(arg)
-                    elif objfunc == 'acos':
-                        return math.acos(arg)
-                    elif objfunc == 'atan':
-                        return math.atan(arg)
-                    elif objfunc == 'log':
-                        return math.log(arg)
-                    elif objfunc == 'log10':
-                        return math.log10(arg)
-                    elif objfunc == 'log2':
-                        return math.log2(arg)
-                    elif objfunc == 'exp':
-                        return math.exp(arg)
-                    elif objfunc == 'pow':
-                        return math.pow(arg, self.parse(1, line, f, sp, args)[2])
-                    elif objfunc == 'factorial':
-                        return math.factorial(arg)
-                    elif objfunc == 'e':
-                        return math.e
-                    elif objfunc == 'pi':
-                        return math.pi
-                    return '<msnint2 class>'
-                
-                       
                 # defines new syntax, see tests/validator.msn2 for documentation
                 elif func == 'syntax':
                     
@@ -1747,8 +1734,8 @@ class Interpreter:
                     if objfunc == 'power':
                         return self.parse(0, line, f, sp, args)[2] ** self.parse(1, line, f, sp, args)[2]
                     
-                    if objfunc == 'root':
-                        return self.parse(0, line, f, sp, args)[2] ** (1 / self.parse(1, line, f, sp, args)[2])
+                    if objfunc == 'sqrt':
+                        return math.sqrt(self.parse(0, line, f, sp, args)[2])
                     
                     if objfunc == 'mod':
                         return self.parse(0, line, f, sp, args)[2] % self.parse(1, line, f, sp, args)[2]
@@ -1774,8 +1761,6 @@ class Interpreter:
                     if objfunc == 'tan':
                         return math.tan(self.parse(0, line, f, sp, args)[2])
                     
-                    if objfunc == 'asin':
-                        return math.asin(self.parse(0, line, f, sp, args)[2])
                     return '<msnint2 class>'
                     
                 # gets the type of the first argument passed
@@ -1986,27 +1971,34 @@ class Interpreter:
                                 strenv += "" + str(arg) + ", "
                             else:
                                 strenv += "" + str(arg)
-                        strenv += ")\\n"
+                        # add body line count
+                        strenv += ") : " + str(len(Method.body)) + " inst\\n"
                         
                     # printing macros
-                    strenv += "\\nmacros:\\n"
-                    for macro in macros:
-                        strenv += "\\t" + str(macro) + ": " + str(macros[macro]) + "\\n"
+                    strenv += "\\nmacros:\\n\\t"
                     
-                    # printing postmacros
-                    strenv += "\\npostmacros:\\n"
-                    for postmacro in postmacros:
-                        strenv += "\\t" + str(postmacro) + ": " + str(postmacros[postmacro]) + "\\n"                        
+                    # adding regular macros
+                    if len(macros) > 0:
+                        strenv += "premacros:\\n\\t\\t"
+                        for macro in macros:
+                            strenv += macro + "\\n\\t\\t"
+                    
+                    if len(postmacros) > 0:
+                        strenv += "\\n\\tpostmacros:\\n\\t\\t"
+                        for macro in postmacros:
+                            strenv += macro + "\\n\\t\\t"
+                    
+                    if len(syntax) > 0: 
+                        strenv += "\\n\\tsyntax:\\n\\t\\t"
+                        for macro in syntax:
+                            strenv += macro + "\\n\\t\\t"
 
-                    # printing syntax
-                    strenv += "\\nsyntax:\\n"
-                    for syn in syntax:
-                        strenv += "\\t" + str(syn) + ": " + str(syntax[syn]) + "\\n"
+                    if len(enclosed) > 0:
+                        strenv += "\\n\\tenclosedsyntax:\\n\\t\\t"
+                        for macro in enclosed:
+                            strenv += macro + "\\n\\t\\t"
                         
-                    # printing enclosing syntax
-                    strenv += "\\nenclosing syntax:\\n"
-                    for syn in enclosed:
-                        strenv += "\\t" + str(syn) + ": " + str(enclosed[syn]) + "\\n"
+                    
                         
                         
 

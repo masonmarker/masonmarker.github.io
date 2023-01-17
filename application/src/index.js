@@ -25,6 +25,7 @@ import Apis from './msn2/docs/apis';
 import Redirection from './msn2/docs/redirection';
 import Macros from './msn2/docs/macros';
 import Examples from './msn2/docs/examples';
+import Systemclasses from './msn2/docs/systemclasses';
 
 const Wrapper = ({children}) => {
     const location = useLocation();
@@ -46,7 +47,7 @@ root.render(
               <Route path="/msn2docs" element={<Msn2docs/>} />
               <Route path="/msn2basics" element={<Basics/>} />
               <Route path="/msn2systemcalls" element={<Systemcalls/>} />
-
+              <Route path="/msn2systemclasses" element={<Systemclasses/>} />
 
 
 

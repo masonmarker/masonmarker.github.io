@@ -5,7 +5,6 @@ import './msn2.css'
 import {Link} from 'react-router-dom'
 import { Fade } from "@chakra-ui/react"
 
-
 function Msn2docs() {
     return (
         <div className='msn2docs-div'>
@@ -40,7 +39,6 @@ function Title(props) {
                 <FadeInSection>
                     <Link to={props.next} className='msn2-big-title' style={{color: 'white', margin:0, marginTop: '4.5vh', fontSize: '2rem', textDecoration: 'none'}}>Next</Link>
                 </FadeInSection>
-
             </div>
         </div>
     )
@@ -48,7 +46,7 @@ function Title(props) {
 
 function Section(props) {
     return (
-        <div style={{marginBottom: '2rem'}}>
+        <div id={props.id} style={{marginBottom: '2rem'}}>
             <h1 className="msn2-ul" style={{fontSize: '2rem', marginLeft: '10vw', marginRight: '10vw'}}><i>{props.title}</i></h1>
             <p className='msn2-ul' style={{fontSize: '1rem', marginLeft: '10vw', marginRight: '10vw'}}>{props.subtitle}
             </p>
@@ -65,6 +63,7 @@ function Directory() {
             <div className='msn2-doc-buttons-div'>
                 <Link to="/msn2basics" className='msn2-big-title' style={{color: 'white', margin:'0 auto', marginTop: '4.5vh' , fontSize: '2rem', textDecoration: 'none'}}>Basics</Link>
                 <Link to="/msn2systemcalls" className='msn2-big-title' style={{color: 'white', margin:'0 auto', marginTop: '4.5vh', fontSize: '2rem', textDecoration: 'none'}}>System Calls</Link>
+                <Link to="/msn2systemclasses" className='msn2-big-title' style={{color: 'white', margin:'0 auto', marginTop: '4.5vh', fontSize: '2rem', textDecoration: 'none'}}>System Classes</Link>
                 <Link to="/msn2threads" className='msn2-big-title' style={{color: 'white', margin:'0 auto', marginTop: '4.5vh', fontSize: '2rem', textDecoration: 'none'}}>Threads</Link>
                 <Link to="/msn2apis" className='msn2-big-title' style={{color: 'white', margin:'0 auto', marginTop: '4.5vh' , fontSize: '2rem', textDecoration: 'none'}}>APIs</Link>
                 <Link to="/msn2redirection" className='msn2-big-title' style={{color: 'white', margin:'0 auto', marginTop: '4.5vh' , fontSize: '2rem', textDecoration: 'none'}}>Redirection</Link>

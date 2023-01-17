@@ -44,29 +44,18 @@ function Systemcalls() {
         }}>
 
 
-            <Title title='System Calls' subtitle='Tools for you!' subtitle2='Difficulty: Medium' back='/msn2docs' next='/msn2threads'/>
+            <Title title='System Calls' subtitle='Tools for you!' subtitle2='Difficulty: Medium' back='/msn2docs' next='/msn2systemclasses'/>
             <div id='scrolltotop'/>
             <Section title='Introduction' subtitle={[
-                "System calls, as well as object methods make up the majority of the computation in ", <i>MSN2</i>, ".", <br />,
+                "System calls, as well as system classes and object methods make up the majority of the computation in ", <i>MSN2</i>, ".", <br />,
                 "They are the tools that you use to manipulate data and perform actions.", <br />,
                 "System calls are the functions that are built into the ", <i>MSN2</i>, " base language.", <br />,
                 "This means that they are the functions that you can use without importing any modules.", <br />, <br />,
-                "Object methods are the functions that are built into the ", <i>MSN2</i>, " base language.", <br />,
-                "Objects methods are attached to either a specific type of object, or all objects (a global method).", <br />, <br />,
-                "You will see different method types listed in the documentation, here are some definitions: ", <br />,
-                <ul>
-                    <li><b>System Call</b> - A function that is built into the base language</li>
-                    <li><b>Global Method</b> - A method attached to all types</li>
-                    <li><b>Number Method</b> - A method attached to all numbers (int and float)</li>
-                    <li><b>String Method</b> - A method attached to a str</li>
-                    <li><b>List Method</b> - A method attached to a list</li>
-                    <li><b>Object Method</b> - A method attached to an object or dict</li>
-                </ul>, <br />,
-                "Also note that the documentation utilizes the type of ", <b>block</b>, " as a parameter type.", <br />,
+                "Note that the documentation utilizes the type of ", <b>block</b>, " as a parameter type.", <br />,
                 "This means that the parameter will be used as a function that is invoked when the method conditions are met.", <br />, <br />, 
 
-                "This is a complete list of tools that are built into the ", <i>MSN2</i>, " base language.", <br />, <br />,
-                "Use the search bar below to search for a specific method.", <br />, <br />,
+                "This is a complete list of system calls that are built into the ", <i>MSN2</i>, " base language.", <br />, <br />,
+                "Use the dropdown below to search for a specific method.", <br />, <br />,
                 <Drop options={as_string_array}/>, <br />,
             ]}/>
 
@@ -100,6 +89,7 @@ function ScrollerToSearch() {
             zIndex: '1000',
             fontSize: '1.5rem',
             fontFamily: 'Segoe UI',
+            userSelect: 'none',
         }} onClick={scrollToTop}>
             
             Scroll to top
@@ -180,7 +170,7 @@ function SystemCall(props) {
 
 
     return (
-        <div id={props.name}>
+        <div className="msn2-syscall"id={props.name}>
             <Section title={<h1 Style="font-size: 4rem">{props.name} ({argstring}) -> {props.return}</h1>} subtitle={[<h2 Style="font-size: 2rem">{props.type}</h2>]}  subtitle2={props.description}/>
             {props.example}
         </div>
@@ -191,10 +181,9 @@ function SystemCall(props) {
 // gets all React system call components
 function SystemCalls() {
     return (
-        <div style={{
-            width: '100%'
+        <div className="msn2-things-display" style={{
         }}>
-            <SystemCall style={{}} type="System Call" name='print' args={["any", "..."]} return="str" description={["Prints any amount of strings to the console.", <br />,
+            <SystemCall style={{}} type="System Call" name='print' args={["any", "..."]} return="list" description={["Prints any amount of strings to the console.", <br />,
             "Returns the last string printed.", <br />, <br />,
             "It is important to note that there is a different between ", <i>MSN2</i>, "'s print() and Python's print().", <br />,
             "as both are able to be utilized.", <br />, <br />,
@@ -1094,6 +1083,18 @@ class('person', =>(@name=,@age=))
 # creating an instance of the class
 @ p = person('joe', 20)
 p.print()
+
+# getting attributes of the instance
+assert(equals(p.name(), 'joe'))
+assert(equals(p.age(), 20))
+
+# setting attributes of the instance
+p.name('bob')
+p.age(21)
+
+# getting attributes of the instance
+assert(equals(p.name(), 'bob'))
+assert(equals(p.age(), 21))
                 `]} />
 
             ]} />
@@ -1729,5 +1730,5 @@ obj.print()
 }
 
 
-
+export {Drop, dropChanged, ScrollerToSearch}
 export default Systemcalls
