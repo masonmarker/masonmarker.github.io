@@ -13,14 +13,17 @@ window.onload = prepare()
 async function prepare() {
 
     var out = document.getElementById('out')
-    out.value = "Preparing Python handler\n\nDo not execute..."
+
+    if (out)
+        out.value = "Preparing Python handler\n\nDo not execute..."    
     pyodide = await window.loadPyodide({
         indexURL : "https://cdn.jsdelivr.net/pyodide/v0.21.0/full/"
     });
 
     // import MSNScript source code
     await pyodide.runPython(SourceCode)
-    out.value = 'Ready for execution'
+    if (out)
+        out.value = 'Ready for execution'
 }
 
 const Msnscript = () => {

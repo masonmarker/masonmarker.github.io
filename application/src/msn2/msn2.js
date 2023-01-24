@@ -121,7 +121,7 @@ function Info() {
 function Card(props) {
     return (
         <div className='msn2-card'>
-            <h className='msn2-small-non-typing-title'>{props.text}</h>
+            <h1 className='msn2-small-non-typing-title'>{props.text}</h1>
             {props.children}
         </div>
     )
@@ -131,7 +131,7 @@ function Card(props) {
 function BigTitle() {
     return (
         <div className='msn2-big-title-div'>
-            <h className='msn2-big-title'>MSNScript2</h>
+            <h1 className='msn2-big-title'>MSNScript2</h1>
             <p className='msn2-big-title' style={{color: 'white', marginTop: 0, marginBottom: '10vh', marginLeft:"50vw" , fontSize: '2vw'}}>12/28/2022</p>
         </div>
     )

@@ -13,10 +13,13 @@ import {
   } from "react-router-dom";
 
 
+// pages
 import Resume from './resume';
 import GitHub from './github';
 import Msnscript from './msnscript/Msnscript';
+import Donations from './Donations';
 
+// msn2 pages
 import Msn2docs from './msn2/msn2docs';
 import Basics from './msn2/docs/basics';
 import Systemcalls from './msn2/docs/systemcalls';
@@ -27,6 +30,7 @@ import Macros from './msn2/docs/macros';
 import Examples from './msn2/docs/examples';
 import Systemclasses from './msn2/docs/systemclasses';
 
+// for fading in
 const Wrapper = ({children}) => {
     const location = useLocation();
     useLayoutEffect(() => {
@@ -48,7 +52,7 @@ root.render(
               <Route path="/msn2basics" element={<Basics/>} />
               <Route path="/msn2systemcalls" element={<Systemcalls/>} />
               <Route path="/msn2systemclasses" element={<Systemclasses/>} />
-
+              <Route path="/donations" element={<Donations/>} />
 
 
               <Route path="/msn2examples" element={<Examples/>} />

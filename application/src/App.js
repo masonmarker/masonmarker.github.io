@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Outlet, Link, Navigate } from 'react-router-dom';
 import Resume from './resume';
 import { useNavigate } from "react-router-dom";
+import { color } from '@chakra-ui/react';
 
 function App() {
   document.body.style = 'background: white;';
@@ -51,6 +52,10 @@ function App() {
       <Languages/>
 
       <FadeInSection>
+      <Donate/>
+      </FadeInSection>
+
+      <FadeInSection>
       <ContactMe/>
       </FadeInSection>
     
@@ -62,8 +67,8 @@ function App() {
 const NavBar = () => {
   return (
     <div className="navbar">
-      <h4 className="navbar-title" Style="margin-bottom: 0; "><i>Hi! Most people call me</i></h4>
-      <h1 className="name-title" Style="margin-top: 0">— Mason Marker —</h1>
+      <h4 className="navbar-title" style={{marginBottom: 0}}><i>Hi! Most people call me</i></h4>
+      <h1 className="name-title" style={{marginTop: 0}}>— Mason Marker —</h1>
 
     </div>
   );
@@ -73,7 +78,7 @@ const About = () => {
   return (
     <div className="about-div">
       <h1>Who am I?</h1>
-      <p Style="font-weight: bold;">I'm a passionate and driven junior computer science major at James Madison University.</p>
+      <p style={{fontWeight: "bold"}}>I'm a passionate and driven junior computer science major at James Madison University.</p>
       <p>In entering my senior year, my yearning for knowledge continues to grow. I believe that while understanding new logical concepts in math and computer science, one can find this newly obtained logic applicable to countless ideas outside of the areas in which they have been learned.</p>
       <p><i>Computer Science is a gateway to a better ability to apply logic to non-logical concepts.</i></p>
     </div>
@@ -95,10 +100,11 @@ const Education = () => {
         <img alt="JMU" onClick={jmuClicked}className="education-img" src="https://gray-wvir-prod.cdn.arcpublishing.com/resizer/LP2hwjsI6I17ybSZV5UAqVKd2ic=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/AL5AMJZCXBBPNOZQ7DRYAGGAYI.png"></img>
       </div>
       <div className="education-desc">
-        <h2 className="no-margin" Style="color: var(--darkpurple)">James Madison University</h2>
+        <h3 className="no-margin" style={{color: "var(--darkpurple)"}}>James Madison University</h3>
+
         <h3 className="no-margin">Student - Senior</h3>
-        <h5 className="no-margin" Style="color: var(--gray)">Computer Science Major</h5> 
-        <h5 className="no-margin" Style="color: var(--gray)">2019 - Present</h5> 
+        <h5 className="no-margin" style={{color: "var(--gray)"}}>Computer Science Major</h5> 
+        <h5 className="no-margin" style={{color: "var(--gray)"}}>2019 - Present</h5> 
         <p className="education-p">In high school, I was positive I wanted to attend university with hopes for success in the medical field.</p>
         <p className="education-p">My first semester in the biology curriculum was an experience, however did not satisfy me academically nor mentally.</p>
         <p className="education-p">While my thirst for knowledge was high, I needed to find a major that would prove beneficial to my future, 
@@ -111,7 +117,6 @@ const Education = () => {
         As a kid, I would always assist my brothers, parents, and grandparents with issues they were having with any devices they owned. This made me 
         question why I hadn't dug deeper into the intricacies of computer science earlier!
          </p>
-
       </div>
     </div>
   )
@@ -231,7 +236,7 @@ const GitHub = () => {
         </ul>
       </h5>
         <h3 className="download-button" Style="color: white; width: 5rem" onClick={gitClicked}>Visit</h3>
-        <Link to="/github" className="download-button" Style="color: white; font-weight: bold; width: 15rem; padding: 1rem">I don't want to read anymore, just show me!</Link>
+        <Link to="/github" className="download-button" style={{color: "white", fontWeight: "bold", width: "15rem", padding: "1rem"}}>I don't want to read anymore, just show me!</Link>
       </div>
     </div>
   )
@@ -429,7 +434,6 @@ const ContactMe = () => {
         <Button name="LinkedIn" loc="https://www.linkedin.com/in/masonmarker/"/>
         <Button name="GitHub" loc="https://github.com/masonmarker/TheMsnProject"/>
         <Button name="Instagram" loc="https://www.instagram.com/mxs.n/"/>
-
       </div>
     </div>
   )
@@ -449,6 +453,18 @@ const MyResume = () => {
       <h1 className="increased-margin">Want to know more about me?</h1>
       <h4 className="increased-margin"><i>Take a peek at my skillsets, hobbies, interests, and more on my résumé!</i></h4>
       <Link className="download-button" to="/resume" Style="margin: 0 auto; margin-bottom: 1rem; color: white; text-decoration: none">View my Résumé</Link>
+    </div>
+  )
+}
+
+const Donate = () => {
+  return (
+    <div className="my-ventures" style={{width: '75%', marginBottom: '4rem'}}>
+      <div style={{marginLeft: '1rem', marginRight: '1rem'}}>
+        <h4><i>Want to support me? Feel free to donate to my PayPal!</i></h4>
+        <h5><i>All donations are reinvested into my projects</i></h5>
+        <Link className="download-button" to="/donations" Style="margin: 0 auto; margin-bottom: 1rem; color: white; text-decoration: none">Donate</Link>
+      </div>
     </div>
   )
 }
