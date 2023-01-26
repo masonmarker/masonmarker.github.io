@@ -3,12 +3,16 @@
 
 
 import Paypal from './components/Paypal'
+import Card from './components/Card'
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const Donations = () => {
     return (
-        <div>
-            <Paypal/>
-        </div>
+        <PayPalScriptProvider>
+            <Card title="Donate" description="subscriptions are tuff">
+                
+            </Card>
+        </PayPalScriptProvider>
     )    
 }
 

@@ -1,17 +1,15 @@
 // used for payments
 // offers methods of payment
 
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-
+import { PayPalButtons } from "@paypal/react-paypal-js";
 
 const Paypal = () => {
-    return <PayPalScriptProvider options={{ "client-id": "test" }}>
-            <PayPalButtons style={{
-                layout: "vertical",
-                width: "50%"
-
-            }} />
-           </PayPalScriptProvider>
+    return <div>
+                <PayPalButtons style={{
+                    layout: "vertical",
+                    width: "50%"
+                }} />
+            </div>
 }
 
 export default Paypal
