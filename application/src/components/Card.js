@@ -32,7 +32,7 @@ const Card = (props) => {
             setShowPay(!showPay)
             
             // change button text
-            document.getElementById(btnID).innerHTML = showPay ? "Purchase" : "Cancel"
+            document.getElementById(btnID).innerHTML = showPay ? "$1" : "$1: Cancel"
         }}>
 
 
@@ -41,7 +41,7 @@ const Card = (props) => {
 
             {props.children}
 
-            <Button buttonid={btnID} text="Purchase"/>
+            <Button buttonid={btnID} text="$1"/>
             {showPay ? <Paypal/> : null}
 
 

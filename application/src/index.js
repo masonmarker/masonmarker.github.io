@@ -31,6 +31,9 @@ import Macros from './msn2/docs/macros';
 import Examples from './msn2/docs/examples';
 import Systemclasses from './msn2/docs/systemclasses';
 
+// testing Chakra
+import ChakraApp from './chakra/App';
+
 // for fading in
 const Wrapper = ({children}) => {
     const location = useLocation();
@@ -55,6 +58,7 @@ root.render(
               <Route path="/msn2systemclasses" element={<Systemclasses/>} />
               <Route path="/donations" element={<Donations/>} />
 
+              <Route path="/chakra" element={<ChakraApp/>} />
 
               <Route path="/msn2examples" element={<Examples/>} />
           </Routes>

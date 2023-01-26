@@ -9,7 +9,7 @@ const StyledCard = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    
 
 
     background-color: #f2f2f2;
