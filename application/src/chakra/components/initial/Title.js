@@ -21,6 +21,8 @@ const TitleStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+
     width: 100%;
     height: 100vh;
     background: linear-gradient(
@@ -38,7 +40,7 @@ const Title = () => {
     return (
         <TitleStyled>
             <Nav/>
-            <Image src="portrait.JPG" boxSize="15rem" borderRadius="50%" justifySelf="center"/>   
+            <Image src="portrait.JPG" boxSize="20rem" borderRadius="50%" />   
         </TitleStyled>
     )
 }
