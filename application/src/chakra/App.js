@@ -9,8 +9,8 @@ import { ChakraProvider } from "@chakra-ui/react"
 // chakra components
 import { Box, Text } from "@chakra-ui/react"
 
-
-
+// import fonts
+import fonts from './styles/fonts'
 
 // for styled components
 import styled from 'styled-components'
@@ -24,7 +24,9 @@ import Title from './components/initial/Title'
 const App = () => {
     return (
         <ChakraProvider>
-            <Title />
+            <div style={{fontFamily: fonts['heading']}}>
+                <Title />
+            </div>
         </ChakraProvider>
     )
 }

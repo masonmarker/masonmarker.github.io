@@ -2,7 +2,8 @@
 
 
 const colors = {
-    "purple": "#9370DB"
+    "purple": "#9370DB",
+    "gray": "#A9A9A9",
 }
 
 
