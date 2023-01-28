@@ -33,6 +33,10 @@ import Systemclasses from './msn2/docs/systemclasses';
 
 // testing Chakra
 import ChakraApp from './chakra/App';
+import { ColorModeScript } from "@chakra-ui/react" 
+
+// initial color mode
+import theme from './theme'
 
 // for fading in
 const Wrapper = ({children}) => {
@@ -45,25 +49,28 @@ const Wrapper = ({children}) => {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <HashRouter>
-        <Wrapper>
-          <Routes>
-              <Route path="/" element={<App/>}/>
-              <Route path="/resume" element={<Resume/>} />
-              <Route path="/github" element={<GitHub/>} />
-              <Route path="/msnscript1" element={<Msnscript/>} />
-              <Route path="/msn2docs" element={<Msn2docs/>} />
-              <Route path="/msn2basics" element={<Basics/>} />
-              <Route path="/msn2systemcalls" element={<Systemcalls/>} />
-              <Route path="/msn2systemclasses" element={<Systemclasses/>} />
-              <Route path="/donations" element={<Donations/>} />
+  <>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+      <HashRouter>
+          <Wrapper>
+            <Routes>
+                <Route path="/" element={<App/>}/>
+                <Route path="/resume" element={<Resume/>} />
+                <Route path="/github" element={<GitHub/>} />
+                <Route path="/msnscript1" element={<Msnscript/>} />
+                <Route path="/msn2docs" element={<Msn2docs/>} />
+                <Route path="/msn2basics" element={<Basics/>} />
+                <Route path="/msn2systemcalls" element={<Systemcalls/>} />
+                <Route path="/msn2systemclasses" element={<Systemclasses/>} />
+                <Route path="/donations" element={<Donations/>} />
 
-              <Route path="/chakra" element={<ChakraApp/>} />
+                <Route path="/chakra" element={<ChakraApp/>} />
 
-              <Route path="/msn2examples" element={<Examples/>} />
-          </Routes>
-        </Wrapper>
-    </HashRouter>
+                <Route path="/msn2examples" element={<Examples/>} />
+            </Routes>
+          </Wrapper>
+      </HashRouter>
+    </>
 );
 
  

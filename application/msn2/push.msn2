@@ -1,0 +1,7 @@
+# pushes this repo to GitHub
+
+
+console('git pull')
+console('git add --all')
+console('git commit -m "Personal Website Update"')
+console('git push')

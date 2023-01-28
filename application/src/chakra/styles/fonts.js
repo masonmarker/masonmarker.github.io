@@ -1,7 +1,7 @@
 // contains app specific fonts
 
 const fonts = {
-    heading: 'Gotham, sans-serif',
+    heading: 'font-family: "Xanh Mono", monospace;',
 }
 
 

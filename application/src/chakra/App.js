@@ -15,21 +15,27 @@ import fonts from './styles/fonts'
 // for styled components
 import styled from 'styled-components'
 
+// common
+import colors from './styles/colors'
 
 // components
 import Title from './components/initial/Title'
 
+import { useColorMode, useColorModeValue } from '@chakra-ui/react'
 
 
 const App = () => {
+
+    const { colorMode } = useColorMode()
+    const bg = useColorModeValue('white', colors.gray)
+
     return (
         <ChakraProvider>
-            <div style={{fontFamily: fonts['heading']}}>
-                <Title />
-            </div>
+            <Title mode={bg}/>
         </ChakraProvider>
     )
 }
+
 
 
 export default App
