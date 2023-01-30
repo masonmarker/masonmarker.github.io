@@ -97,27 +97,27 @@ const Title = (props) => {
             </Fade>
             <Box className="circle">
 
-                <Fade ref={ref} in={inView}>
+                <ScaleFade ref={ref} in={inView}>
                     <Image className="image" boxSize="20rem" src="portrait.JPG"/>  
-                </Fade>
+                </ScaleFade>
 
 
                 <Fade ref={ref} in={inView}>
-                    <Bubble text="Projects" top="35%" left="25%" width="18rem" 
+                    <Bubble text="Projects" top="35%" left="25%" width="18rem" textcolor="darkred"
                         desc={["My larger ", <strong>programming projects</strong>]} >
                         <ArrowForwardIcon />
                     </Bubble>
                 </Fade>
 
                 <Fade ref={ref} in={inView}>
-                    <Bubble text="Knowledge" top="65%" left="25%" width="16rem"
+                    <Bubble text="Knowledge" top="65%" left="25%" width="16rem" textcolor="darkblue"
                         desc={[<strong>Languages, courses </strong>, "and", <strong> more!</strong>]}>
                         <QuestionOutlineIcon />
                     </Bubble>
                 </Fade>
 
                 <Fade ref={ref} in={inView}>
-                    <Bubble text="GitHub" top="35%" left="75%" width="13rem"
+                    <Bubble text="GitHub" top="35%" left="75%" width="13rem" textcolor="gray.500"
                         desc={["Project ", <strong>source codes</strong>]}>
                         <ExternalLinkIcon />
                     </Bubble>
@@ -129,9 +129,22 @@ const Title = (props) => {
                     </Bubble>
                 </Fade>
             </Box>
-            <Box className="title1">
-                    <Text fontFamily="heading" fontSize="xs" fontWeight="bold" color="black" marginTop="5rem">Hi, I'm Mason</Text>
-            </Box>
+            <ScaleFade ref={ref} in={inView} className="title1">
+                <Box className="title1">
+                        <Text fontFamily="heading" 
+                            fontSize="xs" 
+                            fontWeight="bold" 
+                            color={colors.gray}
+                            marginTop="5rem">Hi, I'm Mason!</Text>
+                        <Text>
+                            I'm a <strong style={{color: "maroon"}}>robotics processing engineer</strong> and 
+                            <strong style={{color: "darkgreen"}}> software developer</strong>
+                        </Text>
+                        <Text>
+                            I'm also a <strong>student</strong> at <strong style={{color: "purple"}}>James Madison University</strong>
+                        </Text>
+                </Box>
+            </ScaleFade>
         </TitleStyled>
     )
 }

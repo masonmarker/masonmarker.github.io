@@ -69,7 +69,7 @@ const Bubble = (props) => {
         <BubbleStyled {...props}>
             {props.children}
             <Box className="info">
-                <Text variant="bubble">{props.text}</Text>
+                <Text variant="bubble" color={props.textcolor}>{props.text}</Text>
                 <Text variant="bubble" className="desc">{props.desc}</Text>
             </Box>
         </BubbleStyled>
