@@ -39,8 +39,8 @@ const Bubble = (props) => {
         transform: translate(-50%, -50%);
         z-index: 1;
         ${css.boxShadow}
-        
         font-weight: bold;
+        font-size: 1.6rem;
 
         transition: all 0.2s ease-in-out;
 
@@ -49,12 +49,29 @@ const Bubble = (props) => {
             background-color: ${colors.lightGray};
             border-radius: 1rem;
         }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .desc {
+            font-size: 0.8rem;
+            font-weight: normal;
+            color: ${colors.gray};
+        }
 `
 
     return (
         <BubbleStyled {...props}>
             {props.children}
-            <Text variant="bubble">{props.text}</Text>
+            <Box className="info">
+                <Text variant="bubble">{props.text}</Text>
+                <Text variant="bubble" className="desc">{props.desc}</Text>
+            </Box>
         </BubbleStyled>
     )
 }

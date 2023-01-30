@@ -21,17 +21,13 @@ import colors from './styles/colors'
 // components
 import Title from './components/initial/Title'
 
-import { useColorMode, useColorModeValue } from '@chakra-ui/react'
-
 
 const App = () => {
 
-    const { colorMode } = useColorMode()
-    const bg = useColorModeValue('white', colors.gray)
 
     return (
         <ChakraProvider>
-            <Title mode={bg}/>
+            <Title/>
         </ChakraProvider>
     )
 }
