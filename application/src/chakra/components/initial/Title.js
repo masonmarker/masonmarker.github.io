@@ -52,6 +52,7 @@ const TitleStyled = styled.div`
         border-radius: 50%;
         user-select: none;
         position: relative;
+        margin-top: 10rem;
     }
 
     /* center the element on this page */
@@ -70,7 +71,6 @@ const TitleStyled = styled.div`
         align-items: center;
         justify-content: center;
         width: 100%;
-
     }
 
     user-select: none;
@@ -87,9 +87,6 @@ const Title = (props) => {
     })
 
     // hidden element
-    
-
-
     return (
         <TitleStyled>
             <Fade ref={ref} in={inView} className="title-fade">
@@ -98,7 +95,7 @@ const Title = (props) => {
             <Box className="circle">
 
                 <ScaleFade ref={ref} in={inView}>
-                    <Image className="image" boxSize="20rem" src="portrait.JPG"/>  
+                    <Image className="image" boxSize="20rem" src="portrait.JPG"/>
                 </ScaleFade>
 
 

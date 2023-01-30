@@ -40,6 +40,9 @@ const AboutStyled = styled.div`
         ${css.boxShadow}
         user-select: none;
         position: relative;
+        z-index: 1;
+        margin-left: 10%;
+        margin-bottom: 30vh;
     }
 
 `
@@ -62,6 +65,7 @@ const About = () => {
                     <Image className="image" src="https://www.jmu.edu/_images/default/JMUopengraphimage.jpg" alt="JMU"
                         width="50%" height="50%"
                      left="-15%" />
+                    <Image src="https://www.jmu.edu/_images/about/236129-east-campus-spring-stock-1025-820x273.jpg"></Image>
                 </Box>
             </Fade>
 
