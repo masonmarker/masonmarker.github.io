@@ -20,7 +20,7 @@ import colors from './styles/colors'
 
 // components
 import Title from './components/initial/Title'
-
+import About from './components/initial/About'
 
 const App = () => {
 
@@ -28,6 +28,7 @@ const App = () => {
     return (
         <ChakraProvider>
             <Title/>
+            <About/>
         </ChakraProvider>
     )
 }

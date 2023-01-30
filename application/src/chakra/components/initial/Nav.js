@@ -32,7 +32,7 @@ const NavStyled = styled.div`
     justify-content: space-between;
     align-items: center;
     
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 90%;
     padding: 0.5rem;
