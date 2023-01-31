@@ -1,5 +1,7 @@
 // contains all information about me
 
+// my components
+import EduDrop from './EduDrop'
 
 // import styled components
 import styled from 'styled-components'
@@ -39,17 +41,39 @@ const AboutStyled = styled.div`
         ${css.borderRadius}
         ${css.boxShadow}
         user-select: none;
-        position: relative;
-        z-index: 1;
-        margin-left: 10%;
-        margin-bottom: 30vh;
     }
+
+    .about-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .header {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .subheader {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: ${colors.purple};
+    }
+
+
 
 `
 
 
 // about component
 const About = () => {
+
+    // jmu images
+    const url1 = "https://www.jmu.edu/_images/default/JMUopengraphimage.jpg"
+    const url2 = "https://www.jmu.edu/_images/about/236129-east-campus-spring-stock-1025-820x273.jpg"
 
     // intersection observer
     const [ref, inView] = useInView({
@@ -60,12 +84,24 @@ const About = () => {
     // use at least this link: https://www.jmu.edu/_images/default/JMUopengraphimage.jpg
     return (
         <AboutStyled>
-            <Fade in={inView}>
-                <Box ref={ref}>
-                    <Image className="image" src="https://www.jmu.edu/_images/default/JMUopengraphimage.jpg" alt="JMU"
-                        width="50%" height="50%"
-                     left="-15%" />
-                    <Image src="https://www.jmu.edu/_images/about/236129-east-campus-spring-stock-1025-820x273.jpg"></Image>
+            <Fade in={inView} ref={ref}>
+                <Box className="about-box">
+                    <Box>
+                        <Image  className="image"
+                                src={url1} 
+                                alt="JMU"
+                                width="40rem" 
+                                zIndex="1"                              
+                                />
+                        <br/>
+                        <Image className='image'
+                                src={url2}
+                                alt="JMU"                                
+                                />
+                    </Box>
+                    <Box className="edu-desc">
+                            <EduDrop />               
+                    </Box>
                 </Box>
             </Fade>
 
