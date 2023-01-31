@@ -78,13 +78,9 @@ const Nav = () => {
             </div>
             <Tabs className="tabs" variant="unstyled" colorScheme="purple"> 
                 <TabList >
-                    <Tab text="About Me" onClick={() => {
-                        // scroll to element with id edudrop
-                        document.getElementById('edudrop').scrollIntoView({behavior: 'smooth'})
-                        console.log('awefawef')
-                    }}/>
                     <Tab text="Projects" to="/github"/>
                     <Tab text="Services" to="/services"/>
+                    <Divider/>
                     <Tab text="Donate" to="/donations"/>   
                 </TabList>
             </Tabs>

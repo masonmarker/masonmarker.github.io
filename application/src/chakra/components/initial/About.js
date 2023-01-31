@@ -75,10 +75,6 @@ const AboutStyled = styled.div`
 // about component
 const About = () => {
 
-    // jmu images
-    const url1 = "https://www.jmu.edu/_images/default/JMUopengraphimage.jpg"
-    const url2 = "https://www.jmu.edu/_images/about/236129-east-campus-spring-stock-1025-820x273.jpg"
-
     // intersection observer
     const [ref, inView] = useInView({
         threshold: 0,
