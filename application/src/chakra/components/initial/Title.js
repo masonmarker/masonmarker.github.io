@@ -76,6 +76,59 @@ const TitleStyled = styled.div`
         width: 100%;
     }
 
+
+    /* for mobile bubbles*/
+    .topleft {}
+    .topright {}
+    .bottomleft {}
+    .bottomright {}
+
+    @media (max-width: 1200px) {
+        .topleft {
+            top: auto;
+            left: auto;
+            position: static;
+            margin: 0 auto;
+        }
+        .topright {
+            top: auto;
+            left: auto;
+            position: static;
+            margin: 0 auto;
+        }
+        .bottomleft {
+            top: auto;
+            left: auto;
+            position: static;
+            margin: 0 auto;
+        }
+        .bottomright {
+            top: auto;
+            left: auto; 
+            position: static;
+            margin: 0 auto;
+        }
+
+        .circle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: green;
+            width: 100%;
+            height: fit-content;
+        }
+
+        
+    }
+
+
+
+    /* --------- */
+
+
+
+
     user-select: none;
     transition: all 0.2s ease-in-out;  
 
@@ -103,14 +156,14 @@ const Title = (props) => {
 
 
                 <Fade ref={ref} in={inView}>
-                    <Bubble to="/github" text="Projects" top="15%" left="25%" width="18rem" textcolor="darkred"
+                    <Bubble to="/github" text="Projects" top="15%" left="25%" width="18rem" textcolor="darkred" className="topleft"
                         desc={["My larger ", <strong>programming projects</strong>]} >
                         <ArrowForwardIcon />
                     </Bubble>
                 </Fade>
 
                 <Fade ref={ref} in={inView}>
-                    <Bubble text="Knowledge" top="30%" left="25%" width="16rem" textcolor="darkblue"
+                    <Bubble text="Knowledge" top="30%" left="25%" width="16rem" textcolor="darkblue" className="bottomleft"
                         onClick={() => {
                             // scroll to element with id edudrop
                             const element = document.getElementById("edudrop")
@@ -122,14 +175,14 @@ const Title = (props) => {
                 </Fade>
 
                 <Fade ref={ref} in={inView}>
-                    <Bubble text="GitHub" top="15%" left="75%" width="13rem" textcolor="gray.500"
+                    <Bubble text="GitHub" top="15%" left="75%" width="13rem" textcolor="gray.500" className="topright"
                         onClick={() => window.open(links.github, "_blank")}
                         desc={["Project ", <strong>source codes</strong>]}>
                         <ExternalLinkIcon />
                     </Bubble>
                 </Fade>
                 <Fade ref={ref} in={inView}>
-                    <Bubble text="Contact" top="30%" left="75%" width="13rem"
+                    <Bubble text="Contact" top="30%" left="75%" width="13rem" className="bottomright"
                         desc={[<strong>Email </strong>, "and ", <strong>Inquiries</strong>]}>
                         <EmailIcon />
                     </Bubble>
