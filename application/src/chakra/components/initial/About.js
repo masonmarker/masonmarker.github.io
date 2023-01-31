@@ -1,7 +1,7 @@
 // contains all information about me
 
 // my components
-import EduDrop from './EduDrop'
+import SmallNav from './SmallNav'
 
 // import styled components
 import styled from 'styled-components'
@@ -29,9 +29,9 @@ const AboutStyled = styled.div`
     color: black;
 
     background: linear-gradient(
-        10deg,
-        ${colors.gray} 0%,
-        ${colors.gray} 50%,
+        0deg,
+        ${colors.purple} 0%,
+        white 50%,
         white 50%,
         white 100% 
     );
@@ -89,9 +89,7 @@ const About = () => {
     return (
         <AboutStyled>
             <Fade in={inView} ref={ref}>
-                <Box className="edu-desc">
-                    <EduDrop />               
-                </Box>
+                <SmallNav />
             </Fade>
 
         </AboutStyled>

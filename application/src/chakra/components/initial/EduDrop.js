@@ -12,6 +12,17 @@ import {
     Image
   } from '@chakra-ui/react'
 
+// icons
+import {
+    ArrowForwardIcon,
+    QuestionOutlineIcon,
+    InfoIcon,
+    CheckIcon,
+    EditIcon,
+    StarIcon
+} from '@chakra-ui/icons'
+
+
 // common
 import colors from '../../styles/colors'
 import css from '../../styles/css'
@@ -25,19 +36,33 @@ const EduDrop = () => {
 
 
     return (
-        <Accordion allowToggle allowMultiple
+        <Accordion allowToggle
             backgroundColor={colors.gray}
             color="white"
             boxShadow={css.boxShadow}
             transition="all 0.2s ease-in-out"
+            w="11rem"
             _hover={{
                 backgroundColor: colors.purple,
                 borderRadius: "10px",
             }}
-            border={`3px solid ${colors.lightGray}`}
         >
+
             <AccordionItem>
                 <AccordionButton>
+                    <QuestionOutlineIcon marginRight=".7rem"/>
+                    <Box flex="1" textAlign="left">
+                        Me
+                    </Box>
+                    <AccordionIcon />
+
+                </AccordionButton>
+            </AccordionItem>
+
+            <AccordionItem>
+                <AccordionButton>
+
+                    <InfoIcon marginRight=".7rem"/>
                     <Box flex="1" textAlign="left">
                         Education
                     </Box>
@@ -60,6 +85,7 @@ const EduDrop = () => {
 
             <AccordionItem>
                 <AccordionButton>
+                    <CheckIcon marginRight=".7rem"/>
                     <Box flex="1" textAlign="left">
                         Experience
                     </Box>
@@ -68,6 +94,27 @@ const EduDrop = () => {
                 <AccordionPanel pb={4}>
                     <p>Experience</p>
                 </AccordionPanel>
+            </AccordionItem>
+
+            <AccordionItem>
+                <AccordionButton>
+                <EditIcon marginRight=".7rem"/>
+
+                    <Box flex="1" textAlign="left">
+                        Skills
+                    </Box>
+                    <AccordionIcon />
+                </AccordionButton>
+            </AccordionItem>
+
+            <AccordionItem>
+                <AccordionButton>
+                <StarIcon marginRight=".7rem"/>
+                    <Box flex="1" textAlign="left">
+                        Hobbies
+                    </Box>
+                    <AccordionIcon />
+                </AccordionButton>
             </AccordionItem>
 
 
