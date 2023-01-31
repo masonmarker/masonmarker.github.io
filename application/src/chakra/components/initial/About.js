@@ -63,6 +63,10 @@ const AboutStyled = styled.div`
         color: ${colors.purple};
     }
 
+    .edu-desc {
+        margin-left: 3rem;
+    }
+
 
 
 `
@@ -85,23 +89,8 @@ const About = () => {
     return (
         <AboutStyled>
             <Fade in={inView} ref={ref}>
-                <Box className="about-box">
-                    <Box>
-                        <Image  className="image"
-                                src={url1} 
-                                alt="JMU"
-                                width="40rem" 
-                                zIndex="1"                              
-                                />
-                        <br/>
-                        <Image className='image'
-                                src={url2}
-                                alt="JMU"                                
-                                />
-                    </Box>
-                    <Box className="edu-desc">
-                            <EduDrop />               
-                    </Box>
+                <Box className="edu-desc">
+                    <EduDrop />               
                 </Box>
             </Fade>
 
