@@ -7,6 +7,7 @@ import styled from 'styled-components'
 // import chakra components
 import {Box, 
         Text,
+        Link
     } from "@chakra-ui/react"
 
 
@@ -16,13 +17,25 @@ import colors from '../../styles/colors'
 
 
 
+// react routing
+import { Link as ReactLink } from 'react-router-dom'
+
 // Bubble component
 // props: text, distance from center (radius)
 const Bubble = (props) => {
 
     // styled Bubble,
     // props: text, radius
-    const BubbleStyled = styled(Box)`
+    // should be a styled Chakra link as ReactLink
+    const BubbleStyled = styled(Link).attrs({
+        // if asreact, then as: ReactLink is passed in
+        // if not, then as: Link is passed in
+        as: ReactLink,
+        to: props.to,
+        path: props.path,
+        onClick: props.onClick
+    })`
+    
 
         display: flex;
         flex-direction: row;

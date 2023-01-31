@@ -22,6 +22,9 @@ import { Fade, ScaleFade } from '@chakra-ui/react'
 // importing colors
 import colors from '../../styles/colors'
 
+// social links
+import links from '../../styles/links'
+
 // intersection observer
 import { inView, useInView } from 'react-intersection-observer'
 
@@ -100,7 +103,7 @@ const Title = (props) => {
 
 
                 <Fade ref={ref} in={inView}>
-                    <Bubble text="Projects" top="15%" left="25%" width="18rem" textcolor="darkred"
+                    <Bubble to="/github" text="Projects" top="15%" left="25%" width="18rem" textcolor="darkred"
                         desc={["My larger ", <strong>programming projects</strong>]} >
                         <ArrowForwardIcon />
                     </Bubble>
@@ -108,6 +111,11 @@ const Title = (props) => {
 
                 <Fade ref={ref} in={inView}>
                     <Bubble text="Knowledge" top="30%" left="25%" width="16rem" textcolor="darkblue"
+                        onClick={() => {
+                            // scroll to element with id edudrop
+                            const element = document.getElementById("edudrop")
+                            element.scrollIntoView({behavior: "smooth"})
+                        }}
                         desc={[<strong>Languages, courses </strong>, "and", <strong> more!</strong>]}>
                         <QuestionOutlineIcon />
                     </Bubble>
@@ -115,6 +123,7 @@ const Title = (props) => {
 
                 <Fade ref={ref} in={inView}>
                     <Bubble text="GitHub" top="15%" left="75%" width="13rem" textcolor="gray.500"
+                        onClick={() => window.open(links.github, "_blank")}
                         desc={["Project ", <strong>source codes</strong>]}>
                         <ExternalLinkIcon />
                     </Bubble>

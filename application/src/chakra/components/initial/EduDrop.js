@@ -36,90 +36,91 @@ const EduDrop = () => {
 
 
     return (
-        <Accordion allowToggle
-            backgroundColor={colors.gray}
-            color="white"
-            boxShadow={css.boxShadow}
-            transition="all 0.2s ease-in-out"
-            w="11rem"
-            _hover={{
-                backgroundColor: colors.purple,
-                borderRadius: "10px",
-            }}
-        >
+        <div id="edudrop">
+            <Accordion allowToggle
+                backgroundColor={colors.gray}
+                color="white"
+                boxShadow={css.boxShadow}
+                transition="all 0.2s ease-in-out"
+                _hover={{
+                    backgroundColor: colors.purple,
+                    borderRadius: "10px",
+                }}
+            >
 
-            <AccordionItem>
-                <AccordionButton>
-                    <QuestionOutlineIcon marginRight=".7rem"/>
-                    <Box flex="1" textAlign="left">
-                        Me
-                    </Box>
-                    <AccordionIcon />
+                <AccordionItem>
+                    <AccordionButton>
+                        <QuestionOutlineIcon marginRight=".7rem"/>
+                        <Box flex="1" textAlign="left">
+                            Me
+                        </Box>
+                        <AccordionIcon />
 
-                </AccordionButton>
-            </AccordionItem>
+                    </AccordionButton>
+                </AccordionItem>
 
-            <AccordionItem>
-                <AccordionButton>
+                <AccordionItem>
+                    <AccordionButton>
 
-                    <InfoIcon marginRight=".7rem"/>
-                    <Box flex="1" textAlign="left">
-                        Education
-                    </Box>
-                    <AccordionIcon />
-                </AccordionButton>
-                <AccordionPanel pb={4}>
-                <Image  className="image"
-                                src={url1} 
-                                alt="JMU"
-                                width="40rem" 
-                                zIndex="1"                              
-                                />
-                        <br/>
-                        <Image className='image'
-                                src={url2}
-                                alt="JMU"                                
-                                />
-                </AccordionPanel>
-            </AccordionItem>
+                        <InfoIcon marginRight=".7rem"/>
+                        <Box flex="1" textAlign="left">
+                            Education
+                        </Box>
+                        <AccordionIcon />
+                    </AccordionButton>
+                    <AccordionPanel pb={4}>
+                    <Image  className="image"
+                                    src={url1} 
+                                    alt="JMU"
+                                    width="40rem" 
+                                    zIndex="1"                              
+                                    />
+                            <br/>
+                            <Image className='image'
+                                    src={url2}
+                                    alt="JMU"                                
+                                    />
+                    </AccordionPanel>
+                </AccordionItem>
 
-            <AccordionItem>
-                <AccordionButton>
-                    <CheckIcon marginRight=".7rem"/>
-                    <Box flex="1" textAlign="left">
-                        Experience
-                    </Box>
-                    <AccordionIcon />
-                </AccordionButton>
-                <AccordionPanel pb={4}>
-                    <p>Experience</p>
-                </AccordionPanel>
-            </AccordionItem>
+                <AccordionItem>
+                    <AccordionButton>
+                        <CheckIcon marginRight=".7rem"/>
+                        <Box flex="1" textAlign="left">
+                            Experience
+                        </Box>
+                        <AccordionIcon />
+                    </AccordionButton>
+                    <AccordionPanel pb={4}>
+                        <p>Experience</p>
+                    </AccordionPanel>
+                </AccordionItem>
 
-            <AccordionItem>
-                <AccordionButton>
-                <EditIcon marginRight=".7rem"/>
+                <AccordionItem>
+                    <AccordionButton>
+                    <EditIcon marginRight=".7rem"/>
 
-                    <Box flex="1" textAlign="left">
-                        Skills
-                    </Box>
-                    <AccordionIcon />
-                </AccordionButton>
-            </AccordionItem>
+                        <Box flex="1" textAlign="left">
+                            Skills
+                        </Box>
+                        <AccordionIcon />
+                    </AccordionButton>
+                </AccordionItem>
 
-            <AccordionItem>
-                <AccordionButton>
-                <StarIcon marginRight=".7rem"/>
-                    <Box flex="1" textAlign="left">
-                        Hobbies
-                    </Box>
-                    <AccordionIcon />
-                </AccordionButton>
-            </AccordionItem>
+                <AccordionItem>
+                    <AccordionButton>
+                    <StarIcon marginRight=".7rem"/>
+                        <Box flex="1" textAlign="left">
+                            Hobbies
+                        </Box>
+                        <AccordionIcon />
+                    </AccordionButton>
+                </AccordionItem>
 
 
 
-        </Accordion>
+            </Accordion>
+        </div>
     )
 }
 
