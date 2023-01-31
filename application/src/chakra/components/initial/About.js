@@ -30,7 +30,7 @@ const AboutStyled = styled.div`
 
     background: linear-gradient(
         0deg,
-        ${colors.purple} 0%,
+        ${colors.blue} 0%,
         white 50%,
         white 50%,
         white 100% 
@@ -60,7 +60,7 @@ const AboutStyled = styled.div`
         font-size: 1.5rem;
         font-weight: 600;
         margin-bottom: 1rem;
-        color: ${colors.purple};
+        color: ${colors.blue};
     }
 
     .edu-desc {

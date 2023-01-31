@@ -31,7 +31,7 @@ const Tab = (props) => {
 
     return (
         <ChakraTab cursor="default">
-            <Link as={ReactLink} to={props.to} style={linkstyle} onMouseOver={enlarge} onMouseLeave={shrink}> 
+            <Link as={ReactLink} to={props.to} style={linkstyle} onMouseOver={enlarge} onMouseLeave={shrink} {...props}> 
                 {props.text}
             </Link>
         </ChakraTab>

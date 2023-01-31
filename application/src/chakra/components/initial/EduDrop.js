@@ -43,8 +43,9 @@ const EduDrop = () => {
                 boxShadow={css.boxShadow}
                 transition="all 0.2s ease-in-out"
                 _hover={{
-                    backgroundColor: colors.purple,
+                    backgroundColor: colors.blue,
                     borderRadius: "10px",
+                    color: "black"
                 }}
             >
 

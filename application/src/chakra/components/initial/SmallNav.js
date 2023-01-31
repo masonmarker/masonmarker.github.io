@@ -57,7 +57,7 @@ const SmallNav = () => {
         <SmallNavStyled>
             <Box>
                 <Box className="whoami">
-                    <InfoIcon color={colors.purple}/>
+                    <InfoIcon color={colors.blue}/>
                     <Text className="header">WHO AM I?</Text>
                 </Box>
                 <EduDrop/>
