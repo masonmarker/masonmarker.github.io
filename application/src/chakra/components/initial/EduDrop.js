@@ -9,7 +9,8 @@ import {
     AccordionPanel,
     AccordionIcon,
     Box,
-    Image
+    Image,
+    Text
   } from '@chakra-ui/react'
 
 // icons
@@ -22,6 +23,8 @@ import {
     StarIcon
 } from '@chakra-ui/icons'
 
+// styled components
+import styled from 'styled-components'
 
 // common
 import colors from '../../styles/colors'
@@ -58,6 +61,10 @@ const EduDrop = () => {
                         <AccordionIcon />
 
                     </AccordionButton>
+                    <AccordionPanel pb={4}>
+                        <Me/>
+                    </AccordionPanel>
+
                 </AccordionItem>
 
                 <AccordionItem>
@@ -70,17 +77,16 @@ const EduDrop = () => {
                         <AccordionIcon />
                     </AccordionButton>
                     <AccordionPanel pb={4}>
-                    <Image  className="image"
-                                    src={url1} 
-                                    alt="JMU"
-                                    width="40rem" 
-                                    zIndex="1"                              
-                                    />
-                            <br/>
-                            <Image className='image'
-                                    src={url2}
-                                    alt="JMU"                                
-                                    />
+                    <Image 
+                        src={url1} 
+                        alt="JMU"
+                        width="40rem" 
+                        zIndex="1"    
+                        borderRadius={css.borderRadius}      
+                        boxShadow={css.boxShadow}                    
+                        />
+                    <Text fontSize="2rem" color={colors.purple} fontWeight="bold">James Madison University</Text>
+                    
                     </AccordionPanel>
                 </AccordionItem>
 
@@ -124,6 +130,52 @@ const EduDrop = () => {
         </div>
     )
 }
+
+
+// Me component
+const MeStyled = styled.div`
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    width: 90%;
+    .header {
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: black;
+    }
+`
+
+const Me = () => {
+    return (
+        <MeStyled>
+            <Text className="header">I'm Mason Marker,</Text>
+            <Text>a passionate and driven senior computer science major
+                at James Madison University.
+            </Text>
+            <br/>
+            <Text>
+                In my senior year, my yearning for knowledge
+                continues to grow. I believe that while understanding new logical concepts in math
+                and computer science, one can find this newly obtained logic applicable to countless ideas
+                outside of the areas in which they were learned.
+            </Text>
+            <br/>
+            <Text>
+                I am a self-motivated individual who is always looking for new ways to improve myself,
+                whether the area may be computer science, finances, humanities, politics, and many more.
+            </Text>
+            <br/>
+            <Text>
+                <i>Computer science is a gateway to a better ability to apply logic to non-logical concepts.</i>
+            </Text>
+        </MeStyled>
+    )
+}
+
+
 
 
 // exporting EduDrop

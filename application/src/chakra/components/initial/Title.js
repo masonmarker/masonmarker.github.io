@@ -119,6 +119,8 @@ const TitleStyled = styled.div`
             height: fit-content;
         }
 
+        height: fit-content;
+
         
     }
 
