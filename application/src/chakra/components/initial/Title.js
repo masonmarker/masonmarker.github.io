@@ -84,26 +84,44 @@ const TitleStyled = styled.div`
     .bottomright {}
 
     @media (max-width: 1200px) {
+
+        /* reset all positional css properties */
         .topleft {
             top: auto;
             left: auto;
-            position: auto;
-            margin: 0 auto;
+            right: auto;
+            position: static;
+            transform: translate(0, 0);
         }
+
         .topright {
             top: auto;
             left: auto;
-            position: auto;
+            right: auto;
+            position: static;
+            transform: translate(0, 0);
         }
+
         .bottomleft {
-            top: auto;
+            bottom: auto;
             left: auto;
-            position: auto;
+            right: auto;
+            position: static;
+            transform: translate(0, 0);
+
         }
+
         .bottomright {
-            top: auto;
-            left: auto; 
-            position: auto;
+            bottom: auto;
+            right: auto;
+            left: auto;
+            position: static;
+            transform: translate(0, 0);
+        }
+
+        /* hide the image */
+        .image {
+            display: none;
         }
 
         .circle {
@@ -111,14 +129,13 @@ const TitleStyled = styled.div`
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            justify-self: center;
+            align-self: center;
+            background-color: green;
+            position: relative;
+            margin-top: 10rem;
         }
-
-        height: fit-content;
-
-        
     }
-
-
 
     /* --------- */
 
@@ -144,12 +161,11 @@ const Title = (props) => {
             <Fade ref={ref} in={inView} className="title-fade">
                 <Nav/>
             </Fade>
-            <Box className="circle">
-
-                <ScaleFade ref={ref} in={inView}>
+            
+            <ScaleFade ref={ref} in={inView}>
                     <Image className="image" boxSize="20rem" src="portrait.JPG"/>
-                </ScaleFade>
-
+            </ScaleFade>
+            <Box className="circle">
                 <Bubble to="/github" text="Projects" top="15%" left="25%" width="18rem" textcolor="darkred" className="topleft"
                     desc={["My larger ", <strong>programming projects</strong>]} >
                     <ArrowForwardIcon />
