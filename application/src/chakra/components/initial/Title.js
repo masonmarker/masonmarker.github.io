@@ -87,26 +87,23 @@ const TitleStyled = styled.div`
         .topleft {
             top: auto;
             left: auto;
-            position: static;
+            position: auto;
             margin: 0 auto;
         }
         .topright {
             top: auto;
             left: auto;
-            position: static;
-            margin: 0 auto;
+            position: auto;
         }
         .bottomleft {
             top: auto;
             left: auto;
-            position: static;
-            margin: 0 auto;
+            position: auto;
         }
         .bottomright {
             top: auto;
             left: auto; 
-            position: static;
-            margin: 0 auto;
+            position: auto;
         }
 
         .circle {
@@ -114,9 +111,6 @@ const TitleStyled = styled.div`
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: green;
-            width: 100%;
-            height: fit-content;
         }
 
         height: fit-content;
@@ -156,39 +150,30 @@ const Title = (props) => {
                     <Image className="image" boxSize="20rem" src="portrait.JPG"/>
                 </ScaleFade>
 
+                <Bubble to="/github" text="Projects" top="15%" left="25%" width="18rem" textcolor="darkred" className="topleft"
+                    desc={["My larger ", <strong>programming projects</strong>]} >
+                    <ArrowForwardIcon />
+                </Bubble>
 
-                <Fade ref={ref} in={inView}>
-                    <Bubble to="/github" text="Projects" top="15%" left="25%" width="18rem" textcolor="darkred" className="topleft"
-                        desc={["My larger ", <strong>programming projects</strong>]} >
-                        <ArrowForwardIcon />
-                    </Bubble>
-                </Fade>
+                <Bubble text="Knowledge" top="30%" left="25%" width="16rem" textcolor="darkblue" className="bottomleft"
+                    onClick={() => {
+                        // scroll to element with id edudrop
+                        const element = document.getElementById("edudrop")
+                        element.scrollIntoView({behavior: "smooth"})
+                    }}
+                    desc={[<strong>Languages, courses </strong>, "and", <strong> more!</strong>]}>
+                    <QuestionOutlineIcon />
+                </Bubble>
 
-                <Fade ref={ref} in={inView}>
-                    <Bubble text="Knowledge" top="30%" left="25%" width="16rem" textcolor="darkblue" className="bottomleft"
-                        onClick={() => {
-                            // scroll to element with id edudrop
-                            const element = document.getElementById("edudrop")
-                            element.scrollIntoView({behavior: "smooth"})
-                        }}
-                        desc={[<strong>Languages, courses </strong>, "and", <strong> more!</strong>]}>
-                        <QuestionOutlineIcon />
-                    </Bubble>
-                </Fade>
-
-                <Fade ref={ref} in={inView}>
-                    <Bubble text="GitHub" top="15%" left="75%" width="13rem" textcolor="gray.500" className="topright"
-                        onClick={() => window.open(links.github, "_blank")}
-                        desc={["Project ", <strong>source codes</strong>]}>
-                        <ExternalLinkIcon />
-                    </Bubble>
-                </Fade>
-                <Fade ref={ref} in={inView}>
-                    <Bubble text="Contact" top="30%" left="75%" width="13rem" className="bottomright"
-                        desc={[<strong>Email </strong>, "and ", <strong>Inquiries</strong>]}>
-                        <EmailIcon />
-                    </Bubble>
-                </Fade>
+                <Bubble text="GitHub" top="15%" left="75%" width="13rem" textcolor="gray.500" className="topright"
+                    onClick={() => window.open(links.github, "_blank")}
+                    desc={["Project ", <strong>source codes</strong>]}>
+                    <ExternalLinkIcon />
+                </Bubble>
+                <Bubble text="Contact" top="30%" left="75%" width="13rem" className="bottomright"
+                    desc={[<strong>Email </strong>, "and ", <strong>Inquiries</strong>]}>
+                    <EmailIcon />
+                </Bubble>
             </Box>
             <ScaleFade ref={ref} in={inView} className="title1">
                 <Box className="title1">
