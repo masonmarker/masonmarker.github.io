@@ -10,7 +10,8 @@ import {
     AccordionIcon,
     Box,
     Image,
-    Text
+    Text,
+    Fade
   } from '@chakra-ui/react'
 
 // icons
@@ -29,6 +30,9 @@ import styled from 'styled-components'
 // common
 import colors from '../../styles/colors'
 import css from '../../styles/css'
+
+// intersection observer
+import { inView, useInView } from 'react-intersection-observer'
 
 // EduDrop component
 const EduDrop = () => {
@@ -133,44 +137,67 @@ const EduDrop = () => {
 
 
 // Me component
+// should have a modern website style
 const MeStyled = styled.div`
+    font-family: 'Roboto', sans-serif;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: black;
-    width: 90%;
     .header {
         font-weight: bold;
         margin-bottom: 1rem;
         color: black;
     }
+    .desc {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        padding: 1rem;
+        ${css.transition}
+    }
+
 `
 
 const Me = () => {
+
+    // intersection observer
+    const [ref, inView] = useInView({
+        threshold: 0,
+    })
+
     return (
         <MeStyled>
-            <Text className="header">I'm Mason Marker,</Text>
-            <Text>a passionate and driven senior computer science major
-                at James Madison University.
-            </Text>
-            <br/>
-            <Text>
-                In my senior year, my yearning for knowledge
-                continues to grow. I believe that while understanding new logical concepts in math
-                and computer science, one can find this newly obtained logic applicable to countless ideas
-                outside of the areas in which they were learned.
-            </Text>
-            <br/>
-            <Text>
-                I am a self-motivated individual who is always looking for new ways to improve myself,
-                whether the area may be computer science, finances, humanities, politics, and many more.
-            </Text>
-            <br/>
-            <Text>
-                <i>Computer science is a gateway to a better ability to apply logic to non-logical concepts.</i>
-            </Text>
+            <Box className="desc">
+                <Fade in={inView} ref={ref}>
+                    <Text className="header">I'm Mason Marker,</Text>
+                </Fade>
+                <Fade in={inView} ref={ref} className="desc">
+                    <Text>a passionate and driven senior computer science major
+                        at James Madison University.
+                    </Text>
+                    <br/>
+                    <Text>
+                        In my senior year, my yearning for knowledge
+                        continues to grow. I believe that while understanding new logical concepts in math
+                        and computer science, one can find this newly obtained logic applicable to countless ideas
+                        outside of the areas in which they were learned.
+                    </Text>
+                    <br/>
+                    <Text>
+                        I am a self-motivated individual who is always looking for new ways to improve myself,
+                        whether the area may be computer science, finances, humanities, politics, and many more.
+                    </Text>
+                    <br/>
+                    <Text>
+                        <i>Computer science is a gateway to a better ability to apply logic to non-logical concepts.</i>
+                    </Text>
+                </Fade>
+            </Box>
         </MeStyled>
     )
 }

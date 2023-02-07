@@ -55,7 +55,7 @@ const Bubble = (props) => {
         font-weight: bold;
         font-size: 1.6rem;
 
-        transition: all 0.2s ease-in-out;
+        ${css.transition}
 
         &:hover {
             cursor: pointer;

@@ -19,8 +19,9 @@ import {ArrowForwardIcon,
 import { Fade, ScaleFade } from '@chakra-ui/react'
 
 
-// importing colors
+// common
 import colors from '../../styles/colors'
+import css from '../../styles/css'
 
 // social links
 import links from '../../styles/links'
@@ -92,6 +93,8 @@ const TitleStyled = styled.div`
             right: auto;
             position: static;
             transform: translate(0, 0);
+
+            margin-bottom: 1rem;
         }
 
         .topright {
@@ -100,6 +103,8 @@ const TitleStyled = styled.div`
             right: auto;
             position: static;
             transform: translate(0, 0);
+
+            margin-bottom: 1rem;
         }
 
         .bottomleft {
@@ -108,7 +113,7 @@ const TitleStyled = styled.div`
             right: auto;
             position: static;
             transform: translate(0, 0);
-
+            margin-bottom: 1rem;
         }
 
         .bottomright {
@@ -131,7 +136,6 @@ const TitleStyled = styled.div`
             justify-content: center;
             justify-self: center;
             align-self: center;
-            background-color: green;
             position: relative;
             margin-top: 10rem;
         }
@@ -143,8 +147,7 @@ const TitleStyled = styled.div`
 
 
     user-select: none;
-    transition: all 0.2s ease-in-out;  
-
+    ${css.transition}
 `
 
 // front cover for the website
@@ -193,18 +196,18 @@ const Title = (props) => {
             </Box>
             <ScaleFade ref={ref} in={inView} className="title1">
                 <Box className="title1">
-                        <Text fontFamily="heading" 
-                            fontSize="xs" 
-                            fontWeight="bold" 
-                            color={colors.gray}
-                            marginTop="5rem">Hi, I'm Mason!</Text>
-                        <Text>
-                            I'm a <strong style={{color: "maroon"}}>robotics processing engineer</strong> and 
-                            <strong style={{color: "darkgreen"}}> software developer</strong>
-                        </Text>
-                        <Text>
-                            I'm also a <strong>student</strong> at <strong style={{color: "purple"}}>James Madison University</strong>
-                        </Text>
+                    <Text fontFamily="heading" 
+                        fontSize="xs" 
+                        fontWeight="bold" 
+                        color={colors.gray}
+                        marginTop="5rem">Hi, I'm Mason!</Text>
+                    <Text>
+                        I'm a <strong style={{color: "maroon"}}>robotics processing engineer</strong> and 
+                        <strong style={{color: "darkgreen"}}> software developer</strong>
+                    </Text>
+                    <Text>
+                        I'm also a <strong>student</strong> at <strong style={{color: "purple"}}>James Madison University</strong>
+                    </Text>
                 </Box>
             </ScaleFade>
         </TitleStyled>
