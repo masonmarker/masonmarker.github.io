@@ -16,7 +16,6 @@ var pyodide;
 
 window.addEventListener('load', prepare, false);
 
-window.onload = prepare() 
 
 async function prepare() {
     pyodide = await window.loadPyodide({

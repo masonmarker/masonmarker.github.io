@@ -149,3 +149,4 @@ function run() {
 }
 
 export default Msnscript;
+export {prepare, pyodide, run, load}

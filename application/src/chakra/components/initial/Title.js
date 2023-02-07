@@ -85,35 +85,38 @@ const TitleStyled = styled.div`
 
     @media (max-width: 1200px) {
 
-        /**/
-        reset all positional css properties
+        /* reset all positional css properties */
         .topleft {
             top: auto;
             left: auto;
-            position: static;
-            margin: 0 auto;
-            width: fit-content;
-        }
-        .topright {
-            top: auto;
             right: auto;
             position: static;
-            margin: 0 auto;
-            width: fit-content;
+            transform: translate(0, 0);
         }
+
+        .topright {
+            top: auto;
+            left: auto;
+            right: auto;
+            position: static;
+            transform: translate(0, 0);
+        }
+
         .bottomleft {
             bottom: auto;
             left: auto;
+            right: auto;
             position: static;
-            margin: 0 auto;
-            width: fit-content;
+            transform: translate(0, 0);
+
         }
+
         .bottomright {
             bottom: auto;
             right: auto;
-            position: relative;
-            margin: 0 auto;
-            width: fit-content;
+            left: auto;
+            position: static;
+            transform: translate(0, 0);
         }
 
         /* hide the image */
@@ -126,17 +129,13 @@ const TitleStyled = styled.div`
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            justify-self: center;
+            align-self: center;
             background-color: green;
-            width: 100%;            
-
+            position: relative;
+            margin-top: 10rem;
         }
-
-        height: fit-content;
-
-        
     }
-
-
 
     /* --------- */
 

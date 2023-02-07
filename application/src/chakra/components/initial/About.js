@@ -84,10 +84,7 @@ const About = () => {
     // use at least this link: https://www.jmu.edu/_images/default/JMUopengraphimage.jpg
     return (
         <AboutStyled>
-            <Fade in={inView} ref={ref}>
-                <SmallNav />
-            </Fade>
-
+            <SmallNav />
         </AboutStyled>
     )
 }
