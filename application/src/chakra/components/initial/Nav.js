@@ -60,6 +60,9 @@ const NavStyled = styled.div`
 
     @media (max-width: 1100px) {
         flex-direction: column;   
+        .tabs {
+            transform: scale(0.8);
+        }
     }
 
 `

@@ -15,8 +15,6 @@ function App() {
       </style>
 
 
-
-
       <NavBar /> 
 
       <FadeInSection>
@@ -541,4 +539,9 @@ const FadeInSection = ({children}) => {
   }
 };
 
+// export every component defined in this file
+export { App, MyResume, ContactMe, Donate, Button, Proficiency, Languages,
+  FadeInSection, goTo, instaClicked, gitClicked, linkedInClicked, jmuClicked,
+  genworthClicked, wmcClicked, cfaClicked, MyProjects, Ventures, MyEducation, GitHub, 
+  Education};
 export default App; 

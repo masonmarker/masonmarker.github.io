@@ -137,7 +137,16 @@ const TitleStyled = styled.div`
             justify-self: center;
             align-self: center;
             position: relative;
-            margin-top: 10rem;
+            margin-top: 15rem;
+        }
+
+        .title1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+
         }
     }
 
@@ -201,7 +210,7 @@ const Title = (props) => {
                         fontWeight="bold" 
                         color={colors.gray}
                         marginTop="5rem">Hi, I'm Mason!</Text>
-                    <Text>
+                    <Text textAlign="center">
                         I'm a <strong style={{color: "maroon"}}>robotics processing engineer</strong> and 
                         <strong style={{color: "darkgreen"}}> software developer</strong>
                     </Text>

@@ -1,5 +1,7 @@
 // dropdown for education components
 
+// general, non-Chakra components
+import {Education} from '../../../App.js'
 
 // importing Chakra components
 import {
@@ -43,17 +45,15 @@ const EduDrop = () => {
 
 
     return (
-        <div id="edudrop">
+        <div id="edudrop" style={{
+            fontFamily: "Monospace",
+        }}>
             <Accordion allowToggle
-                backgroundColor={colors.gray}
-                color="white"
                 boxShadow={css.boxShadow}
                 transition="all 0.2s ease-in-out"
-                _hover={{
-                    backgroundColor: colors.blue,
-                    borderRadius: "10px",
-                    color: "black"
-                }}
+                backgroundColor={colors.blue}
+                color="black"
+                _hover={{borderRadius: "10px"}}
             >
 
                 <AccordionItem>
@@ -65,7 +65,7 @@ const EduDrop = () => {
                         <AccordionIcon />
 
                     </AccordionButton>
-                    <AccordionPanel pb={4}>
+                    <AccordionPanel pb={4} color="black">
                         <Me/>
                     </AccordionPanel>
 
@@ -81,7 +81,7 @@ const EduDrop = () => {
                         <AccordionIcon />
                     </AccordionButton>
                     <AccordionPanel pb={4}>
-                    <Image 
+                    {/* <Image 
                         src={url1} 
                         alt="JMU"
                         width="40rem" 
@@ -90,7 +90,10 @@ const EduDrop = () => {
                         boxShadow={css.boxShadow}                    
                         />
                     <Text fontSize="2rem" color={colors.purple} fontWeight="bold">James Madison University</Text>
-                    
+                     */}
+
+                        <Education/>
+
                     </AccordionPanel>
                 </AccordionItem>
 
@@ -156,7 +159,7 @@ const MeStyled = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: center;
-
+        color: black;
         padding: 1rem;
         ${css.transition}
     }
@@ -173,9 +176,7 @@ const Me = () => {
     return (
         <MeStyled>
             <Box className="desc">
-                <Fade in={inView} ref={ref}>
-                    <Text className="header">I'm Mason Marker,</Text>
-                </Fade>
+                <Text className="header" color="black">I'm Mason Marker,</Text>
                 <Fade in={inView} ref={ref} className="desc">
                     <Text>a passionate and driven senior computer science major
                         at James Madison University.
