@@ -40,11 +40,6 @@ import { inView, useInView } from 'react-intersection-observer'
 // EduDrop component
 const EduDrop = () => {
 
-    // jmu images
-    const url1 = "https://www.jmu.edu/_images/default/JMUopengraphimage.jpg"
-    const url2 = "https://www.jmu.edu/_images/about/236129-east-campus-spring-stock-1025-820x273.jpg"
-
-
     return (
         <div id="edudrop" style={{
             fontFamily: "Monospace",
