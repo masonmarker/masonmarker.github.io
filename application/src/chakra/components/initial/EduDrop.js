@@ -1,7 +1,8 @@
 // dropdown for education components
 
 // general, non-Chakra components
-import {Education} from '../../../App.js'
+// import {Education} from '../../../App.js'
+import Education from './Education'
 
 // importing Chakra components
 import {
@@ -47,6 +48,7 @@ const EduDrop = () => {
     return (
         <div id="edudrop" style={{
             fontFamily: "Monospace",
+            maxHeight: "75vh",
         }}>
             <Accordion allowToggle
                 boxShadow={css.boxShadow}
@@ -142,7 +144,6 @@ const EduDrop = () => {
 // Me component
 // should have a modern website style
 const MeStyled = styled.div`
-    font-family: 'Roboto', sans-serif;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
