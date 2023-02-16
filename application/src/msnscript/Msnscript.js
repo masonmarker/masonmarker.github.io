@@ -6,10 +6,6 @@ import preloads from './../preload';
 
 var pyodide;
 
-window.addEventListener('load', prepare, false);
-
-window.onload = prepare() 
-
 async function prepare() {
 
     var out = document.getElementById('out')

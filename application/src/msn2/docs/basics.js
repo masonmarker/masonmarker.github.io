@@ -14,7 +14,8 @@ import React from 'react';
 
 var pyodide;
 
-window.addEventListener('load', prepare, false);
+// on window load, prepare pyodide
+window.onload = prepare;
 
 
 async function prepare() {

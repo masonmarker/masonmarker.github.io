@@ -253,7 +253,6 @@ const Languages = () => {
 
     <div className="languages">
 
-      <FadeInSection>
       <div className="lang-desc">
         <img alt="Java" className="lang-img" src="https://www.oracle.com/oce/press/assets/CONT6C95347B9ECC40CF8E7272A74FD80BDE/native/rc24-java-logo.gif"></img>
         <Proficiency level="86%" color="darkorange" completion="fluent"/>
@@ -262,7 +261,7 @@ const Languages = () => {
           <p>I've accumulated an estimated 2,000 - 3,000 hours in Java development inside and outside of school, and doing so provided me 
           with a firm grasp on programming concepts including:
           </p>
-          <ul Style="text-align:left; font-weight: bold">
+          <ul Style="font-weight: bold;text-align:left; ">
               <li>Object-oriented programming</li>
               <li>Algorithmic design and optimization</li>
               <li>Importance and implementation of data structures</li>
@@ -276,15 +275,13 @@ const Languages = () => {
           <a href="https://github.com/masonmarker/TheMsnProject">TheMsnProject</a></p>
         </div>
       </div>
-      </FadeInSection>
 
-      <FadeInSection>
       <div className="lang-desc">
         <img alt="Python" className="lang-img" src="https://logicoretech.com/wp-content/uploads/2022/05/Python-Symbol.png" Style="margin-top: 0.3rem"></img>
         <Proficiency level="80%" color="lightblue" completion="advanced"/>
         <div>
           <p>Python was one of the most recent languages I've learned.</p>
-          <p>Today being 1/8/23, over the last couple semesters I've gained a much higher level of proficiency in Python given the implementation
+          <p>Today being 2/16/23, over the last couple semesters I've gained a much higher level of proficiency in Python given the implementation
             of my newest language project,
           </p>
           <Link to="/msn2docs">MSNScript2</Link>
@@ -306,9 +303,7 @@ const Languages = () => {
           <a href="https://github.com/masonmarker/TheMsnProject">TheMsnProject</a></p>
         </div>
       </div>
-      </FadeInSection>
 
-      <FadeInSection>
       <div className="lang-desc">
       <img alt="HTML/CSS/JS" className="lang-img" Style="padding-top: 1.2rem" src="https://www.freepnglogos.com/uploads/html5-logo-png/html5-logo-devextreme-multi-purpose-controls-html-javascript-3.png"></img>
         <Proficiency level="55%" color="blue" completion="intermediate"/>
@@ -329,9 +324,7 @@ const Languages = () => {
           </p>
         </div>
       </div>
-      </FadeInSection>
 
-      <FadeInSection>
       <div className="lang-desc">
       <img alt="ReactJS" className="lang-img" src="https://www.datocms-assets.com/45470/1631110818-logo-react-js.png"></img>
         <Proficiency level="40%" color="#08dcfc" completion="intermediate, currently studying"/>
@@ -351,9 +344,7 @@ const Languages = () => {
           </p>
         </div>
       </div>
-      </FadeInSection>
 
-      <FadeInSection>
       <div className="lang-desc">
       <img alt="C Language" className="lang-img" Style="width: 10rem; padding-top: 1rem;"src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/695px-C_Programming_Language.svg.png"></img>
         <Proficiency level="35%" color="lightblue" completion="beginner - intermediate"/>
@@ -370,9 +361,7 @@ const Languages = () => {
           </p>
         </div>
       </div>
-      </FadeInSection>
 
-      <FadeInSection>
       <div className="lang-desc">
       <img alt="Ruby" className="lang-img" src="https://miro.medium.com/max/540/1*7e9D-oPWPIKBe2AQv862aA.png" ></img>
         <Proficiency level="30%" color="red" completion="beginner - intermediate"/>
@@ -388,9 +377,7 @@ const Languages = () => {
           </p>
         </div>
       </div>
-      </FadeInSection>
 
-      <FadeInSection>
       <div className="lang-desc" Style="height: fit-content">
         <img alt="Rust" className="lang-img" src="https://blog.altabel.com/wp-content/uploads/2020/08/1.png"></img>
         <Proficiency level="25%" color="black" completion="beginner"/>
@@ -408,7 +395,6 @@ const Languages = () => {
           </p>
         </div>
       </div>
-      </FadeInSection>
 
     </div>
   )
@@ -417,7 +403,7 @@ const Languages = () => {
 const Proficiency = (props) => {
   return (
     <div>
-      <h3 Style="margin: 0; text-decoration: italic; font-style: italic; font-size: 1rem; margin-bottom: .3rem">{props.completion}</h3>
+      <h3 Style="margin: 0; text-decoration: italic; font-style: italic; font-size: 1rem; margin-bottom: .3rem;">{props.completion}</h3>
       <hr className="lang-prof"  style={{width: props.level, border: "3px solid " + props.color, margin: 0}}></hr>
     </div> 
   )

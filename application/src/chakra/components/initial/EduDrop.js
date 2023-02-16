@@ -1,7 +1,7 @@
 // dropdown for education components
 
 // general, non-Chakra components
-// import {Education} from '../../../App.js'
+import {Languages} from '../../../App.js'
 import Education from './Education'
 
 // importing Chakra components
@@ -44,6 +44,7 @@ const EduDrop = () => {
         <div id="edudrop" style={{
             fontFamily: "Monospace",
             maxHeight: "75vh",
+            maxWidth: "100vw",
         }}>
             <Accordion allowToggle
                 boxShadow={css.boxShadow}
@@ -103,7 +104,7 @@ const EduDrop = () => {
                         <AccordionIcon />
                     </AccordionButton>
                     <AccordionPanel pb={4}>
-                        <p>Experience</p>
+                        Experiences 
                     </AccordionPanel>
                 </AccordionItem>
 
@@ -116,6 +117,9 @@ const EduDrop = () => {
                         </Box>
                         <AccordionIcon />
                     </AccordionButton>
+                    <AccordionPanel pb={4}>
+                        <Languages/>
+                    </AccordionPanel>
                 </AccordionItem>
 
                 <AccordionItem>

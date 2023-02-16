@@ -162,7 +162,7 @@ const Courses = () => {
         <Box className="univ"
             marginTop="1rem">
             <TableContainer>
-                <Table variant='simple'>
+                <Table variant='striped'>
                     <TableCaption>Computer Science Courses</TableCaption>
                     <Thead>
                         <Tr>
@@ -177,7 +177,7 @@ const Courses = () => {
                             <Tabled title="CS 149" desc="Introduction to Programming" />
                             <Td>Spring 2020</Td>
                             <Td>
-                                Introduces students to the fundamental concepts of computer programming
+                                <Desc desc="Introduces students to the fundamental concepts of computer programming"/>
                             </Td>
                             <Grade grade="A" backgroundColor="lightgreen" />
                         </Tr>
@@ -185,7 +185,7 @@ const Courses = () => {
                             <Tabled title="CS 159" desc="Advanced Programming" />
                             <Td>Fall 2020</Td>
                             <Td>
-                                Introduces the concept of front-end programming and basic data structures
+                                <Desc desc="Introduces the concept of front-end programming and basic data structures"/>
                             </Td>
                             <Grade grade="A-" backgroundColor="lightgreen"/>
                         </Tr>
@@ -193,7 +193,7 @@ const Courses = () => {
                             <Tabled title="CS 227" desc="Discrete Structures I"/>
                             <Td>Fall 2020</Td>
                             <Td>
-                                Introduces basic concepts involving discrete mathematics and its applications to computer science
+                                <Desc desc="Introduces basic concepts involving discrete mathematics and its applications to computer science"/>
                             </Td>
                             <Grade grade="B+" backgroundColor="orange"/>
                         </Tr>
@@ -202,7 +202,7 @@ const Courses = () => {
                             <Tabled title="CS 240" desc="Algorithms and Data Structures"/>
                             <Td>Spring 2021</Td>
                             <Td>
-                                Introduces the concepts of algorithms and data structures, including their design, analysis, and implementation
+                                <Desc desc="Introduces the concepts of algorithms and data structures, including their design, analysis, and implementation"/>
                             </Td>
                             <Grade grade="A" backgroundColor="lightgreen"/>
                         </Tr>
@@ -211,7 +211,7 @@ const Courses = () => {
                             <Tabled title="CS 345" desc="Software Engineering"/>
                             <Td>Spring 2021</Td>
                             <Td>
-                                Teaches basic software development within a team, specifically incorporating knowledge of version control and agile development
+                                <Desc desc="Teaches basic software development within a team, specifically incorporating knowledge of version control and agile development"/>
                             </Td>
                             <Grade grade="B" backgroundColor="orange"/>
                         </Tr>
@@ -219,49 +219,49 @@ const Courses = () => {
                         <Tr>
                             <Tabled title="CS 261" desc="Computer Systems I"/>
                             <Td>Fall 2021</Td>
-                            <Td>Introduces transferrence of information from hardware to software</Td>
+                            <Td><Desc desc="Introduces transferrence of information from hardware to software"/></Td>
                             <Grade grade="B-" backgroundColor="orange"/>
                         </Tr>
 
                         <Tr>
                             <Tabled title="CS 327" desc="Discrete Structures II"/>
                             <Td>Fall 2021</Td>
-                            <Td>Brings to light proofs used in computational math as well as the various state machines</Td>
+                            <Td><Desc desc="Brings to light proofs used in computational math as well as the various state machines"/></Td>
                             <Grade grade="A-" backgroundColor="lightgreen"/>
                         </Tr>
 
                         <Tr>
                             <Tabled title="CS 347" desc="Web Development"/>
                             <Td>Spring 2022</Td>
-                            <Td>Introduces the concepts of web development, including the intertwining of HTML, CSS, Javascript, and PHP</Td>
+                            <Td><Desc desc="Introduces the concepts of web development, including the intertwining of HTML, CSS, Javascript, and PHP"/></Td>
                             <Grade grade="A" backgroundColor="lightgreen"/>
                         </Tr>    
 
                         <Tr>
                             <Tabled title="CS 361" desc="Computer Systems II"/>
                             <Td>Spring 2022</Td>
-                            <Td>Introduces basic operating system functionality, including the use of processes and threads</Td>
+                            <Td><Desc desc="Introduces basic operating system functionality, including the use of processes and threads"/></Td>
                             <Grade grade="B" backgroundColor="orange"/>
                         </Tr>
 
                         <Tr>
                             <Tabled title="CS 430" desc="Programming Languages"/>
                             <Td>Spring 2022</Td>
-                            <Td>Introduces several new programming languages such as Ruby, Haskell, and Prolog</Td>
+                            <Td><Desc desc="Introduces several new programming languages such as Ruby, Haskell, and Prolog"/></Td>
                             <Grade grade="B" backgroundColor="orange"/>
                         </Tr>
 
                         <Tr>
                             <Tabled title="CS 374" desc="Databases"/>
                             <Td>Fall 2022</Td>
-                            <Td>Provides a deep understanding in the concept of databases, including the use of MySql databases</Td>
+                            <Td><Desc desc="Provides a deep understanding in the concept of databases, including the use of MySql databases"/></Td>
                             <Grade grade="A" backgroundColor="lightgreen"/>
                         </Tr>
 
                         <Tr>
                             <Tabled title="CS 450" desc="Operating Systems"/>
                             <Td>Fall 2022</Td>
-                            <Td>Presents students with programmatic issues involving a practice operating system (PintOS)</Td>
+                            <Td><Desc desc="Presents students with programmatic issues involving a practice operating system (PintOS)"/></Td>
                             <Grade grade="A-" backgroundColor="lightgreen"/>
                         </Tr>
 
@@ -277,6 +277,23 @@ const Tabled = (props) => {
     return <Td>{props.title}<br /><b>{props.desc}</b></Td>
 }
 
+// wrap description every 40 characters without cutting off words
+const Desc = (props) => {
+    return (
+        <Td>
+            {props.desc.split(' ').reduce((acc, word) => {
+                if (acc[acc.length - 1].length + word.length > 40) {
+                    acc.push(word)
+                } else {
+                    acc[acc.length - 1] += ' ' + word
+                }
+                return acc
+            }, ['']).map((line, i) => <p style={{
+                fontSize: '0.8rem',
+            }}key={i}>{line}</p>)}
+        </Td>
+    )
+}
 
 // grade card component
 const Grade = (props) => {
