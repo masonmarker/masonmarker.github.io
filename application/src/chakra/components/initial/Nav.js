@@ -77,7 +77,7 @@ const Nav = () => {
         <NavStyled>
             <div className="main">
                 <Image src="favicon.ico" boxSize={20}/>
-                <Text><PreStyled>.  Marker  </PreStyled></Text>
+                <PreStyled>.  Marker  </PreStyled>
             </div>
             <Tabs className="tabs" variant="unstyled" colorScheme="purple"> 
                 <TabList >

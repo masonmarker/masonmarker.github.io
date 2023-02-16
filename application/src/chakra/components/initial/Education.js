@@ -176,92 +176,82 @@ const Courses = () => {
                         <Tr>
                             <Tabled title="CS 149" desc="Introduction to Programming" />
                             <Td>Spring 2020</Td>
-                            <Td>
-                                <Desc desc="Introduces students to the fundamental concepts of computer programming"/>
-                            </Td>
+                            <Desc desc="Introduces students to the fundamental concepts of computer programming"/>
                             <Grade grade="A" backgroundColor="lightgreen" />
                         </Tr>
                         <Tr>
                             <Tabled title="CS 159" desc="Advanced Programming" />
                             <Td>Fall 2020</Td>
-                            <Td>
-                                <Desc desc="Introduces the concept of front-end programming and basic data structures"/>
-                            </Td>
+                            <Desc desc="Introduces the concept of front-end programming and basic data structures"/>
                             <Grade grade="A-" backgroundColor="lightgreen"/>
                         </Tr>
                         <Tr>
                             <Tabled title="CS 227" desc="Discrete Structures I"/>
                             <Td>Fall 2020</Td>
-                            <Td>
-                                <Desc desc="Introduces basic concepts involving discrete mathematics and its applications to computer science"/>
-                            </Td>
+                            <Desc desc="Introduces basic concepts involving discrete mathematics and its applications to computer science"/>
                             <Grade grade="B+" backgroundColor="orange"/>
                         </Tr>
 
                         <Tr>
                             <Tabled title="CS 240" desc="Algorithms and Data Structures"/>
                             <Td>Spring 2021</Td>
-                            <Td>
-                                <Desc desc="Introduces the concepts of algorithms and data structures, including their design, analysis, and implementation"/>
-                            </Td>
+                            <Desc desc="Introduces the concepts of algorithms and data structures, including their design, analysis, and implementation"/>
                             <Grade grade="A" backgroundColor="lightgreen"/>
                         </Tr>
 
                         <Tr>
                             <Tabled title="CS 345" desc="Software Engineering"/>
                             <Td>Spring 2021</Td>
-                            <Td>
-                                <Desc desc="Teaches basic software development within a team, specifically incorporating knowledge of version control and agile development"/>
-                            </Td>
+                            <Desc desc="Teaches basic software development within a team, specifically incorporating knowledge of version control and agile development"/>
                             <Grade grade="B" backgroundColor="orange"/>
                         </Tr>
 
                         <Tr>
                             <Tabled title="CS 261" desc="Computer Systems I"/>
                             <Td>Fall 2021</Td>
-                            <Td><Desc desc="Introduces transferrence of information from hardware to software"/></Td>
+                            <Desc desc="Introduces transferrence of information from hardware to software"/>
                             <Grade grade="B-" backgroundColor="orange"/>
                         </Tr>
 
                         <Tr>
                             <Tabled title="CS 327" desc="Discrete Structures II"/>
                             <Td>Fall 2021</Td>
-                            <Td><Desc desc="Brings to light proofs used in computational math as well as the various state machines"/></Td>
+                            <Desc desc="Brings to light proofs used in computational math as well as the various state machines"/>
                             <Grade grade="A-" backgroundColor="lightgreen"/>
                         </Tr>
 
                         <Tr>
                             <Tabled title="CS 347" desc="Web Development"/>
                             <Td>Spring 2022</Td>
-                            <Td><Desc desc="Introduces the concepts of web development, including the intertwining of HTML, CSS, Javascript, and PHP"/></Td>
+                            <Desc desc="Introduces the concepts of web development, including the intertwining of HTML, CSS, Javascript, and PHP"/>
                             <Grade grade="A" backgroundColor="lightgreen"/>
                         </Tr>    
 
                         <Tr>
                             <Tabled title="CS 361" desc="Computer Systems II"/>
                             <Td>Spring 2022</Td>
-                            <Td><Desc desc="Introduces basic operating system functionality, including the use of processes and threads"/></Td>
+                            <Desc desc="Introduces basic operating system functionality, including the use of processes and threads"/>
                             <Grade grade="B" backgroundColor="orange"/>
                         </Tr>
 
                         <Tr>
                             <Tabled title="CS 430" desc="Programming Languages"/>
                             <Td>Spring 2022</Td>
-                            <Td><Desc desc="Introduces several new programming languages such as Ruby, Haskell, and Prolog"/></Td>
+                            <Desc desc="Introduces several new programming languages such as Ruby, Haskell, and Prolog"/>
                             <Grade grade="B" backgroundColor="orange"/>
                         </Tr>
 
                         <Tr>
                             <Tabled title="CS 374" desc="Databases"/>
                             <Td>Fall 2022</Td>
-                            <Td><Desc desc="Provides a deep understanding in the concept of databases, including the use of MySql databases"/></Td>
+                            <Desc desc="Provides a deep understanding in the concept of databases, including the use of MySql databases"/>
                             <Grade grade="A" backgroundColor="lightgreen"/>
                         </Tr>
 
                         <Tr>
                             <Tabled title="CS 450" desc="Operating Systems"/>
                             <Td>Fall 2022</Td>
-                            <Td><Desc desc="Presents students with programmatic issues involving a practice operating system (PintOS)"/></Td>
+                            <Desc desc="Presents students with programmatic issues involving a practice operating system (PintOS)"/>
                             <Grade grade="A-" backgroundColor="lightgreen"/>
                         </Tr>
 

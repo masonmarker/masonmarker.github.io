@@ -149,7 +149,7 @@ const Ventures = () => {
         <div className="job-div">
           <img onClick={genworthClicked} alt="genworth" className="ventures-img" src="https://content.fortune.com/wp-content/uploads/2020/05/F500-2020-364-Genworth-Financial.jpg"></img>
           <div className="desc-div">
-            <h2 Style="margin-bottom: 0; color: var(--darkpurple)">Genworth</h2>
+            <h2 style={{marginBottom: 0, color: "var(--darkpurple)"}}>Genworth</h2>
             <h3 className="job-title">IT Development Program Intern</h3>
             <h4 className="job-duration">May 2022 - Present</h4>
             <h5 className="job-desc">I worked as a Robotics Process Automation (RPA) engineer. I would be given briefings of business processes that needed to
@@ -167,7 +167,7 @@ const Ventures = () => {
         <div className="job-div">
           <img onClick={wmcClicked} alt="winchester medical center" className="ventures-img" src="https://www.dreamweaverteam.com/wordpress/wp-content/uploads/2017/08/Winchester-Medical-Center.jpg"></img>
           <div className="desc-div">
-            <h2 Style="margin-bottom: 0; color: var(--darkpurple)">Winchester Medical Center</h2>
+            <h2 style={{marginBottom: 0, color: "var(--darkpurple)"}}>Winchester Medical Center</h2>
             <h3 className="job-title">Volunteer</h3>
             <h4 className="job-duration">May 2018 - August 2018</h4>
             <h5 className="job-desc">I volunteered at the Winchester Medical Center to both gain experience in the
@@ -183,7 +183,7 @@ const Ventures = () => {
         <div className="job-div">
           <img alt="walgreens" className="ventures-img" src="https://gray-kait-prod.cdn.arcpublishing.com/resizer/2MX1aIfwKyIEzosEF_uS8gkNuJM=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/65FAKKQDN5HR5GVLZI4KUHWIVM.jpg"></img>
           <div className="desc-div">
-            <h2 Style="margin-bottom: 0; color: var(--darkpurple)">Walgreens Pharmacy</h2>
+            <h2 style={{marginBottom: 0, color: "var(--darkpurple)"}}>Walgreens Pharmacy</h2>
             <h3 className="job-title">Pharmacy Cashier / Customer Service Associate</h3>
             <h4 className="job-duration">May 2020 - Present</h4>
             <h5 className="job-desc">My duties involved operation of a cash register and receive payment from customers in cash or credit card, accurately count and provide change to customers as required,then use the RX system to locate customer medical profiles and distribute prescribed medications accordingly while following HIPAA guidelines and maintaining constant social interaction. </h5>
@@ -195,7 +195,7 @@ const Ventures = () => {
         <div className="job-div">
           <img onClick={cfaClicked} alt="chick-fil-a" className="ventures-img" src="https://live.staticflickr.com/5328/8928862580_4cd0791484.jpg"></img>
           <div className="desc-div">
-            <h2 Style="margin-bottom: 0; color: var(--darkpurple)">Chick-Fil-A</h2>
+            <h2 style={{marginBottom: 0, color: "var(--darkpurple)"}}>Chick-Fil-A</h2>
             <h3 className="job-title">Cashier</h3>
             <h4 className="job-duration">July 2017 - August 2018</h4>
             <h5 className="job-desc">Operated a cash register and receive payment from customers in cash or credit card, accurately count and provide change to customers as required, and follow all cash handling policies and procedures while working quickly and maintaining constant social interaction.</h5>
@@ -282,7 +282,7 @@ const Languages = () => {
           <p>I've accumulated an estimated 2,000 - 3,000 hours in Java development inside and outside of school, and doing so provided me
             with a firm grasp on programming concepts including:
           </p>
-          <ul Style="font-weight: bold; text-align:left; font-size: 1.2rem">
+          <ul style={{fontWeight: "bold", textAlign: "left", fontSize: "1.2rem"}}>
             <li>Object-oriented programming</li>
             <li>Algorithmic design and optimization</li>
             <li>Importance and implementation of data structures</li>
@@ -299,7 +299,7 @@ const Languages = () => {
       </div>
 
       <div className="lang-desc">
-        <img alt="Python" className="lang-img" src="https://logicoretech.com/wp-content/uploads/2022/05/Python-Symbol.png" Style="margin-top: 0.3rem"></img>
+        <img alt="Python" className="lang-img" src="https://logicoretech.com/wp-content/uploads/2022/05/Python-Symbol.png" style={{marginTop: "0.3rem"}}></img>
         <Proficiency level="80%" color="lightblue" completion="advanced" />
         <div>
           <p>Python was one of the most recent languages I've learned.</p>
@@ -309,7 +309,7 @@ const Languages = () => {
           <LinkStyled to="/msn2docs" >MSNScript2</LinkStyled>
 
           <p>The complexity involved in developing a</p>
-          <ul Style="text-align:left; font-weight: bold; font-size: 1.2rem">
+          <ul style={{textAlign: "left", fontWeight: "bold", fontSize: "1.2rem"}}>
             <li>Turing complete,</li>
             <li>Recursively interpreting,</li>
             <li>Build your own syntax themed,</li>
@@ -328,7 +328,7 @@ const Languages = () => {
       </div>
 
       <div className="lang-desc">
-        <img alt="HTML/CSS/JS" className="lang-img" Style="padding-top: 1.2rem" src="https://www.freepnglogos.com/uploads/html5-logo-png/html5-logo-devextreme-multi-purpose-controls-html-javascript-3.png"></img>
+        <img alt="HTML/CSS/JS" className="lang-img" style={{paddingTop: "1.2rem"}} src="https://www.freepnglogos.com/uploads/html5-logo-png/html5-logo-devextreme-multi-purpose-controls-html-javascript-3.png"></img>
         <Proficiency level="55%" color="blue" completion="intermediate" />
         <div>
           <p>Upon enrollment in my web development class, it became clear that website development was a large gray area for me waiting to
@@ -369,7 +369,8 @@ const Languages = () => {
       </div>
 
       <div className="lang-desc">
-        <img alt="C Language" className="lang-img" Style="width: 10rem; padding-top: 1rem;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/695px-C_Programming_Language.svg.png"></img>
+        <img alt="C Language" className="lang-img" style={{width: "10rem", paddingTop: "1rem"}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/695px-C_Programming_Language.svg.png"></img>
+        
         <Proficiency level="35%" color="lightblue" completion="beginner - intermediate" />
         <div>
           <p>C has been used widely throughout my past 2 years of schooling in the
@@ -401,7 +402,7 @@ const Languages = () => {
         </div>
       </div>
 
-      <div className="lang-desc" Style="height: fit-content">
+      <div className="lang-desc" style={{height: "fit-content"}}>
         <img alt="Rust" className="lang-img" src="https://blog.altabel.com/wp-content/uploads/2020/08/1.png"></img>
         <Proficiency level="25%" color="black" completion="beginner" />
         <div>
@@ -426,7 +427,7 @@ const Languages = () => {
 const Proficiency = (props) => {
   return (
     <div>
-      <h3 Style="margin: 0; text-decoration: italic; font-style: italic; font-size: 1rem; margin-bottom: .3rem;">{props.completion}</h3>
+      <h3 style={{margin: "0", textDecoration: "italic", fontStyle: "italic", fontSize: "1rem", marginBottom: ".3rem"}}>{props.completion}</h3>
       <hr className="lang-prof" style={{ width: props.level, border: "3px solid " + props.color, margin: 0 }}></hr>
     </div>
   )
@@ -449,17 +450,17 @@ const ContactMe = () => {
 const Button = (props) => {
   return (
     <div onClick={() => goTo(props.loc)} className="download-button">
-      <h3 Style="color: white; letter-spacing: .05rem">{props.name}</h3>
+      <h3 style={{color: "white", letterSpacing: ".05rem"}}>{props.name}</h3>
     </div>
   )
 }
 
 const MyResume = () => {
   return (
-    <div className="my-ventures" Style="margin-bottom: 5rem;">
+    <div className="my-ventures" style={{marginBottom: "5rem"}}>
       <h1 className="increased-margin">Want to know more about me?</h1>
       <h4 className="increased-margin"><i>Take a peek at my skillsets, hobbies, interests, and more on my résumé!</i></h4>
-      <Link className="download-button" to="/resume" Style="margin: 0 auto; margin-bottom: 1rem; color: white; text-decoration: none">View my Résumé</Link>
+      <Link className="download-button" to="/resume" style={{margin: "0 auto", marginBottom: "1rem", color: "white", textDecoration: "none"}}>View my Résumé</Link>
     </div>
   )
 }
@@ -470,7 +471,7 @@ const Donate = () => {
       <div style={{ marginLeft: '1rem', marginRight: '1rem' }}>
         <h4><i>Want to support me? Feel free to donate to my PayPal!</i></h4>
         <h5><i>All donations are reinvested into my projects</i></h5>
-        <Link className="download-button" to="/donations" Style="margin: 0 auto; margin-bottom: 1rem; color: white; text-decoration: none">Donate</Link>
+        <Link className="download-button" to="/donations" style={{margin: "0 auto", marginBottom: "1rem", color: "white", textDecoration: "none"}}>Donate</Link>
       </div>
     </div>
   )

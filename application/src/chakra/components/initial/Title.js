@@ -179,7 +179,7 @@ const Title = (props) => {
             </ScaleFade>
             <Box className="circle">
                 <Bubble to="/github" text="Projects" top="15%" left="25%" width="18rem" textcolor="darkred" className="topleft"
-                    desc={["My larger ", <strong>programming projects</strong>]} >
+                    desc={["My larger ", <strong key="bubble1">programming projects</strong>]} >
                     <ArrowForwardIcon />
                 </Bubble>
 
@@ -189,17 +189,17 @@ const Title = (props) => {
                         const element = document.getElementById("edudrop")
                         element.scrollIntoView({behavior: "smooth"})
                     }}
-                    desc={[<strong>Languages, courses </strong>, "and", <strong> more!</strong>]}>
+                    desc={[<strong key="bubble2">Languages, courses </strong>, "and", <strong key="bubble3"> more!</strong>]}>
                     <QuestionOutlineIcon />
                 </Bubble>
 
                 <Bubble text="GitHub" top="15%" left="75%" width="13rem" textcolor="gray.500" className="topright"
                     onClick={() => window.open(links.github, "_blank")}
-                    desc={["Project ", <strong>source codes</strong>]}>
+                    desc={["Project ", <strong key="bubble4">source codes</strong>]}>
                     <ExternalLinkIcon />
                 </Bubble>
                 <Bubble text="Contact" top="30%" left="75%" width="13rem" className="bottomright"
-                    desc={[<strong>Email </strong>, "and ", <strong>Inquiries</strong>]}>
+                    desc={[<strong key="bubble5">Email </strong>, "and ", <strong key="bubble6">Inquiries</strong>]}>
                     <EmailIcon />
                 </Bubble>
             </Box>

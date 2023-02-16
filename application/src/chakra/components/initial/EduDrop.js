@@ -202,7 +202,10 @@ const GeneralSkills = () => {
 const Skill = (props) => {
     return (
         <Box className="skill">
-            <Text className="title">{props.skill}</Text>
+
+            {/* make the color of the text a random but dark color 
+            do not use the common 'colors' */}
+            <Text className="title" color={"#" + Math.floor(Math.random()*16777215).toString(16)}>{props.skill}</Text>
             {props.children}
         </Box>
     )

@@ -142,7 +142,7 @@ function Args(props) {
     return (
         <div>
             <Section title={[<h2 style={{fontSize: '1.1rem'}}>Arguments</h2>]} subtitle={[
-                props.args.map((arg, i) => <h2 style={{fontWeight: 'normal', fontSize: '1rem' }}>{i+1}. <b>{arg[0]}</b> : <b>{arg[1]}</b> -> {arg[2]}</h2>)
+                props.args.map((arg, i) => <h2 key={i} style={{fontWeight: 'normal', fontSize: '1rem' }}>{i+1}. <b>{arg[0]}</b> : <b>{arg[1]}</b> -> {arg[2]}</h2>)
             ]} />
         </div>
     )
