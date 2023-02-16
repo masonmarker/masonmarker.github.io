@@ -192,8 +192,10 @@ const GeneralSkills = () => {
             <Skill skill="Development in a team" />
             <Skill skill="Time Management" />
             <Skill skill="Calculus and Statistics" />
-
-
+            <Skill skill="Data Structures and Algorithms" />
+            <Skill skill="Object Oriented Programming" />
+            <Skill skill="Web Development" />
+            <Skill skill="Machine Learning" />
         </GeneralSkillsStyled>
     )
 }
