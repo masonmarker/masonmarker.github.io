@@ -119,6 +119,7 @@ const EduDrop = () => {
                     </AccordionButton>
                     <AccordionPanel pb={4}>
                         <Languages/>
+                        <GeneralSkills/>
                     </AccordionPanel>
                 </AccordionItem>
 
@@ -136,6 +137,74 @@ const EduDrop = () => {
 
             </Accordion>
         </div>
+    )
+}
+
+
+// styled GeneralSkills component
+const GeneralSkillsStyled = styled.div`
+
+    /* group all children together randomely*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+
+
+
+
+    .title {
+        font-weight: bold;
+    }
+
+    /* as a card component */
+    .skill {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        ${css.boxShadow}
+        ${css.borderRadius}
+        ${css.transition}
+        background-color: white;
+        cursor: default;
+    }
+
+    .skill:hover {
+        transform: scale(1.05);
+    }
+
+`
+
+// general skills component underneath language understanding
+const GeneralSkills = () => {
+    return (
+        <GeneralSkillsStyled>
+            <Skill skill="Logic and Reasoning" />
+            <Skill skill="Problem Solving" />
+            <Skill skill="Communication" />
+            <Skill skill="Leadership" />
+            <Skill skill="Development in a team" />
+            <Skill skill="Time Management" />
+            <Skill skill="Calculus and Statistics" />
+
+
+        </GeneralSkillsStyled>
+    )
+}
+
+// skill component
+const Skill = (props) => {
+    return (
+        <Box className="skill">
+            <Text className="title">{props.skill}</Text>
+            {props.children}
+        </Box>
     )
 }
 

@@ -315,7 +315,7 @@ const Languages = () => {
             <li>Build your own syntax themed,</li>
             <li>Object-oriented,</li>
             <li>Multiprogramming friendly,</li>
-            <li>API endpoint and request simlifying</li>
+            <li>API endpoint and request simplifying</li>
           </ul>
           <p>language has been a challenge, but one that I've enjoyed immensely, given I was completely new to Python when I started.</p>
 
