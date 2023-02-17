@@ -145,11 +145,10 @@ const Ventures = () => {
   return (
     <div className="ventures-container">
 
-      <FadeInSection>
         <div className="job-div">
           <img onClick={genworthClicked} alt="genworth" className="ventures-img" src="https://content.fortune.com/wp-content/uploads/2020/05/F500-2020-364-Genworth-Financial.jpg"></img>
           <div className="desc-div">
-            <h2 style={{marginBottom: 0, color: "var(--darkpurple)"}}>Genworth</h2>
+            <h2 style={{marginBottom: 0, color: "var(--darkpurple)", fontSize: "1.2rem"}}>Genworth</h2>
             <h3 className="job-title">IT Development Program Intern</h3>
             <h4 className="job-duration">May 2022 - Present</h4>
             <h5 className="job-desc">I worked as a Robotics Process Automation (RPA) engineer. I would be given briefings of business processes that needed to
@@ -161,13 +160,11 @@ const Ventures = () => {
             </h5>
           </div>
         </div>
-      </FadeInSection>
 
-      <FadeInSection>
         <div className="job-div">
           <img onClick={wmcClicked} alt="winchester medical center" className="ventures-img" src="https://www.dreamweaverteam.com/wordpress/wp-content/uploads/2017/08/Winchester-Medical-Center.jpg"></img>
           <div className="desc-div">
-            <h2 style={{marginBottom: 0, color: "var(--darkpurple)"}}>Winchester Medical Center</h2>
+            <h2 style={{marginBottom: 0, color: "var(--darkpurple)", fontSize: "1.2rem"}}>Winchester Medical Center</h2>
             <h3 className="job-title">Volunteer</h3>
             <h4 className="job-duration">May 2018 - August 2018</h4>
             <h5 className="job-desc">I volunteered at the Winchester Medical Center to both gain experience in the
@@ -177,31 +174,26 @@ const Ventures = () => {
               My duties included attending to emergency center patients non-medical needs while simultaneously cleaning the area, and sorting and boxing several sizes of blood vials for use by the medical professionals while following HIPAA guidelines.</h5>
           </div>
         </div>
-      </FadeInSection>
 
-      <FadeInSection>
         <div className="job-div">
           <img alt="walgreens" className="ventures-img" src="https://gray-kait-prod.cdn.arcpublishing.com/resizer/2MX1aIfwKyIEzosEF_uS8gkNuJM=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/65FAKKQDN5HR5GVLZI4KUHWIVM.jpg"></img>
           <div className="desc-div">
-            <h2 style={{marginBottom: 0, color: "var(--darkpurple)"}}>Walgreens Pharmacy</h2>
+            <h2 style={{marginBottom: 0, color: "var(--darkpurple)", fontSize: "1.2rem"}}>Walgreens Pharmacy</h2>
             <h3 className="job-title">Pharmacy Cashier / Customer Service Associate</h3>
             <h4 className="job-duration">May 2020 - Present</h4>
             <h5 className="job-desc">My duties involved operation of a cash register and receive payment from customers in cash or credit card, accurately count and provide change to customers as required,then use the RX system to locate customer medical profiles and distribute prescribed medications accordingly while following HIPAA guidelines and maintaining constant social interaction. </h5>
           </div>
         </div>
-      </FadeInSection>
 
-      <FadeInSection>
         <div className="job-div">
           <img onClick={cfaClicked} alt="chick-fil-a" className="ventures-img" src="https://live.staticflickr.com/5328/8928862580_4cd0791484.jpg"></img>
           <div className="desc-div">
-            <h2 style={{marginBottom: 0, color: "var(--darkpurple)"}}>Chick-Fil-A</h2>
+            <h2 style={{marginBottom: 0, color: "var(--darkpurple)", fontSize: "1.2rem"}}>Chick-Fil-A</h2>
             <h3 className="job-title">Cashier</h3>
             <h4 className="job-duration">July 2017 - August 2018</h4>
             <h5 className="job-desc">Operated a cash register and receive payment from customers in cash or credit card, accurately count and provide change to customers as required, and follow all cash handling policies and procedures while working quickly and maintaining constant social interaction.</h5>
           </div>
         </div>
-      </FadeInSection>
     </div>
   )
 }

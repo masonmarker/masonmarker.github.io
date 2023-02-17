@@ -1,7 +1,7 @@
 // dropdown for education components
 
 // general, non-Chakra components
-import { Languages } from '../../../App.js'
+import { Languages, Ventures } from '../../../App.js'
 import Education from './Education'
 
 // importing Chakra components
@@ -104,14 +104,13 @@ const EduDrop = () => {
                         <AccordionIcon />
                     </AccordionButton>
                     <AccordionPanel pb={4}>
-                        Experiences
+                        <Ventures/>
                     </AccordionPanel>
                 </AccordionItem>
 
                 <AccordionItem>
                     <AccordionButton>
                         <EditIcon marginRight=".7rem" />
-
                         <Box flex="1" textAlign="left">
                             Skills
                         </Box>
