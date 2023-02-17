@@ -1,7 +1,7 @@
 // dropdown for education components
 
 // general, non-Chakra components
-import { Languages, Ventures } from '../../../App.js'
+import { Languages, Ventures, linkedInClicked, gitClicked } from '../../../App.js'
 import Education from './Education'
 
 // importing Chakra components
@@ -24,7 +24,8 @@ import {
     InfoIcon,
     CheckIcon,
     EditIcon,
-    StarIcon
+    StarIcon,
+    SearchIcon
 } from '@chakra-ui/icons'
 
 // styled components
@@ -132,10 +133,73 @@ const EduDrop = () => {
                     </AccordionButton>
                 </AccordionItem>
 
-
-
+                <AccordionItem>
+                    <AccordionButton>
+                        <SearchIcon marginRight=".7rem" />
+                        <Box flex="1" textAlign="left">
+                            Socials
+                        </Box>
+                        <AccordionIcon />
+                    </AccordionButton>
+                    <AccordionPanel pb={4}>
+                        <Socials />
+                    </AccordionPanel>
+                </AccordionItem>
             </Accordion>
         </div>
+    )
+}
+
+const SocialsStyled = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    .social {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem;
+        ${css.boxShadow}
+        ${css.borderRadius}
+        ${css.transition}
+        background-color: white;
+        cursor: default;
+    }
+
+    .social:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+
+`
+
+// Socials component
+const Socials = () => {
+    return (
+        <SocialsStyled>
+            <Social src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" alt="LinkedIn" text="LinkedIn"
+                onClick={linkedInClicked}
+            />
+            <Social src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="GitHub" text="GitHub"
+                onClick={gitClicked}
+            />
+        </SocialsStyled>
+    )
+}
+
+// Social component
+const Social = (props) => {
+    return (
+        <Box className="social" {...props}>
+            <Image src={props.src} alt={props.alt} width="2rem" />
+            <Text>{props.text}</Text>
+        </Box>
     )
 }
 
