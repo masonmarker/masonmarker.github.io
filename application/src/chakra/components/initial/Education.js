@@ -162,7 +162,7 @@ const Courses = () => {
         <Box className="univ"
             marginTop="1rem">
             <TableContainer>
-                <Table variant='striped'>
+                <Table>
                     <TableCaption>Computer Science Courses</TableCaption>
                     <Thead>
                         <Tr>
