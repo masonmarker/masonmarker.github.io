@@ -1,49 +1,53 @@
 // Card component used for displaying its children
 
-import StyledCard from "./styled/StyledCard"
-import Button from "./Button"
+// Chakra components
+import {
+    Box,
+    Text,
+    Button
+} from "@chakra-ui/react"
 
-
-// paypal imports
-import Paypal from "./Paypal"
-
-
+// showing / hiding PayPal component
 import { useState } from "react"
 
 // text imports
 import Title from "./Text"
 
+// styled components
+import styled from "styled-components"
+
+// serial for PayPal button ID
 var serial = 0
+
+// Card component, used for displaying its children in a card like format
+const StyledCard = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: fit-content;
+    margin: 1rem;
+    
+    padding: 0.5rem;
+`
 
 // card component
 const Card = (props) => {
-
-    // state for showing paypal component
-    const [showPay, setShowPay] = useState(false) 
-
-
-
     const btnID = "ex:button" + serial++
 
     return (
-        <StyledCard onClick={() => {
-
-            // show paypal buttons
-            setShowPay(!showPay)
-            
-            // change button text
-            document.getElementById(btnID).innerHTML = showPay ? "$1" : "$1: Cancel"
-        }}>
+        <StyledCard>
 
 
-            <Title title={props.title}/>
+            <Title title={props.title} />
             <p>{props.description}</p>
 
             {props.children}
-
-            <Button buttonid={btnID} text="$1"/>
-            {showPay ? <Paypal/> : null}
-
 
         </StyledCard>
     )
