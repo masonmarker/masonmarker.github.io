@@ -49,14 +49,12 @@ const Donations = () => {
                 <Card title="Donate" description="Any donations will
                     be used to both fund my schooling and start / scale new projects.
                 ">
-                    <Button id="dollar1" onClick={() => {
-
+                    <Button size="large" id="dollar1" onClick={() => {
                         // show paypal buttons
                         setShowPay(!showPay)
 
                         // change button text
                         document.getElementById("dollar1").innerHTML = showPay ? "$5" : "$5: Cancel"
-
                     }}>$5</Button>
                     
                     {showPay ? <Paypal /> : null}
