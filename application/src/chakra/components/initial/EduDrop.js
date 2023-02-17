@@ -177,6 +177,20 @@ const SocialsStyled = styled.div`
         cursor: pointer;
     }
 
+    .emailsocial {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem;
+        ${css.boxShadow}
+        ${css.borderRadius}
+        ${css.transition}
+        background-color: white;
+        cursor: default;
+    }
+
 `
 
 // Socials component
@@ -189,6 +203,24 @@ const Socials = () => {
             <Social src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="GitHub" text="GitHub"
                 onClick={gitClicked}
             />
+
+            {/* email */}
+            <Social className="emailsocial" src="https://img.icons8.com/ios-filled/50/000000/email.png" alt="Email" text="Email">
+                <Accordion allowToggle variant="">
+                    <AccordionItem>
+                        <AccordionButton>
+                            <Text>View</Text>
+                            <AccordionIcon />
+                        </AccordionButton>
+                        <AccordionPanel pb={4}>
+                            <Text>
+                                mason1marker@gmail.com
+                            </Text>
+                        </AccordionPanel>
+                    </AccordionItem>
+                </Accordion>
+            </Social>
+
         </SocialsStyled>
     )
 }
@@ -199,6 +231,7 @@ const Social = (props) => {
         <Box className="social" {...props}>
             <Image src={props.src} alt={props.alt} width="2rem" />
             <Text>{props.text}</Text>
+            {props.children}
         </Box>
     )
 }
