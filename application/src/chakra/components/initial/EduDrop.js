@@ -1,7 +1,7 @@
 // dropdown for education components
 
 // general, non-Chakra components
-import {Languages} from '../../../App.js'
+import { Languages } from '../../../App.js'
 import Education from './Education'
 
 // importing Chakra components
@@ -15,7 +15,7 @@ import {
     Image,
     Text,
     Fade
-  } from '@chakra-ui/react'
+} from '@chakra-ui/react'
 
 // icons
 import {
@@ -51,12 +51,12 @@ const EduDrop = () => {
                 transition="all 0.2s ease-in-out"
                 backgroundColor={colors.blue}
                 color="black"
-                _hover={{borderRadius: "10px"}}
+                _hover={{ borderRadius: "10px" }}
             >
 
                 <AccordionItem>
                     <AccordionButton>
-                        <QuestionOutlineIcon marginRight=".7rem"/>
+                        <QuestionOutlineIcon marginRight=".7rem" />
                         <Box flex="1" textAlign="left">
                             Me
                         </Box>
@@ -64,7 +64,7 @@ const EduDrop = () => {
 
                     </AccordionButton>
                     <AccordionPanel pb={4} color="black">
-                        <Me/>
+                        <Me />
                     </AccordionPanel>
 
                 </AccordionItem>
@@ -72,14 +72,14 @@ const EduDrop = () => {
                 <AccordionItem>
                     <AccordionButton>
 
-                        <InfoIcon marginRight=".7rem"/>
+                        <InfoIcon marginRight=".7rem" />
                         <Box flex="1" textAlign="left">
                             Education
                         </Box>
                         <AccordionIcon />
                     </AccordionButton>
                     <AccordionPanel pb={4}>
-                    {/* <Image 
+                        {/* <Image 
                         src={url1} 
                         alt="JMU"
                         width="40rem" 
@@ -90,27 +90,27 @@ const EduDrop = () => {
                     <Text fontSize="2rem" color={colors.purple} fontWeight="bold">James Madison University</Text>
                      */}
 
-                        <Education/>
+                        <Education />
 
                     </AccordionPanel>
                 </AccordionItem>
 
                 <AccordionItem>
                     <AccordionButton>
-                        <CheckIcon marginRight=".7rem"/>
+                        <CheckIcon marginRight=".7rem" />
                         <Box flex="1" textAlign="left">
                             Experience
                         </Box>
                         <AccordionIcon />
                     </AccordionButton>
                     <AccordionPanel pb={4}>
-                        Experiences 
+                        Experiences
                     </AccordionPanel>
                 </AccordionItem>
 
                 <AccordionItem>
                     <AccordionButton>
-                    <EditIcon marginRight=".7rem"/>
+                        <EditIcon marginRight=".7rem" />
 
                         <Box flex="1" textAlign="left">
                             Skills
@@ -118,14 +118,14 @@ const EduDrop = () => {
                         <AccordionIcon />
                     </AccordionButton>
                     <AccordionPanel pb={4}>
-                        <Languages/>
-                        <GeneralSkills/>
+                        <GeneralSkills />
+                        <Languages />
                     </AccordionPanel>
                 </AccordionItem>
 
                 <AccordionItem>
                     <AccordionButton>
-                    <StarIcon marginRight=".7rem"/>
+                        <StarIcon marginRight=".7rem" />
                         <Box flex="1" textAlign="left">
                             Hobbies
                         </Box>
@@ -152,10 +152,6 @@ const GeneralSkillsStyled = styled.div`
     align-items: center;
     gap: 1rem;
 
-
-
-
-
     .title {
         font-weight: bold;
     }
@@ -178,7 +174,6 @@ const GeneralSkillsStyled = styled.div`
     .skill:hover {
         transform: scale(1.05);
     }
-
 `
 
 // general skills component underneath language understanding
@@ -207,7 +202,7 @@ const Skill = (props) => {
 
             {/* make the color of the text a random but dark color 
             do not use the common 'colors' */}
-            <Text className="title" color={"#" + Math.floor(Math.random()*16777215).toString(16)}>{props.skill}</Text>
+            <Text className="title" color={"#" + Math.floor(Math.random() * 16777215).toString(16)}>{props.skill}</Text>
             {props.children}
         </Box>
     )
@@ -255,19 +250,19 @@ const Me = () => {
                     <Text>a passionate and driven senior computer science major
                         at James Madison University.
                     </Text>
-                    <br/>
+                    <br />
                     <Text>
                         In my senior year, my yearning for knowledge
                         continues to grow. I believe that while understanding new logical concepts in math
                         and computer science, one can find this newly obtained logic applicable to countless ideas
                         outside of the areas in which they were learned.
                     </Text>
-                    <br/>
+                    <br />
                     <Text>
                         I am a self-motivated individual who is always looking for new ways to improve myself,
                         whether the area may be computer science, finances, humanities, politics, and many more.
                     </Text>
-                    <br/>
+                    <br />
                     <Text>
                         <i>Computer science is a gateway to a better ability to apply logic to non-logical concepts.</i>
                     </Text>
