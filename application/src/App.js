@@ -541,11 +541,11 @@ const FadeInSection = ({ children }) => {
   }
 };
 
-// export every component defined in this file
+// export components defined in this file
 export {
   App, MyResume, ContactMe, Donate, Button, Proficiency, Languages,
   FadeInSection, goTo, instaClicked, gitClicked, linkedInClicked, jmuClicked,
   genworthClicked, wmcClicked, cfaClicked, MyProjects, Ventures, MyEducation, GitHub,
-  Education
+  Education, LinkStyled
 };
 export default App; 

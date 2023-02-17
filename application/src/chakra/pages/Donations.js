@@ -8,10 +8,10 @@ import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 // styled components
 import styled from 'styled-components'
 
-
 // Chakra components
 import {
-    Button
+    Button,
+    Link as ChakraLink
 } from "@chakra-ui/react"
 
 // paypal imports
@@ -24,6 +24,8 @@ import { useState } from "react"
 import colors from '../styles/colors'
 import css from '../styles/css'
 
+// react link
+import { Link } from 'react-router-dom'
 
 // styled donations
 const DonationsStyled = styled.div`
@@ -76,6 +78,8 @@ const Donations = () => {
                     Any donations will
                     be used to both fund my schooling and start / scale new projects.
                 ">
+                    
+                    <ChakraLink  style={{fontSize: "1.2rem"}} as={Link} to="/" >Home</ChakraLink>
 
                     <Button className="button" id="dollar1" onClick={() => {
                         // show paypal buttons
