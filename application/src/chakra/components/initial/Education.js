@@ -163,7 +163,7 @@ const Courses = () => {
             marginTop="1rem">
             <TableContainer>
                 <Table>
-                    <TableCaption>Computer Science Courses</TableCaption>
+                    <TableCaption color="black">Computer Science Courses</TableCaption>
                     <Thead>
                         <Tr>
                             <Th>Course</Th>
