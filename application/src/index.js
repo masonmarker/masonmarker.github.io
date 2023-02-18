@@ -19,6 +19,7 @@ import Resume from './resume';
 import GitHub from './github';
 import Msnscript from './msnscript/Msnscript';
 import Donations from './chakra/pages/Donations';
+import Services from './chakra/pages/Services';
 
 // msn2 pages
 import Msn2docs from './msn2/msn2docs';
@@ -54,18 +55,16 @@ root.render(
       <HashRouter>
           <Wrapper>
             <Routes>
-                <Route path="/" element={<App/>}/>
+                <Route path="/" element={<ChakraApp/>}/>
                 <Route path="/resume" element={<Resume/>} />
                 <Route path="/github" element={<GitHub/>} />
+                <Route path="/services" element={<Services/>} />
                 <Route path="/msnscript1" element={<Msnscript/>} />
                 <Route path="/msn2docs" element={<Msn2docs/>} />
                 <Route path="/msn2basics" element={<Basics/>} />
                 <Route path="/msn2systemcalls" element={<Systemcalls/>} />
                 <Route path="/msn2systemclasses" element={<Systemclasses/>} />
                 <Route path="/donations" element={<Donations/>} />
-
-                <Route path="/chakra" element={<ChakraApp/>} />
-
                 <Route path="/msn2examples" element={<Examples/>} />
             </Routes>
           </Wrapper>
