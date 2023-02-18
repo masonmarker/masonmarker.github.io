@@ -206,6 +206,16 @@ const Hobbies = () => {
         
             {/* Music */}
             <Hobby src="https://cdn.pixabay.com/photo/2013/07/12/11/59/musical-note-145074__340.png" alt="music" text="Music" />
+        
+            {/* Studying */}
+            <Hobby src="https://icon-library.com/images/book-vector-icon/book-vector-icon-25.jpg" alt="studying" text="Studying" />
+        
+            {/* Video Games */}
+            <Hobby src="https://www.seekpng.com/png/detail/22-223552_video-game-controller-vector-gamepad-icon-vector.png" alt="Gaming" text="Gaming" />
+
+            {/* Socializing */}
+            <Hobby src="https://static.thenounproject.com/png/4306149-200.png" alt="socializing" text="Socializing" />
+
         </HobbiesStyled>
     )
 }
