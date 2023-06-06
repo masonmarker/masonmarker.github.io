@@ -199,6 +199,12 @@ const Title = (props) => {
                     <ExternalLinkIcon />
                 </Bubble>
                 <Bubble text="Contact" top="30%" left="75%" width="13rem" className="bottomright"
+
+                    onClick={() => {
+                        // scroll to element with id edudrop
+                        const element = document.getElementById("edudrop")
+                        element.scrollIntoView({behavior: "smooth"})
+                    }}
                     desc={[<strong key="bubble5">Email </strong>, "and ", <strong key="bubble6">Inquiries</strong>]}>
                     <EmailIcon />
                 </Bubble>

@@ -9,10 +9,11 @@ import { useLocation } from "react-router-dom";
 import { HashRouter, Routes, Route } from "react-router-dom";
 
 // pages
-import Resume from "./resume";
-import GitHub from "./github";
-import Msnscript from "./msnscript/Msnscript";
-import Donations from "./chakra/pages/Donations";
+import Resume from './resume';
+import GitHub from './github';
+import Msnscript from './msnscript/Msnscript';
+import Donations from './chakra/pages/Donations';
+import Services from './chakra/pages/Services';
 
 // msn2 pages
 import Msn2docs from "./msn2/msn2docs";

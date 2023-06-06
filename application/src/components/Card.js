@@ -36,14 +36,24 @@ const StyledCard = styled.div`
 
     ${css.boxShadow}
     ${css.borderRadius}
+<<<<<<< HEAD
+=======
+
+    .title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0.5rem;
+    }
+
+>>>>>>> c183f4ad4e27c8996dc2566434c2eb460f5d958e
 `
 
 // card component
 const Card = (props) => {
     return (
         <StyledCard>
-            <Title title={props.title} />
-            <p>{props.description}</p>
+            <Text className="title">Donate</Text>
+            <Text>{props.description}</Text>
             {props.children}
         </StyledCard>
     )
