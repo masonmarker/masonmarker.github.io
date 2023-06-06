@@ -79,38 +79,6 @@ const EducationStyled = styled.div`
     }
 `
 
-// education template
-// const Education = () => {
-//     return (
-//       <div className="education">
-//         <div className="education2-div">
-//           <img alt="JMU" onClick={jmuClicked}className="education-img" src="https://gray-wvir-prod.cdn.arcpublishing.com/resizer/LP2hwjsI6I17ybSZV5UAqVKd2ic=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/AL5AMJZCXBBPNOZQ7DRYAGGAYI.png"></img>
-//         </div>
-//         <div className="education-desc">
-//           <h3 className="no-margin" style={{color: "var(--darkpurple)"}}>James Madison University</h3>
-
-//           <h3 className="no-margin">Student - Senior</h3>
-//           <h5 className="no-margin" style={{color: "var(--gray)"}}>Computer Science Major</h5> 
-//           <h5 className="no-margin" style={{color: "var(--gray)"}}>2019 - Present</h5> 
-//           <p className="education-p">In high school, I was positive I wanted to attend university with hopes for success in the medical field.</p>
-//           <p className="education-p">My first semester in the biology curriculum was an experience, however did not satisfy me academically nor mentally.</p>
-//           <p className="education-p">While my thirst for knowledge was high, I needed to find a major that would prove beneficial to my future, 
-//           serving as not just work, but enjoyable work, and offering potential for vast expansion within the field.</p>
-//           <p className="education-p">Nearly everyone in my dorm was majoring in computer science, I was the only one focused on the medical field.
-//           This most definitely swayed my decision to major in computer science, as they explained to me the seemingly endless benefits of studying computer
-//           science.
-//           </p>
-//           <p className="education-p">I thought it wouldn't hurt to take a few entry level classes, and in doing so, I fell in love with the art of programming.
-//           As a kid, I would always assist my brothers, parents, and grandparents with issues they were having with any devices they owned. This made me 
-//           question why I hadn't dug deeper into the intricacies of computer science earlier!
-//            </p>
-//         </div>
-//       </div>
-//     )
-//   }
-
-
-
 // education component within dropdown
 const Education = () => {
 
@@ -254,7 +222,18 @@ const Courses = () => {
                             <Desc desc="Presents students with programmatic issues involving a practice operating system (PintOS)"/>
                             <Grade grade="A-" backgroundColor="lightgreen"/>
                         </Tr>
-
+                        <Tr>
+                            <Tabled title="CS 330" desc="Societal and Ethical Issues"/>
+                            <Td>Spring 2023</Td>
+                            <Desc desc="Introduces the ethical issues that arise in the field of computer science, and perspectives in which to approach them."/>
+                            <Grade grade="B+" backgroundColor="orange"/>
+                        </Tr>
+                        <Tr>
+                            <Tabled title="CS 412" desc="Applied Algorithms"/>
+                            <Td>Spring 2023</Td>
+                            <Desc desc="Expands on the concepts of graph algorithms and data structures, including their design, analysis, and implementation"/>
+                            <Grade grade="B" backgroundColor="lightgreen"/>
+                        </Tr>
                     </Tbody>
                 </Table>
             </TableContainer>

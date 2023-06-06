@@ -22,6 +22,7 @@ const GitHub = () => {
                     <div className="download-button" Style="background-color: var(--darkpurple)" onClick={gitClicked}>Visit</div>
                 </div>
             </div>
+            <Msn2/>
             <FadeInSection>
             <div className="github-msnc">
                 <div className="msnc-img"></div>
@@ -139,10 +140,7 @@ const GitHub = () => {
                         </div>
                     </div>
 
-                </div>
-                <Msn2/>
-            
-
+                </div>            
         </div>
     )
 }

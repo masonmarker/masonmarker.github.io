@@ -120,85 +120,85 @@ function SystemClasses() {
             ]} code={
 `# add method
 assert(equals(=>(
-    @v1=1, @v2=2, @r=math.add(v1.val(), v2.val()), print(v1.val(), '+', v2.val(), '=', r.val()), r.val()), 
+    @v1=1, @v2=2, @r=math.add(v1, v2), print(v1, '+', v2, '=', r), r), 
     3
 ))
 
 # subtract method
 assert(equals(=>(
-    @v1=1, @v2=2, @r=math.subtract(v1.val(), v2.val()), print(v1.val(), '-', v2.val(), '=', r.val()), r.val()),
+    @v1=1, @v2=2, @r=math.subtract(v1, v2), print(v1, '-', v2, '=', r), r),
     -1
 ))
 
 # multiply method
 assert(equals(=>(
-    @v1=1, @v2=2, @r=math.multiply(v1.val(), v2.val()), print(v1.val(), '*', v2.val(), '=', r.val()), r.val()),
+    @v1=1, @v2=2, @r=math.multiply(v1, v2), print(v1, '*', v2, '=', r), r),
     2
 ))
 
 # divide method
 assert(equals(=>(
-    @v1=1, @v2=2, @r=math.divide(v1.val(), v2.val()), print(v1.val(), '/', v2.val(), '=', r.val()), r.val()),
+    @v1=1, @v2=2, @r=math.divide(v1, v2), print(v1, '/', v2, '=', r), r),
     0.5
 ))
 
 # power method
 assert(equals(=>(
-    @v1=2, @v2=3, @r=math.power(v1.val(), v2.val()), print(v1.val(), '^', v2.val(), '=', r.val()), r.val()),
+    @v1=2, @v2=3, @r=math.power(v1, v2), print(v1, '^', v2, '=', r), r),
     8
 ))
 
 # sqrt method
 assert(equals(=>(
-    @v1=4, @r=math.sqrt(v1.val()), print('sqrt(', v1.val(), ') =', r.val()), r.val()),
+    @v1=4, @r=math.sqrt(v1), print('sqrt(', v1, ') =', r), r),
     2
 ))
 
 # mod method
 assert(equals(=>(
-    @v1=5, @v2=2, @r=math.mod(v1.val(), v2.val()), print(v1.val(), '%', v2.val(), '=', r.val()), r.val()),
+    @v1=5, @v2=2, @r=math.mod(v1, v2), print(v1, '%', v2, '=', r), r),
     1
 ))
 
 # abs method
 assert(equals(=>(
-    @v1=-1, @r=math.abs(v1.val()), print('|', v1.val(), '| =', r.val()), r.val()),
+    @v1=-1, @r=math.abs(v1), print('|', v1, '| =', r), r),
     1
 ))
 
 # round method
 assert(equals(=>(
-    @v1=1.5, @r=math.round(v1.val()), print('round(', v1.val(), ') =', r.val()), r.val()),
+    @v1=1.5, @r=math.round(v1), print('round(', v1, ') =', r), r),
     2
 ))
 
 # floor method
 assert(equals(=>(
-    @v1=1.5, @r=math.floor(v1.val()), print('floor(', v1.val(), ') =', r.val()), r.val()),
+    @v1=1.5, @r=math.floor(v1), print('floor(', v1, ') =', r), r),
     1
 ))
 
 # ceil method
 assert(equals(=>(
-    @v1=1.5, @r=math.ceil(v1.val()), print('ceil(', v1.val(), ') =', r.val()), r.val()),
+    @v1=1.5, @r=math.ceil(v1), print('ceil(', v1, ') =', r), r),
     2
 ))
 
 # sin method
 assert(equals(=>(
-    @v1=0, @r=math.sin(v1.val()), print('sin(', v1.val(), ') =', r.val()), r.val()),
+    @v1=0, @r=math.sin(v1), print('sin(', v1, ') =', r), r),
     0
 ))
 
 # cos method
 assert(equals(=>(
-    @v1=0, @r=math.cos(v1.val()), print('cos(', v1.val(), ') =', r.val()), r.val()),
+    @v1=0, @r=math.cos(v1), print('cos(', v1, ') =', r), r),
     1
 ))
 
 # tan method
 assert(equals(=>(
-    @v1=0, @r=math.tan(v1.val()), print('tan(', v1.val(), ') =', r.val()), r.val()),
+    @v1=0, @r=math.tan(v1), print('tan(', v1, ') =', r), r),
     0
 ))`}/>
 
@@ -377,11 +377,11 @@ print(trace.all())
 file.mkdir('teststuff')
 
 # write to the file
-file.write(path.val(), 'hello!')
+file.write(path, 'hello!')
 print(file.listdir('teststuff'))
 
 # read the file
-print(file.read(path.val()))
+print(file.read(path))
 
 # empty the test directory
 file.emptydir('teststuff')`}/>
@@ -453,7 +453,7 @@ print(function.run('test', op.add(3, 1), 6))
                 ]} code={``}/>
 
                 <SystemClass title="ai" desc={[
-                    "Provides an instant gateway to OpenAI's most advanced AI models to date (12/28/23).", <br/>,
+                    "Provides an instant gateway to OpenAI's most advanced AI models to date (12/28/22).", <br/>,
                     "The ai class simplifies API interactions with OpenAI with several models predefined in the base language.", <br/>,
                     "To use the ai class, you must have added an environment variable for your OpenAI API key, or an exception will be thrown.", <br/>, <br/>,
                     "The prompts specified in each class method should be written as explained by OpenAI: ", <a href = "https://help.openai.com/en/collections/3675931-openai-api#prompt-engineering">here</a>, "."
@@ -463,11 +463,6 @@ print(function.run('test', op.add(3, 1), 6))
                         "This model has a creativity level of 0"
                     ]} />,
                 ]} code={``}/>
-
-
-
-
-
 
         </div>
     )

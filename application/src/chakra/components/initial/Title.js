@@ -215,7 +215,7 @@ const Title = (props) => {
                         <strong style={{color: "darkgreen"}}> software developer</strong>
                     </Text>
                     <Text>
-                        I'm also a <strong>student</strong> at <strong style={{color: "purple"}}>James Madison University</strong>
+                        I'm have my <i>Bachelor's</i> degree in <strong>computer science</strong> from <strong style={{color: "purple"}}>James Madison University</strong>
                     </Text>
                 </Box>
             </ScaleFade>

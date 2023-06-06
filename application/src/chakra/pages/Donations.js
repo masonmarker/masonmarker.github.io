@@ -57,9 +57,7 @@ const DonationsStyled = styled.div`
         &:hover {
             transform: scale(1.05);
         }
-
     }
-
 `
 
 // PayPal client ID
@@ -79,7 +77,7 @@ const Donations = () => {
                     be used to both fund my schooling and start / scale new projects.
                 ">
                     
-                    <ChakraLink  style={{fontSize: "1.2rem"}} as={Link} to="/" >Home</ChakraLink>
+                    <ChakraLink style={{fontSize: "1.2rem"}} as={Link} to="/" >Home</ChakraLink>
 
                     <Button className="button" id="dollar1" onClick={() => {
                         // show paypal buttons
@@ -87,9 +85,11 @@ const Donations = () => {
 
                         // change button text
                         document.getElementById("dollar1").innerHTML = showPay ? "$5" : "$5: Cancel"
-                    }}>$5</Button>
+                    }}>
+                        $5
+                    </Button>
 
-                    {showPay ? <Paypal /> : null}
+                    {showPay ? <Paypal price="5.00" /> : null}
                 </Card>
 
             </DonationsStyled>

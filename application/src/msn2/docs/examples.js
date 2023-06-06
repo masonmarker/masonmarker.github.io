@@ -26,7 +26,7 @@ function Examples() {
                 "Creating this macro does not deter the fact that Python's list comprehension is easily accessible from the base language, and simply demonstrates a possibility from the small quantity of system calls and value methods",
             ]} code={`
 # defining a basic macro for list comprehension
-macro('in ', '__inline', private(=>(
+macro('in ', '__inline', private((
     @__incompret = [],
 
     # with keyword should be surrounded with whitespace
@@ -48,17 +48,17 @@ macro('in ', '__inline', private(=>(
     @ __expr = __sp2.get(1),
 
     # iterate over the iterable
-    __iterable.each('__inel', =>(
+    __iterable.each('__inel', (
             
             # set the variable name to the current element
-            var(__varname.val(), __inel.val()),
+            var(__varname, __inel),
     
             # append the expression value to the return list
-            __incompret.append(-(__expr.val()))
+            __incompret.append(-(__expr))
     )),
 
     # return new list
-    __incompret.val()
+    __incompret
 )))
 
 # invoking the new comprehension mechanism
@@ -66,14 +66,14 @@ print(in [1, 2, 3, 4, 5] with x >>> x.mul(2))
 
 # different variation
 @ l = [5, 4, 3, 2, 1]
-print(in l.val() with x >>> x.str())
+print(in l with x >>> x.str())
 
 # more complex variation
-print(in l.val() with x >>> if (?x? % 2 == 0, x.str(), x.val()))
+print(in l with x >>> if (equals(op.mod(x, 2), 0), x.str(), x))
 
 # even more complex variation (does nothing to the list lol)
-print(in l.val() with x >>> =>(
-    @ tmp = from(x.val(), x.val(), x.val()),
+print(in l with x >>> (
+    @ tmp = from(x, x, x),
     @ tmp = tmp.slice(0, 1),
     tmp.get(0)    
 ))
@@ -89,13 +89,13 @@ print([x * 2 for x in [1, 2, 3, 4, 5]])
                 "This block of code is managed by the Interpreter redirection mechanism, and is not a macro itself.",
             ]} code={`
 # utilizing Interpreter redirection with macros to define a an if block
-macro('if:', '__ifline', =>(
-    @ __recif = -(__ifline.val()),
-    redirect('__rline', if(__recif.val(), -(__rline.val())))
+macro('if:', '__ifline', (
+    @ __recif = -(__ifline),
+    redirect('__rline', if(__recif, -(__rline)))
 ))
 
 # implementing if block closure
-macro('endif', '__endifline', =>(stopredirect(), startredirect()))
+macro('endif', '__endifline', (stopredirect(), startredirect()))
 
 @ v = 0
 if: v.++()
@@ -110,19 +110,19 @@ v.print()
                 "This process can be scaled to any number of elif blocks, or whatever type of block you want to implement.",
             ]} code={`
 # utilizing Interpreter redirection with macros to define a an if block
-macro('if:', '__ifline', =>(
-    @ __recif = -(__ifline.val()),
-    redirect('__rline', if (<<|__rline.val()|.startswith('elif:')>>,
-        if(not(__recif.val()), @__recif= -(__rline.slice(5, __rline.len())), @__recif=0),
-        if(__recif.val(), 
-            -(__rline.val())
+macro('if:', '__ifline', (
+    @ __recif = -(__ifline),
+    redirect('__rline', if (<<|__rline|.startswith('elif:')>>,
+        if(not(__recif), @__recif= -(__rline.slice(5, __rline.len())), @__recif=0),
+        if(__recif, 
+            -(__rline)
         ))
     )
 ))
 
 
 # implementing if block closure
-macro('endif', '__endifline', =>(stopredirect(), startredirect()))
+macro('endif', '__endifline', (stopredirect(), startredirect()))
 
 @ v = [1, 2, 3]
 
@@ -143,36 +143,36 @@ endif
                 "Demonstrates how a function and it's body can be declared via macro invoked Interpreter redirection.",
             ]} code={`
 # creating an approach to line by line function declaration
-macro('func ', '__funcdec', =>(
+macro('func ', '__funcdec', (
 
     @__sp = __funcdec.split(' : '),
     @__fname = strip(__sp.get(0)),
 
     # declares the basics of the new function
-    function(__fname.val(),),
+    function(__fname,),
 
     # add each argument variable to the function
-    each(split(strip(__sp.get(1)), ' '), '__var', =>(
-        function.addarg(__fname.val(), __var.val())
+    each(split(strip(__sp.get(1)), ' '), '__var', (
+        function.addarg(__fname, __var)
     )),
 
     # requests for an Interpreter redirect
-    redirect('__funcline', =>(
-        function.addbody(__fname.val(), __funcline.val())
+    redirect('__funcline', (
+        function.addbody(__fname, __funcline)
     ))
 ))
 
 # declares a function and ends Interpreter redirection
-macro('end', '__unused', =>(stopredirect(), startredirect()))
+macro('end', '__unused', (stopredirect(), startredirect()))
 
 # declaring a function
 func pyth : a b
     var('c', math.sqrt(?a? ** 2 + ?b? ** 2))
-    ret('pyth', c.val())
+    ret('pyth', c)
 end
 
 # invoking the function
-print(<<pyth of |@n1=3| and |@n2=4| is>>, pyth(n1.val(), n2.val()))
+print(<<pyth of |@n1=3| and |@n2=4| is>>, pyth(n1, n2))
 
 # redeclaring the function with a more optimal approach
 func pyth : a b
@@ -180,12 +180,12 @@ func pyth : a b
 end
 
 # invoking the function
-print(<<pyth of |@n1=6| and |@n2=8| is>>, pyth(n1.val(), n2.val()))
+print(<<pyth of |@n1=6| and |@n2=8| is>>, pyth(n1, n2))
 
 # function() system call equivalent
 function('pyth', ret('pyth', math.sqrt(?a? ** 2 + ?b? ** 2)), 'a', 'b')
 
-print(<<pyth of |@n1=5| and |@n2=12| is>>, pyth(n1.val(), n2.val()))
+print(<<pyth of |@n1=5| and |@n2=12| is>>, pyth(n1, n2))
             `} />
 
             <Example title="Basic Syntax Additions 5"  desc={[
@@ -193,15 +193,15 @@ print(<<pyth of |@n1=5| and |@n2=12| is>>, pyth(n1.val(), n2.val()))
                 "The demonstration below shows new ways to retrieve the values of variables, a very commonly used programming requirement."
             ]} code={`
 # for obtaining a value
-function('getval', ret('getval', val(strip(__valine.val()))),)
+function('getval', ret('getval', val(strip(__valine))),)
 
 # example of obtaining value with macro
 
-=>(@m1 = 'v:', @m2 = '!!', @m3 = '+')
+(@m1 = 'v:', @m2 = '!!', @m3 = '+')
 
-macro(m1.val(), '__valine', getval(__valine.val()))
-macro(v: m2, '__valine', getval(__valine.val()))
-macro(!!m3, '__valine', getval(__valine.val()))
+macro(m1, '__valine', getval(__valine))
+macro(v: m2, '__valine', getval(__valine))
+macro(!!m3, '__valine', getval(__valine))
 
 @ variable = 'Hello, World!'
 
@@ -210,8 +210,8 @@ print(+m2, ':', !!variable)
 print(+m3, ':', + variable)
 
 # example of obtaining value with enclosedsyntax
-enclosedsyntax('(', ')', '__encline', getval(__encline.val()))
-enclosedsyntax('val:', ':val', '__encline', getval(__encline.val()))
+enclosedsyntax('(', ')', '__encline', getval(__encline))
+enclosedsyntax('val:', ':val', '__encline', getval(__encline))
 
 # my personal favorite of the bunch
 print('() :', (variable))
@@ -220,16 +220,16 @@ print('val::val :', val:variable:val)
 
 
 # example of obtaining value with postmacro
-postmacro(':', '__valine', getval(__valine.val()))
-postmacro('<-', '__valine', getval(__valine.val()))
+postmacro(':', '__valine', getval(__valine))
+postmacro('<-', '__valine', getval(__valine))
 
 print(': :', variable:)
 print('<- :', variable <-)
 
 # example of obtaining value with syntax
-syntax('|', '__valine', getval(__valine.val()))
-syntax('==', '__valine', getval(__valine.val()))
-syntax('^', '__valine', getval(__valine.val()))
+syntax('|', '__valine', getval(__valine))
+syntax('==', '__valine', getval(__valine))
+syntax('^', '__valine', getval(__valine))
 
 print('| :', |variable|)
 print('^ :', ^variable^)
@@ -240,20 +240,20 @@ print('^ :', ^variable^)
                 "This example demonstrates how you can define your own loop syntax."
             ]} code={`
 # creating a protected for loop mechanism
-macro('loop ', '__loopdef', =>(
+macro('loop ', '__loopdef', (
 
     # obtain the loop parameters
-    @ __loopthings = -(__loopdef.val()),
+    @ __loopthings = -(__loopdef),
 
     # create a looping function
     function('__recloop',),
 
     # redirect loop context to a new function
-    redirect('__rline', function.addbody('__recloop', __rline.val()))
+    redirect('__rline', function.addbody('__recloop', __rline))
 ))
 
 # loop closure
-macro('endloop', '__unused', =>(
+macro('endloop', '__unused', (
 
     # close and interpret redirection
     stopredirect(), 
@@ -267,8 +267,8 @@ macro('endloop', '__unused', =>(
 
 # invoke the loop macro
 loop from(0, 3, 'i')
-    print(i.val(), ": Hello, World!")
-    print(i.val(), ": Goodbye, World!")
+    print(i, ": Hello, World!")
+    print(i, ": Goodbye, World!")
 endloop
 
 # reversing a list
@@ -279,7 +279,7 @@ endloop
 loop from(0, list.len(), 'i')
 
     # reversing the list
-    list.set(i.val(), cp.get(op.sub(op.sub(list.len(), i.val()), 1)))
+    list.set(i, cp.get(op.sub(op.sub(list.len(), i), 1)))
 
     # we are in a private context, so we can use private variables
     var('priv', 0)

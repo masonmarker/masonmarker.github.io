@@ -36,8 +36,6 @@ const StyledCard = styled.div`
 
     ${css.boxShadow}
     ${css.borderRadius}
-
-
 `
 
 // card component

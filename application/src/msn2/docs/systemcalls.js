@@ -233,7 +233,7 @@ function SystemCalls() {
                 <ExecutionDisplay executionid="ex:redirectsystemcall" code={[
                     "@ l = []\n\n" +
                     "# start redirection\n" +
-                    "redirect('rline', each(-(rline.val()), 'rel', l.add(rel.val())))\n\n" +
+                    "redirect('rline', each(-(rline), 'rel', l.add(rel)))\n\n" +
                     "# in redirected context\n" +
                     "[i for i in range(0, 3)]\n" +
                     "[int(i) for i in '3 4 5'.split()]\n" +
@@ -301,7 +301,7 @@ function SystemCalls() {
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:functionsystemcall" code={[
                     "# defining a function that takes two arguments\n" +
-                    "function('printf', print(arg1.val(), arg2.val()), 'arg1', 'arg2')\n\n" +
+                    "function('printf', print(arg1, arg2), 'arg1', 'arg2')\n\n" +
                     "# calling the function\n" +
                     "printf('Hello, ', 'World!')\n\n" +
                     "# privately calling the function to replicate a Pythonic function call, hiding function variables from other contexts\n" +
@@ -311,9 +311,9 @@ function SystemCalls() {
                 <b>Example with ret():</b>,
                 <ExecutionDisplay executionid="ex:functionsystemcall2" code={[
                     "# defining a function that takes two arguments and returns to add()\n" +
-                    "function('addnum', ret('addnum', arg1.add(arg2.val())), 'arg1', 'arg2')\n\n" +
+                    "function('addnum', ret('addnum', arg1.add(arg2)), 'arg1', 'arg2')\n\n" +
                     "# calling the function\n" +
-                    "print(@v1 = random(0,10,), '+', @v2 = random(0,10,), '=', addnum(v1.val(), v2.val()))"
+                    "print(@v1 = random(0,10,), '+', @v2 = random(0,10,), '=', addnum(v1, v2))"
                 ]} />
             ]} />
 
@@ -473,7 +473,7 @@ function SystemCalls() {
                 "var() creates a variable with a name and value", <br />,
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:varsystemcall" code={[
-                    "var('x', 1)\n" +
+                    "@ x = 1\n" +
                     "x.print()"
                 ]} />
             ]} />
@@ -497,13 +497,13 @@ function SystemCalls() {
                 "This method checks only the scope of the current Interpreter, and cannot detect variables existing in an isolated context", <br />,
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:existssystemcall" code={[
-                    "var('x', 1)\n" +
+                    "@ x = 1\n" +
                     "assert(exists('x'))\n" +
                     "assert(not(exists('y')))\n\n" + 
                     "# checking in a new context\n" + 
-                    "new(=>(print(exists('x'), '\\n', exists('y'))))\n\n" +
+                    "new((print(exists('x'), '\\n', exists('y'))))\n\n" +
                     "# checking in a private() context\n" +
-                    "private(=>(print(exists('x'), '\\n', not(exists('y')))))"
+                    "private((print(exists('x'), '\\n', not(exists('y')))))"
                 ]} />
             ]} />
 
@@ -561,7 +561,7 @@ function SystemCalls() {
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:whilesystemcall" code={[
                     "@ x = 0\n" +
-                    "while(x < 5, print(@x += 1))"
+                    "while(x.less(5), print(@x += 1))"
                 ]} />
             ]} />
 
@@ -604,7 +604,7 @@ function SystemCalls() {
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:addsystemcall" code={[
                     "@ x = 0\n" +
-                    "add('x', 1)\n" +
+                    "x.add(1)\n" +
                     "x.print()"
                 ]} />
             ]} />
@@ -619,7 +619,7 @@ function SystemCalls() {
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:subsystemcall" code={[
                     "@ x = 0\n" +
-                    "sub('x', 1)\n" +
+                    "x.sub(1)\n" +
                     "x.print()"
                 ]} />
             ]} />
@@ -634,7 +634,7 @@ function SystemCalls() {
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:mulsystemcall" code={[
                     "@ x = 2\n" +
-                    "mul('x', 2)\n" +
+                    "x.mul(2)\n" +
                     "x.print()"
                 ]} />
             ]} />
@@ -649,7 +649,7 @@ function SystemCalls() {
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:divsystemcall" code={[
                     "@ x = 2\n" +
-                    "div('x', 2)\n" +
+                    "x.div(2)\n" +
                     "x.print()"
                 ]} />
             ]} />
@@ -664,7 +664,7 @@ function SystemCalls() {
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:appendsystemcall" code={[
                     "@ x = [1, 2, 3]\n" +
-                    "append('x', 4)\n" +
+                    "x.append(4)\n" +
                     "x.print()"
                 ]} />
             ]} />
@@ -679,9 +679,9 @@ function SystemCalls() {
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:arrow" code={[
                     "@ x = [1, 2, 3]\n" +
-                    "print(->(x.val(), 1))\n\n" +
+                    "print(x.get(1))\n\n" +
                     "@ y = {'a': 1, 'b': 2, 'c': 3}\n" +
-                    "print(->(y.val(), 'b'))"
+                    "print(y.get('b'))"
                 ]} />
             ]} />
 
@@ -743,7 +743,7 @@ function SystemCalls() {
                 <ExecutionDisplay executionid="ex:syntaxsystemcall" code={[
                     "syntax('$$', 'x', x.print())\n" +
                     "$$Hello, World!$$\n\n" +
-                    "syntax('$$', 'x', op.div(-(x.val()), 2))\n" +
+                    "syntax('$$', 'x', op.div(-(x), 2))\n" +
                     "print($$16$$)\n" + 
                     "print($$ 8 $$)"
                 ]} />
@@ -765,7 +765,7 @@ function SystemCalls() {
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:enclosedsyntaxsystemcall" code={[
                     "# creating an enclosing syntax for creating a range of numbers\n" +
-                    "enclosedsyntax('rng[', ']', 'encline', private(=>(@sp=encline.split(' '), @i1=-(sp.get(0)), @i2=-(sp.get(1)), <<list(range(|i1.val()|, |i2.val()|))>>)))\n\n" + 
+                    "enclosedsyntax('rng[', ']', 'encline', private(=>(@sp=encline.split(' '), @i1=-(sp.get(0)), @i2=-(sp.get(1)), <<list(range(|i1|, |i2|))>>)))\n\n" + 
                     "print(rng[1 5])\n" +
                     "print(rng[5 10])"
                 ]} />,
@@ -774,7 +774,7 @@ function SystemCalls() {
                 "Another enclosedsyntax() example:", <br />,
                 <ExecutionDisplay executionid="ex:enclosedsyntaxsystemcall2" code={[
                     '# defining new variable syntax up to 10\n' +
-                    "for(0, 10, 'i', enclosedsyntax('number ', i.str(), '__unused',, i.val()))\n\n" +
+                    "for(0, 10, 'i', enclosedsyntax('number ', i.str(), '__unused',, i))\n\n" +
                     "print(number 3)\n" +
                     "print(number 5)\n" +
                     "print(number 9)"
@@ -817,27 +817,27 @@ macro('define', '__def', =>(
 
     # using val() for complex return values
     each( val ('__def'), 'char', =>(
-        if (not(?at_value?), =>(
-            if (?char? == ' ',  @at_value = 1),
-            if (?char? != ' ', vn.add(?char?))
-        ), vl.add(?char?))
+        if (not(at_value), =>(
+            if (char.equals(' '),  @at_value = 1),
+            if (not(char.equals(' ')), vn.add(char))
+        ), vl.add(char))
     )),
 
     # strip value and evaluate according to the type contained in the value string 
     vl.strip(),
 
-    if (?vl? != 'None' and ?vl? != None, =>(
-        var('__ev', -(?vl?)),
-        if (?__ev? != None, var('vl', ?__ev?))
+    if (and(vl, vn), =>(
+        var('__ev', -(vl)),
+        if (__ev, @vl = __ev)
     )),
 
-    print('[+] creating macro:', ?vn?, 'with value:', ?vl?),
+    print('[+] creating macro:', vn, 'with value:', vl),
 
     # creates a new macro that will replace the variable name specified
     # with the value stored
     # note that macro can take a fourth argument in place of the third
     # to return a specific value as opposed to running a block of code
-    macro(?vn?, '__unused', None , ?vl?)
+    macro(vn, '__unused', None , vl)
 ))
 
 define hello 'Hello'
@@ -862,7 +862,7 @@ print(cat(hello, ','), world)`
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:postmacrosystemcall" code={[`
 # defining a postmacro that makes assertions
-postmacro('??', '__line', if(not(-(__line.val())), print('[!] assertion failed:', __line.val())))
+postmacro('??', '__line', if(not(-(__line)), print('[!] assertion failed:', __line)))
 
 # this line will print '[!] assertion failed: 1 == 2'
 1 == 2 ??
@@ -881,8 +881,8 @@ postmacro('??', '__line', if(not(-(__line.val())), print('[!] assertion failed:'
                 "val() is different from any ?? number replacement syntax, as it's used to retrieve a value from any complex variable type", <br />, <br/>,
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:valsystemcall" code={[
-                    "var('x', [1, 2, 3])\n" + 
-                    "print(val('x'))"
+                    "@ x = [1, 2, 3]\n" + 
+                    "print(x)"
                 ]} />
 
             ]} />
@@ -918,8 +918,8 @@ postmacro('??', '__line', if(not(-(__line.val())), print('[!] assertion failed:'
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:setsystemcall" code={[
                     "var('x', [1, 2, 3])\n" +
-                    "print(<<setting index |@i1=1| to>>, set('x', i1.val(), 5))\n" +
-                    "print('resulting list:', x.val())"
+                    "print(<<setting index |@i1=1| to>>, set('x', i1, 5))\n" +
+                    "print('resulting list:', x)"
                 ]} />
             ]}/>
 
@@ -933,17 +933,17 @@ postmacro('??', '__line', if(not(-(__line.val())), print('[!] assertion failed:'
                 "del() returns True", <br />, <br/>,
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:delsystemcall" code={[
-                    "var('x', 1)\n" +
-                    "var('y', 2)\n" +
-                    "print('x:', x.val())\n" +
-                    "print('y:', y.val())\n" +
+                    "@ x = 1\n" +
+                    "@ y = 2\n" +
+                    "print('x:', x)\n" +
+                    "print('y:', y)\n" +
 
                     "print('deleting x and y...')\n" +
                     "del('x', 'y')\n\n" +
 
                     "# x and y do not exist anymore, so the Interpreter proceeds to interpret the invalid code as a string\n" +
-                    "print('x:', x.val())\n" +
-                    "print('y:', y.val())"
+                    "print('x:', x)\n" +
+                    "print('y:', y)"
                 ]} />
             ]} />
 
@@ -1018,25 +1018,26 @@ postmacro('??', '__line', if(not(-(__line.val())), print('[!] assertion failed:'
                 ]} />
             ]} />
 
-            <SystemCall type="System Call" name="=>" args={['any', '...']} return="any" description={[
+            <SystemCall type="System Call" name="() and =>" args={['any', '...']} return="any" description={[
                 <Args args={[
                     ['instruction', 'any', 'the instruction to execute'],
                     ['...', '...', 'any additional instructions to execute']
                 ]} />,
-                "=>() is called the inline function system call", <br />,
-                "=>() executes the instructions passed", <br />,
-                "=>() returns the value of the last instruction executed", <br />, <br/>,
+                "both () and =>() are the inline function system calls", <br />,
+                "the obvious () is the recommended version of this system call", <br />,
+                "() and =>() executes the instructions passed", <br />,
+                "() and =>() returns the value of the last instruction executed", <br />, <br/>,
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:arrowfunctionsystemcall" code={[`
 @ lst = [1, 2, 3, 4, 5]
 
 # using the inline function to summarize objective of algorithm
-@ a = private(=>(
+@ a = private((
 
     # creating a slice of the list
     @ tmp = lst.slice(0, 3),
     tmp.each('el', el.print()),
-    sum(tmp.val())
+    sum(tmp)
 ))
 
 a.print()
@@ -1064,7 +1065,7 @@ a.print()
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:classsystemcall" code={[`
 # defining the class
-class('person', =>(
+class('person', (
     @ name =,
     @ age =
 ))
@@ -1078,7 +1079,7 @@ p.print()
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:classsystemcall2" code={[`
 # defining the class
-class('person', =>(@name=,@age=))
+class('person', (@name=,@age=))
 
 # creating an instance of the class
 @ p = person('joe', 20)
@@ -1109,7 +1110,7 @@ assert(equals(p.age(), 21))
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:getsystemcall" code={[`
 @ lst = [1, 2, 3, 4, 5]
-@a = get(lst.val(), 2)
+@a = lst.get(2)
 a.print()
                 `]} />
             ]} />
@@ -1123,7 +1124,7 @@ a.print()
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:keyssystemcall" code={[`
 @ d = {1: 'a', 2: 'b', 3: 'c'}
-@ k = keys(d.val())
+@ k = keys(d)
 k.print()
                 `]} />
             ]} />
@@ -1238,7 +1239,7 @@ print(strip(' Hello, World! '))
                 "See ",<i>MSN2</i> , " in my GitHub for more information on the processes library", <br />,
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:asyncsystemcall" code={[`
-print(async(=>(
+print(async((
     assert(1 == 1),
     print('Hello, World!')
 )))
@@ -1261,7 +1262,7 @@ print(now())
 @ start = now()
 arr.sort()
 
-print('time taken:', op.sub(now(), start.val()), 'seconds')
+print('time taken:', op.sub(now(), start), 'seconds')
                 `]} />
             ]}/>
 
@@ -1279,18 +1280,18 @@ print('time taken:', op.sub(now(), start.val()), 'seconds')
 @ a = 1
 @ b = 2
 
-print('a:', a.val(), 'b:', b.val())
+print('a:', a, 'b:', b)
 
-@ c = private(=>(
-    print('private a:', a.val(), 'b:', b.val()),
+@ c = private((
+    print('private a:', a, 'b:', b),
     @a = 3,
     @b = 4,
-    print('private a:', a.val(), 'b:', b.val()),
-    b.val()
+    print('private a:', a, 'b:', b),
+    b
 ))
 
-print('a:', a.val(), 'b:', b.val())
-print('c:', c.val())
+print('a:', a, 'b:', b)
+print('c:', c)
                 `]} />
             ]} />
 
@@ -1307,21 +1308,21 @@ print('c:', c.val())
 @ a = 1
 @ b = 2
 
-print('a:', a.val(), 'b:', b.val())
+print('a:', a, 'b:', b)
 
-@ c = new(=>(
+@ c = new((
 
     # a and b are not defined in this context, so the Interpreter
     # will fail to recognize them and will return a string representation
-    print('new a:', a.val(), 'b:', b.val()),
+    print('new a:', a, 'b:', b),
     @a = 3,
     @b = 4,
-    print('new a:', a.val(), 'b:', b.val()),
-    b.val()
+    print('new a:', a, 'b:', b),
+    b
 ))
 
-print('a:', a.val(), 'b:', b.val())
-print('c:', c.val())
+print('a:', a, 'b:', b)
+print('c:', c)
 
             `]}/>
             ]} />
@@ -1334,9 +1335,9 @@ print('c:', c.val())
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:breaksystemcall" code={[`
 # create a private context
-private(=>(
+private((
     @ n = 0,
-    for(0, 100, 'i', if(n.greater(50), =>(
+    for(0, 100, 'i', if(n.greater(50), (
 
         # bring n to the parent context
         export('n'), break()
@@ -1354,9 +1355,9 @@ n.print()
                 <ExecutionDisplay executionid="ex:inheritvarssystemcall" code={[`
 @ a = 1
 @ b = 2
-new(=>(
+new((
     inherit:vars(),
-    print('a:', a.val(), 'b:', b.val())
+    print('a:', a, 'b:', b)
 ))
                 `]} />
             ]} />
@@ -1366,9 +1367,9 @@ new(=>(
                 "inherit:methods() returns True", <br />, <br />,
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:inheritmethodssystemcall" code={[`
-function('ADD', ret('ADD', op.add(a.val(), b.val())), 'a', 'b')
+function('ADD', ret('ADD', op.add(a, b)), 'a', 'b')
 print(ADD(1, 2))
-new(=>(
+new((
     inherit:methods(),
     print(ADD(3, 4))
 ))
@@ -1451,7 +1452,7 @@ try(
 )
                 `]} />,
                 <ExecutionDisplay executionid="ex:trysystemcall2" code={[`
-try(=>(
+try((
     print('try'),
     @ list = [1, 2, 3],
 
@@ -1485,7 +1486,7 @@ try(=>(
                 <b>Examples:</b>,
                 <ExecutionDisplay executionid="ex:export" code={[`
 # create child context
-private(=>(
+private((
     @ v = 0,
     export('v')
 ))
@@ -1493,7 +1494,7 @@ v.print()
                 `]} />,
                 <ExecutionDisplay executionid="ex:export2" code={[`
 # create child context
-private(=>(
+private((
     @ v = 0,
     function('zero', ret('zero', 0),),
     export('v', 'zero')
@@ -1530,7 +1531,7 @@ v.print()
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:exportall" code={[`
 # create child context
-private(=>(
+private((
     @ v = 0,
     function('zero', ret('zero', 0),),
     exportall()
@@ -1695,10 +1696,13 @@ obj.print()
                 <b>Example:</b>,
                 <ExecutionDisplay executionid="ex:loopsystemcall" code={[`
 # loop with variable
-0|5|i (i.print())
+0|5|i (print(i))
 
 # loop with unused variable
 0 | 5 | _ (print('hello'))
+
+# loop with integer
+0 | @ int = 3 | i (int.print('int: '))
                 `]} />
             ]} /> 
 
@@ -1722,7 +1726,118 @@ obj.print()
                 <ExecutionDisplay executionid="ex:if?sytemcall2" code={[`
 # example using ?? number replacement syntax
 @ a = 1
-? ?a? (print('True'))
+? a (print('True'))
+                `]} />
+            ]} />
+
+
+            <SystemCall type="System Call" name="filter" args={['iterable', 'str', 'block']} return="list" description={[
+                <Args args={[
+                    ['iterable', 'iterable', "the iterable to filter"],
+                    ['varname', 'string', "the name of the variable to use in the block"],
+                    ['block', 'block', "the block to execute on each element of the iterable"]
+                ]} />,
+                "filter() is used to filter an iterable", <br />,
+                "filter() returns a list of the elements that passed the filter", <br />, <br />,
+                <b>Example:</b>,
+                <ExecutionDisplay executionid="ex:filtersystemcall" code={[`
+@ list = [1, 2, 3, 4, 5]
+print(filter(list, 'e', e.greater(3)))
+                `]} />
+            ]} />
+
+            <SystemCall type="System Call" name="map" args={['iterable', 'str', 'block']} return="list" description={[
+                <Args args={[
+                    ['iterable', 'iterable', "the iterable to map"],
+                    ['varname', 'string', "the name of the variable to use in the block"],
+                    ['block', 'block', "the block to execute on each element of the iterable"]
+                ]} />,
+                "map() is used to map an iterable", <br />,
+                "In other words, map() is used to apply a function to each element of an iterable", <br />,
+                "map() returns a list of the elements that passed the map", <br />, <br />,
+                <b>Example:</b>,
+                <ExecutionDisplay executionid="ex:mapsystemcall" code={[`
+@ list = [1, 2, 3, 4, 5]
+print(map(list, 'e', e.add(1)))
+                `]} />
+            ]} />
+
+            <SystemCall type="System Call" name="comp" args={['iterable', 'str', 'block']} return="any" description={[
+                <Args args={[
+                    ['iterable', 'iterable', 'the iterable to iterate over.'],
+                    ['varname', 'string', 'the name of the variable to use in the block.'],
+                    ['block', 'block', 'the block to execute on each element of the iterable.']
+                ]} />,
+                "comp() is used to perform list comprehension", <br />,
+                "comp() returns a list of the elements that passed the comprehension", <br />, <br />,
+                "Effectively performs the following Python code: [for varname in iterable block]", <br />, <br />,
+                <b>Example:</b>,
+                <ExecutionDisplay executionid="ex:compsystemcall" code={[`
+@ list = [1, 2, 3, 4, 5]
+print(comp(list, 'e', e.add(1)))
+                `]} />
+            ]} />
+
+            <SystemCall type="System Call" name="app" args={['str']} return="any" description={[
+                <Args args={[
+                    ['str', 'string', 'the path to a Win32 application on a Windows machine.']
+                ]} />,
+                "app() is used to open a Win32 application on a Windows machine", <br />,
+                "app() returns an instance of the application", <br />, <br />,
+                "app() terminates the process tree of the application at the path, then retrieves a new instance for opening", <br />, <br />,
+                <b>Example:</b>, <br />, <br />,
+                "@ notepad = app('notepad.exe')", <br />,
+                "# opens the notepad", <br />,
+                "notepad.start()", <br />,
+                "# closes the notepad", <br />,
+                "notepad.close()", <br />
+            ]} />
+
+            <SystemCall type="System Call" name="excel" args={['str']} return="any" description={[
+                <Args args={[
+                    ['str', 'string', 'the path to an Excel file on the local machine.']
+                ]} />,
+                "excel() is used to read and write to an Excel Workbook", <br />,
+                "excel() returns an instance of the Excel Workbook", <br />, <br />,
+                "The Excel Workbook should be closed before calling excel()", <br />, <br />,
+                <b>Example:</b>, <br />, <br />,
+                "@ workbook = excel('C:\\\\Users\\\\user\\\\Desktop\\\\test.xlsx')", <br />, <br />,
+                "See my GitHub for more information on how to use the Excel Workbook class"
+            ]} />
+
+            <SystemCall type="System Call" name="static" args={['any']} return="any" description={[
+                <Args args={[
+                    ['class variable', 'any', 'a default class variable to access']
+                ]} />,
+                "static() is used to access a class variable without an instance of the class", <br />,
+                "static() returns the class variable", <br />, <br />,
+                <b>Example:</b>, <br />, <br />,
+                <ExecutionDisplay executionid="ex:staticsystemcall" code={[`
+# example using static() to access a class variable
+class('test', @ v = 'hello')
+print(static(test.v()))
+                `]} />
+            ]} />
+
+            <SystemCall type="System Call" name="*integer*" args={['block', '...']} return="class" description={[
+                <Args args={[
+                    ['block', 'block', 'the block to execute on each element of the iterable.'],
+                    ['...', 'blocks', 'any number of blocks to execute']
+                ]} />,
+                "*integer*() is used to create a more seamless looping mechanism,", <br />,
+                "where a variable is not needed.", <br />,
+                "*integer*() returns the value of the last block argument's return", <br />, <br />,
+                <b>Example:</b>, <br />, <br />,
+                <ExecutionDisplay executionid="ex:integersystemcall" code={[`
+# example using *integer*() to loop
+@ t = 0
+4 (t.add(1))
+assert(t.equals(4))
+
+# example with integer variable
+@ loops = 5
+@ r = loops (print('Hello World!'), assert(True))
+assert(r)
                 `]} />
             ]} />
         </div>
