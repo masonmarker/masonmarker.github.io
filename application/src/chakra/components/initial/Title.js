@@ -220,8 +220,8 @@ const Title = (props) => {
                         I'm a <strong style={{color: "maroon"}}>robotics processing engineer</strong> and 
                         <strong style={{color: "darkgreen"}}> software developer</strong>
                     </Text>
-                    <Text>
-                        I'm have my <i>Bachelor's</i> degree in <strong>computer science</strong> from <strong style={{color: "purple"}}>James Madison University</strong>
+                    <Text textAlign='center'>
+                        I have my <i>Bachelor's</i> degree in <strong>computer science</strong> from <strong style={{color: "purple"}}>James Madison University</strong>
                     </Text>
                 </Box>
             </ScaleFade>

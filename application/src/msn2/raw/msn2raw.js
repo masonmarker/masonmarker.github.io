@@ -3844,7 +3844,31 @@ class Interpreter:
                         iterable[i] = self.interpret(function)
                     return iterable
                         
-                        
+                # computes the maximum value from all arguments
+                # takes any amount of arguments, all being
+                # either numbers or lists
+                elif func == 'maximum':
+                    maxval = max(_f) if isinstance((_f := self.parse(0, line, f, sp, args)[2]), list) else _f
+                    for i in range(1, len(args)):
+                        val = self.parse(i, line, f, sp, args)[2]
+                        # is a list argument
+                        if isinstance(val, list):
+                            maxval = max(maxval, max(val))
+                        # is a number
+                        else:
+                            maxval = max(maxval, val)
+                    return maxval
+                elif func == 'minimum':
+                    minval = min(_f) if isinstance((_f := self.parse(0, line, f, sp, args)[2]), list) else _f
+                    for i in range(1, len(args)):
+                        val = self.parse(i, line, f, sp, args)[2]
+                        # is a list argument
+                        if isinstance(val, list):
+                            minval = min(minval, min(val))
+                        # is a number
+                        else:
+                            minval = min(minval, val)
+                    return minval
                         
                     
                 # inserts a value into the iterable at the specified index

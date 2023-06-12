@@ -108,6 +108,9 @@ function Info() {
                     <li>
                         <i>MSN2</i> documentation includes tutorials with interactive programming environments to help you get started with the language
                     </li>
+                    <li>
+                        See an <i>EARLY</i> <a href="https://www.youtube.com/watch?v=wIhDTUswBs4&t=1477s&ab_channel=MasonMarker">demonstration</a>
+                    </li>
                 </ul>
                 <Link to="/msn2docs" className='msn2-big-title' style={{color: 'white', margin:0, marginTop: '4.5vh', marginBottom: '10vh', fontSize: '2rem', textDecoration: 'none'}}>Go to the docs</Link>
             </Card>

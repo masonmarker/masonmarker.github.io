@@ -16,8 +16,8 @@ const GitHub = () => {
                 <div className="github-nav-container">
                     <Link to="/" className="download-button" Style="background-color: var(--darkpurple); color: white">Back</Link>
                     <div className="github-nav-title">
-                        <h1 Style="margin-bottom: .5rem;">The Msn Project</h1>
-                        <h5 Style="margin-top: 0;">GitHub Repository</h5>
+                        <h1 Style="margin-bottom: .5rem;"><i>The Msn Project</i></h1>
+                        <h5 Style="margin-top: 0;"><i>GitHub Repository</i></h5>
                     </div>
                     <div className="download-button" style={{backgroundColor: "var(--darkpurple)", color: "white"}} onClick={gitClicked}>Visit</div>
                 </div>
@@ -25,7 +25,7 @@ const GitHub = () => {
             <Msn2 />
             <div className="github-msnc">
                 <div className="msnc-img"></div>
-                <div Style="margin-left: 1rem;">
+                <div>
                     <div className="github-msnc-desc">
                         <h1 Style="margin-bottom: 0">MSN Code (MSNC)</h1>
                         <h3 Style="margin-top: 0">Programming Language</h3>
@@ -49,12 +49,9 @@ const GitHub = () => {
                             The question as of 4/19/2022 remains as to whether I should continue with the concept,
                             but for now I will do my best to repair any existing bugs. You can find a demonstration of the languages features below.
                         </h4>
+                        <a href="https://www.youtube.com/watch?v=WRMVIQCrjL0&t=3352s&ab_channel=MasonMarker">Demonstration</a>
                     </div>
                 </div>
-            </div>
-            <div className="msnc-vid-desc">
-                <h1>Demonstration</h1>
-                <iframe className="msnc-vid" width="560" height="315" src="https://www.youtube.com/embed/WRMVIQCrjL0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div>
 
             <div className="msnscript-div">

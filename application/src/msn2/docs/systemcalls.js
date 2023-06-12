@@ -1840,6 +1840,94 @@ assert(t.equals(4))
 assert(r)
                 `]} />
             ]} />
+
+            <SystemCall type="System Call" name="in" args={['(opt) int', '(opt) int']} return="any" description={[
+                <Args args={[
+                    ['(opt) int', 'int', 'the index of the input to retrieve'],
+                    ['(opt) int', 'int', 'an ending index of the input list']
+                ]} />,
+                "Input received from an enclosing Python script", <br />,
+                "in() receives the input to the enclosing 'run' method as a list", <br />, <br />,
+                "in() returns the second argument to the 'run' method", <br />,
+                "as a method from the Python module 'msn2python' when running a .msn2 script.", <br />, <br />,
+                "The number of arguments to in() determine the retrieval of the input, assuming the second argument", <br />,
+                "to 'run' is a list.", <br />, <br />,
+                "in() -> returns the entire input list", <br />,
+                "in(int) -> returns the int-th element of the input list", <br />,
+                "in(int, int) -> returns a list of the int-th through the second int-th elements of the input list", <br />, <br />,
+                "This method is the other half of the out() system call, as this receives input, as opposed to producing output."
+            ]} />
+
+            <SystemCall type="System Call" name="out" args={['any', '...']} return="list" description={[
+                <Args args={[
+                    ['any', 'any', 'the first element to add to the output list'],
+                    ['...', 'any', 'any number of elements to add to the output list']
+                ]} />,
+                "Output produced to an enclosing Python script", <br />,
+                "out() produces output to the enclosing 'run' method as a list", <br />, <br />,
+                "The Python 'run()' method to execute a .msn2 script will return a list of all arguments", <br />,
+                "passed to out() in the .msn2 script.", <br />, <br />,
+                "This, in unison with in(), grant Python scripts the ability to communicate with .msn2 scripts.", <br />, <br />,
+                "This method is the other half of the in() system call, as this produces output, as opposed to receiving input."
+            ]} />
+
+            <SystemCall type="System Call" name="maximum" args={['num/list', 'num/list', '...']} return="num" description={[
+                <Args args={[
+                    ['num/list', 'num/list', 'the first number or list to compare'],
+                    ['num/list', 'num/list', 'the second number or list to compare'],
+                    ['...', 'num/list', 'any number of numbers or lists to compare']
+                ]} />,
+                "maximum() is used to find the maximum of a list of numbers or lists", <br />,
+                "maximum() returns the maximum of the arguments", <br />, <br />,
+                "maximum() can be used to find the maximum of a list of numbers", <br />,
+                "or the maximum of a list of lists of numbers", <br />, <br />,
+                "or any combinations of numbers and lists of numbers", <br />, <br />,
+                <b>Example:</b>, <br />, <br />,
+                <ExecutionDisplay executionid="ex:maxsystemcall" code={[`
+# example using maximum() to find the maximum of a list of numbers
+@ max = maximum(1, 2, 3, 4, 5)
+assert(max.equals(5))
+
+# example using maximum() to find the maximum of a list of lists of numbers
+@ max = maximum([1, 2, 3], [4, 5, 6], [7, 8, 9])
+assert(max.equals(9))
+
+# example using maximum() to find the maximum of a list of numbers and a list of lists of numbers
+@ max = maximum(1, [2, 3, 4], [5, 6, 7])
+assert(max.equals(7))
+
+# example using maximum() to find the maximum of a list of lists of numbers and a list of numbers
+@ max = maximum([1, 2, 3], [4, 5, 6], 7)
+assert(max.equals(7))
+                `]} />
+            ]} />
+
+            <SystemCall type="System Call" name="minimum" args={['num/list', 'num/list', '...']} return="num" description={[
+                <Args args={[
+                    ['num/list', 'num/list', 'the first number or list to compare'],
+                    ['num/list', 'num/list', 'the second number or list to compare'],
+                    ['...', 'num/list', 'any number of numbers or lists to compare']
+                ]} />,
+                "minimum() is used to find the minimum of a list of numbers or lists", <br />,
+                "minimum() returns the minimum of the arguments", <br />, <br />,
+                "minimum() can be used to find the minimum of a list of numbers", <br />,
+                "or the minimum of a list of lists of numbers", <br />, <br />,
+                "or any combinations of numbers and lists of numbers", <br />, <br />,
+                <b>Example:</b>, <br />, <br />,
+                <ExecutionDisplay executionid="ex:minsystemcall" code={[`
+# example using minimum() to find the minimum of a list of numbers
+@ min = minimum(1, 2, 3, 4, 5)
+assert(min.equals(1))
+
+# example using minimum() to find the minimum of a list of lists of numbers
+@ min = minimum([1, 2, 3], [4, 5, 6], [7, 8, 9])
+assert(min.equals(1))
+
+# example using minimum() to find the minimum of a list of numbers and a list of lists of numbers
+@ min = minimum(1, [2, 3, 4], [5, 6, 7])
+assert(min.equals(1))   
+                `]} />
+            ]} />
         </div>
     )
 }

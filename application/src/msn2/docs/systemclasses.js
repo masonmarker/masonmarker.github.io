@@ -445,7 +445,11 @@ print(function.run('test', op.add(3, 1), 6))
                     ]} />,
                     <ClassMethod name="from" args={["str"]} return="list" aliases={[]} desc={[
                         "Extracts a list of HTML elements within the page specified by the URL.", <br/>,
-                        "Each element in the list returned is a dictionary with the following keys:", <br/>,
+                        "This method is a work in progress, of course, and should eventually retrieve a list of root elements, ",
+                        "with each element containing all information a single HTML element would have, but a current, rough implementation", <br/>,
+                        "involves the following:", <br/>, <br/>,
+                        "Each element in the list returned is a dictionary with the following keys:", <br/>, <br/>,
+                        
                         "- 'tag' : tag name for the element", <br/>,
                         "- attrs : all attributes of the element", <br/>,
                         "- text : the text value of the element"
@@ -464,6 +468,17 @@ print(function.run('test', op.add(3, 1), 6))
                     ]} />,
                 ]} code={``}/>
 
+                <SystemClass title="auto" desc={[
+                    "Provides operations regarding the automation capabilities of MSN2.", <br/>,
+                    "This class is a work in progress, and will be updated as more features are added."
+                ]} methods={[
+                    <ClassMethod name="largest" args={["list"]} return="any" aliases={[]} desc={[
+                        "Returns the largest element in the list specified by the first argument.", <br/>,
+                        "This method attempts to look for a .height() and .width() method for each item,", <br/>,
+                        "otherwise it will simply return the maximum element in the list."
+                    ]} />,
+
+                ]} code={``}/>
         </div>
     )
 }
