@@ -359,6 +359,13 @@ section {
   } 
 }
 
+/* if screen less than 610 px*/
+@media only screen and (max-width: 650px) {
+  .job-desc {
+    font-size: 1rem;
+  } 
+}
+
 
 .contact-me {
   display: flex;

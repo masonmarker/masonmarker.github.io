@@ -29,7 +29,6 @@ import links from '../../styles/links'
 // intersection observer
 import { inView, useInView } from 'react-intersection-observer'
 
-
 // styled App
 // background color should be perfectly divided in half, diagonally,
 // with the top half being a light blue and the bottom half being a dark blue
@@ -202,8 +201,8 @@ const Title = (props) => {
 
                     onClick={() => {
                         // scroll to element with id edudrop
-                        const element = document.getElementById("edudrop")
-                        element.scrollIntoView({behavior: "smooth"})
+                        const element = document.getElementById("edudrop");
+                        element.scrollIntoView({behavior: "smooth"});
                     }}
                     desc={[<strong key="bubble5">Email </strong>, "and ", <strong key="bubble6">Inquiries</strong>]}>
                     <EmailIcon />
@@ -217,8 +216,8 @@ const Title = (props) => {
                         color={colors.gray}
                         marginTop="5rem">Hi, I'm Mason!</Text>
                     <Text textAlign="center">
-                        I'm a <strong style={{color: "maroon"}}>robotics processing engineer</strong> and 
-                        <strong style={{color: "darkgreen"}}> software developer</strong>
+                        I'm an <strong style={{color: "maroon"}}>ITDP analyst</strong> on
+                        <strong style={{color: "darkgreen"}}> Genworth's EUS team.</strong>
                     </Text>
                     <Text textAlign='center'>
                         I have my <i>Bachelor's</i> degree in <strong>computer science</strong> from <strong style={{color: "purple"}}>James Madison University</strong>
