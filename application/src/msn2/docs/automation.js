@@ -3,10 +3,10 @@
 
 
 import {Title, Section} from './../msn2docs'
-import { ExecutionDisplay } from './basics'
-import {Drop, ScrollerToSearch} from './systemcalls'
-import Dropdown from 'react-dropdown';
-import Arrow from 'react-dropdown'
+// import { ExecutionDisplay } from './basics'
+// import {Drop, ScrollerToSearch} from './systemcalls'
+// import Dropdown from 'react-dropdown';
+// import Arrow from 'react-dropdown'
 
 // function Section(props) {
 //     return (

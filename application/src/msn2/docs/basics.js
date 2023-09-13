@@ -4,9 +4,7 @@ import "./../msn2.css";
 import { Title, Section } from "./../msn2docs";
 
 import msn2raw from "./../raw/msn2raw";
-import { Link, matchRoutes } from "react-router-dom";
-//import react typing
-import ReactTypingEffect from "react-typing-effect";
+import { Link } from "react-router-dom";
 import React from "react";
 
 var pyodide;
@@ -486,14 +484,12 @@ assert(equals(integer, 3))
           ".",
           <br />,
           <br />,
-
           "Similarly to <<>> enclosing syntax, any ",
           <i>MSN2</i>,
           " code surrounded by a pair of '%' will be evaluated and the result will be inserted into the ",
           <i>MSN2</i>,
           " instruction surrounded by the <2><2> tags.",
           <br />,
-          ,
           <br />,
           "Example: ",
           <br />,
@@ -527,7 +523,7 @@ assert(equals(integer, 3))
           <br />,
           ExecutionDisplay({
             executionid: "ex:macros3",
-            code: ["@integer = 5\n" + "print(*integer)"],
+            code: ["@integer = 5\nprint(*integer)"],
             codeheight: "5rem",
           }),
           <br />,
@@ -1070,7 +1066,6 @@ async function run(executionid) {
   // run code
   var code = document.getElementById(executionid + "code").value;
   var out = document.getElementById(executionid + "out");
-  var button = document.getElementById(executionid + "button");
   await prepare(out)
 
   if (out.innerHTML.includes("Traceback")) {
@@ -1085,7 +1080,7 @@ async function run(executionid) {
     // animate out to print stdout
     // can only print if this is the only out printing
 
-    if (outsprinting == 1) {
+    if (outsprinting === 1) {
       // we use an invisible character thats not a space to
       // avoid shrinking the output for a few milliseconds
       // before the animation starts
@@ -1093,7 +1088,7 @@ async function run(executionid) {
       var i = 0;
       var interval = setInterval(function () {
         if (i < stdout.length) {
-          if (stdout[i] == "\n") {
+          if (stdout[i] === "\n") {
             out.innerHTML += "<br/>";
           } else {
             out.innerHTML += stdout[i];

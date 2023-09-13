@@ -10,12 +10,6 @@ import { Link } from "@chakra-ui/react"
 // colors
 import colors from '../../styles/colors'
 
-// styled component for hover
-import styled from 'styled-components'
-
-
-
-
 const Tab = (props) => {
 
     // custom link style

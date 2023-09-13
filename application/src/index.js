@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
+// import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { useLayoutEffect } from "react";
@@ -48,6 +48,7 @@ root.render(
       <Wrapper>
         <Routes>
           <Route path="/" element={<ChakraApp />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/github" element={<GitHub />} />
           <Route path="/msnscript1" element={<Msnscript />} />

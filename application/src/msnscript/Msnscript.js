@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom'
-import CodeMirror, { useCodeMirror } from '@uiw/react-codemirror';
+import CodeMirror from '@uiw/react-codemirror';
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import SourceCode from './msnscriptraw';
 import preloads from './../preload';
@@ -96,15 +96,12 @@ function load(code) {
     var lines = preloads[code].split("\n");
     // create a div
     for (var i = 0; i < lines.length; i++) {
-        var cm = document.getElementsByClassName("cm-content")[0]; 
+        cm = document.getElementsByClassName("cm-content")[0]; 
         var line = document.createElement("div");
         line.className = "cm-line";
         line.innerText = lines[i];
         cm.appendChild(line);
     }
-
-    
-    
 }
 
 function run() {
@@ -113,8 +110,8 @@ function run() {
     out.value = "Preparing for launch..."
     var code = '';
     for (var i = 0; i < cm.childNodes.length; i++) {
-        if (cm.childNodes[i].innerText != "\n" && cm.childNodes[i].innerText != "") {
-            if (i != cm.childNodes.length - 1) {
+        if (cm.childNodes[i].innerText !== "\n" && cm.childNodes[i].innerText !== "") {
+            if (i !== cm.childNodes.length - 1) {
                 code += cm.childNodes[i].innerText + "|";
             } else {
                 code += cm.childNodes[i].innerText
@@ -122,26 +119,19 @@ function run() {
         }
     }
     const writtenMsn = "sc = " + JSON.stringify(code);
-
-    console.log(writtenMsn);
-
     pyodide.runPython(writtenMsn);
-
-
     try {
         pyodide.runPython("sc = " + JSON.stringify(code));
         pyodide.runPython(`
         stdout, linesran, comptime = Interpreter(sc).exe(sc)
     `)
-
     } catch (error) {
         console.log(error)
         prepare()
     }
     const stdout = pyodide.globals.toJs().get('stdout')
     const linesran = pyodide.globals.toJs().get('linesran')
-
-    out.value = stdout + "\n" + "ran " + linesran + " line(s)\n\n"
+    out.value = `${stdout}\nran ${linesran} line(s)\n\n`;
 }
 
 export default Msnscript;

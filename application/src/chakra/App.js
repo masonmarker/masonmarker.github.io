@@ -4,35 +4,19 @@
 
 
 // chakra ui
-import { ChakraProvider } from "@chakra-ui/react"
-
-// chakra components
-import { Box, Text } from "@chakra-ui/react"
-
-// import fonts
-import fonts from './styles/fonts'
-
-// for styled components
-import styled from 'styled-components'
-
-// common
-import colors from './styles/colors'
+import { ChakraProvider } from "@chakra-ui/react";
 
 // components
-import Title from './components/initial/Title'
-import About from './components/initial/About'
+import Title from './components/initial/Title';
+import About from './components/initial/About';
 
 const App = () => {
-
-
     return (
         <ChakraProvider>
             <Title/>
             <About/>
         </ChakraProvider>
     )
-}
+};
 
-
-
-export default App
+export default App;

@@ -10,13 +10,6 @@ import styled from 'styled-components'
 import colors from '../../styles/colors'
 import css from '../../styles/css'
 
-// chakra components
-import { Box, Text, Fade, Image } from '@chakra-ui/react'
-
-// intersection observer
-import { inView, useInView } from 'react-intersection-observer'
-
-
 // styled About
 const AboutStyled = styled.div`
     display: flex;
@@ -66,20 +59,10 @@ const AboutStyled = styled.div`
     .edu-desc {
         margin-left: 3rem;
     }
-
-
-
 `
-
 
 // about component
 const About = () => {
-
-    // intersection observer
-    const [ref, inView] = useInView({
-        threshold: 0,
-    })
-
     // first box should have two images stack on top of each other resembling that of JMU
     // use at least this link: https://www.jmu.edu/_images/default/JMUopengraphimage.jpg
     return (

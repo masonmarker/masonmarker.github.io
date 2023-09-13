@@ -21,11 +21,6 @@
     background-color: black;
 
     font-family: 'Roboto', sans-serif;
-
-    /* make the div fade wherever it goes*/
-    animation-name: fade;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
 }
 
 /* this is a panel for a system call, should display it nicely and techy*/
@@ -148,7 +143,7 @@ h {
     text-shadow: 5px 10px hotpink;
     user-select: none;
     text-align: center;
-  }
+}
 
 .msn2-big-title-div {
     display: flex;

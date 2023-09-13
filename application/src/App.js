@@ -1,9 +1,6 @@
 import "./App.css";
 import React from "react";
-import {
-  Outlet,
-  Link,
-} from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 // import Resume from "./resume";
 // import { useNavigate } from "react-router-dom";
 import { Divider } from "@chakra-ui/react";
@@ -200,31 +197,26 @@ const Ventures = () => {
           className="ventures-img"
           src="https://content.fortune.com/wp-content/uploads/2020/05/F500-2020-364-Genworth-Financial.jpg"
         ></img>
+        <div className="desc-div">
           <h2
             style={{
               marginBottom: 0,
-              color: "var(--darkpurple)",
-              fontSize: "1.2rem",
+              color: "var(--darkpurple)"
             }}
           >
             Genworth
           </h2>
-        <div className="desc-div">
           <h3 className="job-title">IT Development Program Analyst</h3>
           <h4 className="job-duration">July 2023 - Present</h4>
           <h5 className="job-desc">
             When I finished ITDP bootcamp in Richmond, I was assigned to the
-            Endpoint Solutions team for EUS. I'll list my projects once
-            I've finished them!
+            Endpoint Solutions team for EUS. I'll list my projects once I've
+            finished them!
           </h5>
         </div>
 
         {/* divider */}
-        <Divider
-          mt={4}
-          mb={4}
-        />
-
+        <Divider mt={4} mb={4} />
 
         <div className="desc-div">
           <h3 className="job-title">IT Development Program Intern</h3>
@@ -255,8 +247,7 @@ const Ventures = () => {
           <h2
             style={{
               marginBottom: 0,
-              color: "var(--darkpurple)",
-              fontSize: "1.2rem",
+              color: "var(--darkpurple)"
             }}
           >
             Walgreens Pharmacy
@@ -287,8 +278,7 @@ const Ventures = () => {
           <h2
             style={{
               marginBottom: 0,
-              color: "var(--darkpurple)",
-              fontSize: "1.2rem",
+              color: "var(--darkpurple)"
             }}
           >
             Winchester Medical Center
@@ -322,8 +312,7 @@ const Ventures = () => {
           <h2
             style={{
               marginBottom: 0,
-              color: "var(--darkpurple)",
-              fontSize: "1.2rem",
+              color: "var(--darkpurple)"
             }}
           >
             Chick-Fil-A
@@ -504,7 +493,7 @@ const Languages = () => {
           src="https://logicoretech.com/wp-content/uploads/2022/05/Python-Symbol.png"
           style={{ marginTop: "0.3rem" }}
         ></img>
-        <Proficiency level="80%" color="lightblue" completion="advanced" />
+        <Proficiency level="87%" color="lightblue" completion="fluent" />
         <div>
           <p>Python was one of the most recent languages I've learned.</p>
           <p>
@@ -555,7 +544,7 @@ const Languages = () => {
           style={{ paddingTop: "1.2rem" }}
           src="https://www.freepnglogos.com/uploads/html5-logo-png/html5-logo-devextreme-multi-purpose-controls-html-javascript-3.png"
         ></img>
-        <Proficiency level="55%" color="blue" completion="intermediate" />
+        <Proficiency level="75%" color="blue" completion="advanced" />
         <div>
           <p>
             Upon enrollment in my web development class, it became clear that
@@ -588,7 +577,7 @@ const Languages = () => {
           src="https://www.datocms-assets.com/45470/1631110818-logo-react-js.png"
         ></img>
         <Proficiency
-          level="40%"
+          level="55%"
           color="#08dcfc"
           completion="intermediate, currently studying"
         />
@@ -837,6 +826,10 @@ function linkedInClicked() {
   window.location.href = "https://www.linkedin.com/in/masonmarker/";
 }
 
+function tiktokClicked() {
+  window.location.href = "https://www.tiktok.com/@wtfmase";
+}
+
 function jmuClicked() {
   window.location.href = "https://www.jmu.edu/";
 }
@@ -908,6 +901,7 @@ export {
   genworthClicked,
   wmcClicked,
   cfaClicked,
+  tiktokClicked,
   MyProjects,
   Ventures,
   MyEducation,

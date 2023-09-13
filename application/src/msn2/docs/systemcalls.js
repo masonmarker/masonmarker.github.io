@@ -1,13 +1,11 @@
 
 
 
-import { list } from '@chakra-ui/react'
 import './../msn2.css'
 
 import {Title, Section} from './../msn2docs'
 import { ExecutionDisplay } from './basics'
 
-import { useRef } from 'react'
 import Dropdown from 'react-dropdown';
 import React from 'react';
 
@@ -31,7 +29,7 @@ function Systemcalls() {
     as_string_array.sort()
 
     // add everything from as string array to the systemcallnames array
-    for (var i = 0; i < as_string_array.length; i++) {
+    for (i = 0; i < as_string_array.length; i++) {
         systemcallnames.push(as_string_array[i])
     }
 
@@ -83,7 +81,6 @@ function ScrollerToSearch() {
             cursor: 'pointer',
             color: 'white',
             backgroundColor: 'black',
-            padding: '0.5rem',
             borderRadius: '0.5rem',
             boxShadow: '0 0 0.5rem black',
             zIndex: '1000',
@@ -99,18 +96,6 @@ function ScrollerToSearch() {
 
 function scrollToTop() {
     document.getElementById('scrolltotop').scrollIntoView( {behavior: 'smooth'} )
-}
-
-// gets an array of all element id's with id's that include 'systemcall'
-function allSystemCalls() {
-    var allelements = document.getElementsByTagName('*');
-    var systemcalls = [];
-    for (var i = 0; i < allelements.length; i++) {
-        if (allelements[i].id.endsWith('systemcall')) {
-            systemcalls.push(allelements[i].id);
-        }
-    }
-    return systemcalls;
 }
 
 function Drop(props) {
@@ -130,7 +115,7 @@ function dropChanged(newvalue) {
 
         // replaces all greater than signs with &gt;
      //   e = e.replaceAll('&gt;', '>').replaceAll('&lt;', '<')
-        if (allelements[i].id == e) {
+        if (allelements[i].id === e) {
             allelements[i].scrollIntoView()
             document.getElementsByClassName('Dropdown-placeholder msn2-drop-place').item(0).innerHTML = 'Select a system call'
             return            
@@ -163,7 +148,7 @@ function SystemCall(props) {
     var argstring = ''
     for (var i = 0; i < props.args.length; i++) {
         argstring += props.args[i]
-        if (i != props.args.length - 1) {
+        if (i !== props.args.length - 1) {
             argstring += ', '
         }
     }

@@ -3,7 +3,6 @@
 import { FadeInSection } from "../github"
 import './msn2.css'
 import {Link} from 'react-router-dom'
-import { Fade } from "@chakra-ui/react"
 
 function Msn2docs() {
     return (

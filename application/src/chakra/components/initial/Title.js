@@ -27,7 +27,7 @@ import css from '../../styles/css'
 import links from '../../styles/links'
 
 // intersection observer
-import { inView, useInView } from 'react-intersection-observer'
+import { useInView } from 'react-intersection-observer'
 
 // styled App
 // background color should be perfectly divided in half, diagonally,
@@ -182,7 +182,7 @@ const Title = (props) => {
                     <ArrowForwardIcon />
                 </Bubble>
 
-                <Bubble text="Knowledge" top="30%" left="25%" width="16rem" textcolor="darkblue" className="bottomleft"
+                <Bubble text="Knowledge" top="30%" left="25%" width="17rem" textcolor="darkblue" className="bottomleft"
                     onClick={() => {
                         // scroll to element with id edudrop
                         const element = document.getElementById("edudrop")
@@ -192,7 +192,7 @@ const Title = (props) => {
                     <QuestionOutlineIcon />
                 </Bubble>
 
-                <Bubble text="GitHub" top="15%" left="75%" width="13rem" textcolor="gray.500" className="topright"
+                <Bubble text="GitHub" top="15%" left="75%" width="14rem" textcolor="gray.500" className="topright"
                     onClick={() => window.open(links.github, "_blank")}
                     desc={["Project ", <strong key="bubble4">source codes</strong>]}>
                     <ExternalLinkIcon />
